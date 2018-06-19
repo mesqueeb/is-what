@@ -1,4 +1,76 @@
-parcelRequire=function(e,r,n,t){var i="function"==typeof parcelRequire&&parcelRequire,o="function"==typeof require&&require;function u(n,t){if(!r[n]){if(!e[n]){var f="function"==typeof parcelRequire&&parcelRequire;if(!t&&f)return f(n,!0);if(i)return i(n,!0);if(o&&"string"==typeof n)return o(n);var c=new Error("Cannot find module '"+n+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[n][1][r]||r};var l=r[n]=new u.Module(n);e[n][0].call(l.exports,p,l,l.exports,this)}return r[n].exports;function p(e){return u(p.resolve(e))}}u.isParcelRequire=!0,u.Module=function(e){this.id=e,this.bundle=u,this.exports={}},u.modules=e,u.cache=r,u.parent=i,u.register=function(r,n){e[r]=[function(e,r){r.exports=n},{}]};for(var f=0;f<n.length;f++)u(n[f]);if(n.length){var c=u(n[n.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=c:"function"==typeof define&&define.amd?define(function(){return c}):t&&(this[t]=c)}return u}({1:[function(require,module,exports) {
-function n(n){return Object.prototype.toString.call(n).slice(8,-1)}function t(t){return"Undefined"===n(t)}function e(t){return"Null"===n(t)}function r(t){return"Object"===n(t)}function i(t){return"Array"===n(t)}function u(t){return"String"===n(t)}function o(t){return"Number"===n(t)}function c(t){return"Boolean"===n(t)}function f(t){return"RegExp"===n(t)}function s(t){return"Date"===n(t)}module.exports={getType:n,isUndefined:t,isNull:e,isObject:r,isArray:i,isString:u,isNumber:o,isBoolean:c,isRegExp:f,isDate:s};
-},{}]},{},[1], null)
-//# sourceMappingURL=/index.map
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.Index = {})));
+}(this, (function (exports) { 'use strict';
+
+  function getType(payload) {
+    return Object.prototype.toString.call(payload).slice(8, -1);
+  }
+  function isUndefined(payload) {
+    return getType(payload) === 'Undefined';
+  }
+  function isNull(payload) {
+    return getType(payload) === 'Null';
+  }
+  function isObject(payload) {
+    return getType(payload) === 'Object';
+  }
+  function isArray(payload) {
+    return getType(payload) === 'Array';
+  }
+  function isString(payload) {
+    return getType(payload) === 'String';
+  }
+  function isNumber(payload) {
+    return getType(payload) === 'Number';
+  }
+  function isBoolean(payload) {
+    return getType(payload) === 'Boolean';
+  }
+  function isRegExp(payload) {
+    return getType(payload) === 'RegExp';
+  }
+  function isDate(payload) {
+    return getType(payload) === 'Date';
+  }
+
+  var src = {
+    getType: getType,
+    isUndefined: isUndefined,
+    isNull: isNull,
+    isObject: isObject,
+    isArray: isArray,
+    isString: isString,
+    isNumber: isNumber,
+    isBoolean: isBoolean,
+    isRegExp: isRegExp,
+    isDate: isDate
+  };
+  var src_1 = src.getType;
+  var src_2 = src.isUndefined;
+  var src_3 = src.isNull;
+  var src_4 = src.isObject;
+  var src_5 = src.isArray;
+  var src_6 = src.isString;
+  var src_7 = src.isNumber;
+  var src_8 = src.isBoolean;
+  var src_9 = src.isRegExp;
+  var src_10 = src.isDate;
+
+  exports.default = src;
+  exports.getType = src_1;
+  exports.isUndefined = src_2;
+  exports.isNull = src_3;
+  exports.isObject = src_4;
+  exports.isArray = src_5;
+  exports.isString = src_6;
+  exports.isNumber = src_7;
+  exports.isBoolean = src_8;
+  exports.isRegExp = src_9;
+  exports.isDate = src_10;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+//# sourceMappingURL=index.js.map
