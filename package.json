@@ -1,6 +1,6 @@
 {
   "name": "is-what",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Very simple & small JS type check function",
   "main": "dist/index.js",
   "scripts": {
