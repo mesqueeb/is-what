@@ -1,8 +1,4 @@
-# isWhat
-Very simple &amp; small JS type check function
 
-It's litterally just these functions:
-```js
 function getType (payload) {
   return Object.prototype.toString.call(payload).slice(8, -1)
 }
@@ -33,4 +29,16 @@ function isRegExp (payload) {
 function isDate (payload) {
   return getType(payload) === 'Date'
 }
-```
+
+export default {
+  getType,
+  isUndefined,
+  isNull,
+  isObject,
+  isArray,
+  isString,
+  isNumber,
+  isBoolean,
+  isRegExp,
+  isDate,
+}

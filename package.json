@@ -1,0 +1,24 @@
+{
+  "name": "is-what",
+  "version": "1.0.0",
+  "description": "Very simple & small JS type check function",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mesqueeb/isWhat.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "check",
+    "type"
+  ],
+  "author": "Luca Ban - Mesqueeb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mesqueeb/isWhat/issues"
+  },
+  "homepage": "https://github.com/mesqueeb/isWhat#readme"
+}
