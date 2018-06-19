@@ -34,3 +34,11 @@ function isDate (payload) {
   return getType(payload) === 'Date'
 }
 ```
+
+## Build from source
+
+```bash
+npm i
+npm i -g parcel-bundler
+parcel build ./src/index.js
+```
