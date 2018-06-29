@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.Index = {})));
+  (factory((global.IsWhat = {})));
 }(this, (function (exports) { 'use strict';
 
   function getType(payload) {
@@ -35,42 +35,18 @@
     return getType(payload) === 'Date';
   }
 
-  var src = {
-    getType: getType,
-    isUndefined: isUndefined,
-    isNull: isNull,
-    isObject: isObject,
-    isArray: isArray,
-    isString: isString,
-    isNumber: isNumber,
-    isBoolean: isBoolean,
-    isRegExp: isRegExp,
-    isDate: isDate
-  };
-  var src_1 = src.getType;
-  var src_2 = src.isUndefined;
-  var src_3 = src.isNull;
-  var src_4 = src.isObject;
-  var src_5 = src.isArray;
-  var src_6 = src.isString;
-  var src_7 = src.isNumber;
-  var src_8 = src.isBoolean;
-  var src_9 = src.isRegExp;
-  var src_10 = src.isDate;
-
-  exports.default = src;
-  exports.getType = src_1;
-  exports.isUndefined = src_2;
-  exports.isNull = src_3;
-  exports.isObject = src_4;
-  exports.isArray = src_5;
-  exports.isString = src_6;
-  exports.isNumber = src_7;
-  exports.isBoolean = src_8;
-  exports.isRegExp = src_9;
-  exports.isDate = src_10;
+  exports.getType = getType;
+  exports.isUndefined = isUndefined;
+  exports.isNull = isNull;
+  exports.isObject = isObject;
+  exports.isArray = isArray;
+  exports.isString = isString;
+  exports.isNumber = isNumber;
+  exports.isBoolean = isBoolean;
+  exports.isRegExp = isRegExp;
+  exports.isDate = isDate;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.umd.js.map

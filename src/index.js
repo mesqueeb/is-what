@@ -30,7 +30,7 @@ function isDate (payload) {
   return getType(payload) === 'Date'
 }
 
-module.exports = {
+export {
   getType,
   isUndefined,
   isNull,
@@ -40,5 +40,5 @@ module.exports = {
   isNumber,
   isBoolean,
   isRegExp,
-  isDate,
+  isDate
 }
