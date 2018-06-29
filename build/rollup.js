@@ -1,3 +1,7 @@
+import babel from 'rollup-plugin-babel'
+import commonjs from 'rollup-plugin-commonjs'
+import { terser } from 'rollup-plugin-terser'
+
 // ------------------------------------------------------------------------------------------
 // formats
 // ------------------------------------------------------------------------------------------
@@ -9,15 +13,20 @@
 // ------------------------------------------------------------------------------------------
 // setup
 // ------------------------------------------------------------------------------------------
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import { terser } from "rollup-plugin-terser";
-
 const pkg = require('../package.json')
 const name = pkg.name
 const className = name.replace(/(^\w|-\w)/g, c => c.replace('-', '').toUpperCase())
 const external = Object.keys(pkg.dependencies || [])
+const _plugins = [
+  babel({
+    exclude: 'node_modules/**', // only transpile our source code
+  }),
+  commonjs(),
+]
 
+// ------------------------------------------------------------------------------------------
+// build helpers
+// ------------------------------------------------------------------------------------------
 function output (ext, format) {
   return {
     name: className,
@@ -29,8 +38,8 @@ function output (ext, format) {
 }
 function buildTemplate (format, minified = false) {
   const plugins = (minified)
-    ? [babel(), commonjs(), terser()]
-    : [babel(), commonjs()]
+    ? _plugins.concat(terser())
+    : _plugins
   const ext = (minified)
     ? `${format}.min.js`
     : `${format}.js`
@@ -41,6 +50,7 @@ function buildTemplate (format, minified = false) {
     external
   }
 }
+
 // ------------------------------------------------------------------------------------------
 // builds
 // ------------------------------------------------------------------------------------------
