@@ -14,6 +14,9 @@ function isNull(payload) {
 function isObject(payload) {
   return getType(payload) === 'Object';
 }
+function isFunction(payload) {
+  return getType(payload) === 'Function';
+}
 function isArray(payload) {
   return getType(payload) === 'Array';
 }
@@ -37,6 +40,7 @@ exports.getType = getType;
 exports.isUndefined = isUndefined;
 exports.isNull = isNull;
 exports.isObject = isObject;
+exports.isFunction = isFunction;
 exports.isArray = isArray;
 exports.isString = isString;
 exports.isNumber = isNumber;

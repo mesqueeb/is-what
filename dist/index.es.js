@@ -10,6 +10,9 @@ function isNull(payload) {
 function isObject(payload) {
   return getType(payload) === 'Object';
 }
+function isFunction(payload) {
+  return getType(payload) === 'Function';
+}
 function isArray(payload) {
   return getType(payload) === 'Array';
 }
@@ -29,5 +32,5 @@ function isDate(payload) {
   return getType(payload) === 'Date';
 }
 
-export { getType, isUndefined, isNull, isObject, isArray, isString, isNumber, isBoolean, isRegExp, isDate };
+export { getType, isUndefined, isNull, isObject, isFunction, isArray, isString, isNumber, isBoolean, isRegExp, isDate };
 //# sourceMappingURL=index.es.js.map
