@@ -11,6 +11,9 @@ function isNull (payload) {
 function isObject (payload) {
   return getType(payload) === 'Object'
 }
+function isFunction (payload) {
+  return getType(payload) === 'Function'
+}
 function isArray (payload) {
   return getType(payload) === 'Array'
 }
@@ -35,6 +38,7 @@ export {
   isUndefined,
   isNull,
   isObject,
+  isFunction,
   isArray,
   isString,
   isNumber,
