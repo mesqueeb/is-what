@@ -30,7 +30,7 @@ function isRegExp (payload) {
   return getType(payload) === 'RegExp'
 }
 function isDate (payload) {
-  return (getType(payload) === 'Date' &&  !isNaN(payload))
+  return (getType(payload) === 'Date' && !isNaN(payload))
 }
 
 export {
