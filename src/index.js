@@ -21,7 +21,7 @@ function isString (payload) {
   return getType(payload) === 'String'
 }
 function isNumber (payload) {
-  return getType(payload) === 'Number'
+  return (getType(payload) === 'Number' && !isNaN(payload))
 }
 function isBoolean (payload) {
   return getType(payload) === 'Boolean'
@@ -30,7 +30,7 @@ function isRegExp (payload) {
   return getType(payload) === 'RegExp'
 }
 function isDate (payload) {
-  return getType(payload) === 'Date'
+  return (getType(payload) === 'Date' &&  !isNaN(payload))
 }
 
 export {
