@@ -25,7 +25,7 @@ function isString (payload) {
   return getType(payload) === 'String'
 }
 function isNumber (payload) {
-  return getType(payload) === 'Number'
+  return (getType(payload) === 'Number' && !isNaN(payload))
 }
 function isBoolean (payload) {
   return getType(payload) === 'Boolean'
@@ -34,9 +34,11 @@ function isRegExp (payload) {
   return getType(payload) === 'RegExp'
 }
 function isDate (payload) {
-  return getType(payload) === 'Date'
+  return (getType(payload) === 'Date' &&  !isNaN(payload))
 }
 ```
+
+Since v2.0.0 it will return false on `isNumber()` and `isDate()` if the payload is `NaN` or an invalid date.
 
 ## Build from source
 
