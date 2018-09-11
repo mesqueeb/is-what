@@ -1,16 +1,16 @@
 {
   "name": "is-what",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Very simple & small JS type check function",
   "main": "dist/index.cjs.min.js",
   "module": "dist/index.es.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c ./build/rollup.js"
+    "test": "ava",
+    "build": "rollup -c ./build/rollup.js && npm run test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mesqueeb/isWhat.git"
+    "url": "git+https://github.com/mesqueeb/is-what.git"
   },
   "keywords": [
     "JavaScript",
@@ -20,12 +20,13 @@
   "author": "Luca Ban - Mesqueeb",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mesqueeb/isWhat/issues"
+    "url": "https://github.com/mesqueeb/is-what/issues"
   },
-  "homepage": "https://github.com/mesqueeb/isWhat#readme",
+  "homepage": "https://github.com/mesqueeb/is-what#readme",
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "ava": "1.0.0-beta.8",
     "rollup": "^0.65.2",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.1.6",
