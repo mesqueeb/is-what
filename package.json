@@ -1,7 +1,7 @@
 {
   "name": "is-what",
   "version": "2.0.2",
-  "description": "Very simple & small JS type check function",
+  "description": "JS type check functions like `isObject() isArray()` etc. A simple & small integration.",
   "main": "dist/index.cjs.min.js",
   "module": "dist/index.es.min.js",
   "scripts": {
@@ -13,9 +13,9 @@
     "url": "git+https://github.com/mesqueeb/is-what.git"
   },
   "keywords": [
-    "JavaScript",
-    "check",
-    "type"
+    "javascript",
+    "typechecker",
+    "check-type"
   ],
   "author": "Luca Ban - Mesqueeb",
   "license": "MIT",
