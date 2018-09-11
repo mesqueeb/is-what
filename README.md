@@ -1,7 +1,15 @@
-# isWhat
+# is What?
+
+```
+npm i is-what
+```
+
 Very simple &amp; small JS type check function
 
+**Motivation:** I built is-what because the existing solutions were all too complex.
+
 It's litterally just these functions:
+
 ```js
 function getType (payload) {
   return Object.prototype.toString.call(payload).slice(8, -1)
@@ -38,10 +46,10 @@ function isDate (payload) {
 }
 ```
 
-Since v2.0.0 it will return false on `isNumber()` and `isDate()` if the payload is `NaN` or an invalid date.
+Since v2.0.0, checking for `isNumber` and `isDate` will return `false` if the payload is `NaN` or an invalid date.
 
-## Build from source
+## Tests
 
-```bash
-npm run build
+```
+npm run test
 ```
