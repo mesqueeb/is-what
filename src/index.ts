@@ -1,35 +1,35 @@
 
-function getType (payload) {
+function getType (payload: any): string {
   return Object.prototype.toString.call(payload).slice(8, -1)
 }
-function isUndefined (payload) {
+function isUndefined (payload: any): boolean {
   return getType(payload) === 'Undefined'
 }
-function isNull (payload) {
+function isNull (payload: any): boolean {
   return getType(payload) === 'Null'
 }
-function isObject (payload) {
+function isObject (payload: any): boolean {
   return getType(payload) === 'Object'
 }
-function isFunction (payload) {
+function isFunction (payload: any): boolean {
   return getType(payload) === 'Function'
 }
-function isArray (payload) {
+function isArray (payload: any): boolean {
   return getType(payload) === 'Array'
 }
-function isString (payload) {
+function isString (payload: any): boolean {
   return getType(payload) === 'String'
 }
-function isNumber (payload) {
+function isNumber (payload: any): boolean {
   return (getType(payload) === 'Number' && !isNaN(payload))
 }
-function isBoolean (payload) {
+function isBoolean (payload: any): boolean {
   return getType(payload) === 'Boolean'
 }
-function isRegExp (payload) {
+function isRegExp (payload: any): boolean {
   return getType(payload) === 'RegExp'
 }
-function isDate (payload) {
+function isDate (payload: any): boolean {
   return (getType(payload) === 'Date' && !isNaN(payload))
 }
 

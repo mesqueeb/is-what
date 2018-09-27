@@ -10,7 +10,7 @@ import {
   isRegExp,
   isNumber,
   isDate
-} from '../dist/index.cjs.min'
+} from '../dist/index.cjs'
 
 test('true', t => {
   t.is(isUndefined(undefined), true)

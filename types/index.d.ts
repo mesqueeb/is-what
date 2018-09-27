@@ -1,0 +1,12 @@
+declare function getType(payload: any): string;
+declare function isUndefined(payload: any): boolean;
+declare function isNull(payload: any): boolean;
+declare function isObject(payload: any): boolean;
+declare function isFunction(payload: any): boolean;
+declare function isArray(payload: any): boolean;
+declare function isString(payload: any): boolean;
+declare function isNumber(payload: any): boolean;
+declare function isBoolean(payload: any): boolean;
+declare function isRegExp(payload: any): boolean;
+declare function isDate(payload: any): boolean;
+export { getType, isUndefined, isNull, isObject, isFunction, isArray, isString, isNumber, isBoolean, isRegExp, isDate };
