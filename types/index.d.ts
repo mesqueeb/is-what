@@ -71,7 +71,7 @@ declare function isBoolean(payload: any): payload is boolean;
  */
 declare function isRegExp(payload: any): payload is RegExp;
 /**
- * Returns whether the payload is a date
+ * Returns whether the payload is a date, and that the date is Valid
  *
  * @param {*} payload
  * @returns {payload is Date}

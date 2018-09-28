@@ -91,7 +91,7 @@ function isRegExp(payload) {
     return getType(payload) === 'RegExp';
 }
 /**
- * Returns whether the payload is a date
+ * Returns whether the payload is a date, and that the date is Valid
  *
  * @param {*} payload
  * @returns {payload is Date}
@@ -117,8 +117,8 @@ function isType(payload, type) {
     if (!type.hasOwnProperty('prototype')) {
         throw new TypeError('Type is not a class');
     }
+    // Classes usually have names (as functions usually have names)
     var name = type.name;
-    console.log((getType(payload) === name), payload, !!(payload && (payload.constructor === type)));
     return (getType(payload) === name) || Boolean(payload && (payload.constructor === type));
 }
 
