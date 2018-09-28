@@ -9,8 +9,7 @@ import {
   isRegExp,
   isNumber,
   isDate,
-  isType,
-  getType
+  isType
 } from '../dist/index.cjs'
 
 test('All tests should return true', () => {
@@ -47,6 +46,12 @@ test('All tests should return false', () => {
 })
 
 test('Generic isType', () => {
+  function MyClass () {}
+  // This is correct old fashion syntax for classes, if this is missing
+  // It SHOULD fail
+  MyClass.prototype.constructor = MyClass
+  class MyOtherClass {}
+  const myClass = new MyClass()
   expect(isType('Hello World', String)).toBe(true)
   expect(isType(5, String)).toBe(false)
   expect(isType(5, Number)).toBe(true)
@@ -54,20 +59,11 @@ test('Generic isType', () => {
   expect(isType(null, Object)).toBe(false)
   // this is expected behaviour
   expect(isType(new Date('_'), Date)).toBe(true)
-
-  function MyClass () {}
-  // This is correct old fashion syntax for classes, if this is missing
-  // It SHOULD fail
-  MyClass.prototype.constructor = MyClass
-  class MyOtherClass {}
-
-  const myClass = new MyClass()
   expect(isType(myClass, MyClass)).toBe(true)
   expect(isType(new MyOtherClass(), MyOtherClass)).toBe(true)
   expect(isType(myClass, MyOtherClass)).toBe(false)
-
-  // Not sure if this owuld be the expected behaviour but everything is an object
-
+  // Not sure if this would be the expected behaviour but everything is an object
+  // so I would say so
   expect(isType(myClass, Object)).toBe(true)
 
 })
