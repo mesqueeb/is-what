@@ -1,4 +1,4 @@
-# is What?
+# is What? 🙉
 
 ```
 npm i is-what
@@ -10,7 +10,7 @@ Very simple &amp; small JS type check functions. It's fully TypeScript supported
 
 ### Functions
 
-getType, isUndefined, isNull, isObject, isFunction, isArray, isString, isNumber, isBoolean, isRegExp, isDate, isSymbol, isPrimitive, isType
+isString, isNumber, isBoolean, isObject, isFunction, isArray, isUndefined, isNull, isRegExp, isDate, isSymbol, isPrimitive, isType, getType
 
 ### Usage
 
@@ -35,7 +35,7 @@ isDate(new Date('---- invalid date ----')) // returns false
 ### TypeScript usage example:
 
 ```TypeScript
-// is-what makes TypeScript know the type during if statements: 
+// is-what makes TypeScript know the type during if statements:
 function fn (payload: string | number): number {
   if (isNumber(payload)) {
     // ↑ TypeScript already knows payload is a number here!
