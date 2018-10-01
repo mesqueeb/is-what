@@ -4,9 +4,47 @@
 npm i is-what
 ```
 
-Very simple &amp; small JS type check function
+Very simple &amp; small JS type check functions. It's fully TypeScript supported!
 
 **Motivation:** I built is-what because the existing solutions were all too complex.
+
+### Functions
+
+getType, isUndefined, isNull, isObject, isFunction, isArray, isString, isNumber, isBoolean, isRegExp, isDate, isSymbol, isPrimitive, isType
+
+### Usage
+
+is-what is really easy to use, and all functions above work just like you'd expect.
+
+```js
+import { isString, isType, getType } from 'is-what'
+
+isString('') // returns true
+isType('', String) // returns true
+getType('') // returns 'String'
+```
+
+**Exception:**<br>
+Checking for `isNumber` and `isDate` will return `false` if the payload is `NaN` or an invalid date.
+
+```js
+isNumber(NaN) // returns false
+isDate(new Date('---- invalid date ----')) // returns false
+```
+
+### TypeScript usage example:
+
+```TypeScript
+// is-what makes TypeScript know the type during if statements: 
+function fn (payload: string | number): number {
+  if (isNumber(payload)) {
+    // ↑ TypeScript already knows payload is a number here!
+    return payload
+  }
+}
+```
+
+### Source code
 
 It's litterally just these functions:
 
@@ -17,36 +55,16 @@ function getType (payload) {
 function isUndefined (payload) {
   return getType(payload) === 'Undefined'
 }
-function isNull (payload) {
-  return getType(payload) === 'Null'
+function isString (payload) {
+  return getType(payload) === 'String'
 }
 function isObject (payload) {
   return getType(payload) === 'Object'
 }
-function isFunction (payload) {
-  return getType(payload) === 'Function'
-}
-function isArray (payload) {
-  return getType(payload) === 'Array'
-}
-function isString (payload) {
-  return getType(payload) === 'String'
-}
-function isNumber (payload) {
-  return (getType(payload) === 'Number' && !isNaN(payload))
-}
-function isBoolean (payload) {
-  return getType(payload) === 'Boolean'
-}
-function isRegExp (payload) {
-  return getType(payload) === 'RegExp'
-}
-function isDate (payload) {
-  return (getType(payload) === 'Date' &&  !isNaN(payload))
-}
+// etc...
 ```
 
-Since v2.0.0, checking for `isNumber` and `isDate` will return `false` if the payload is `NaN` or an invalid date.
+See the full source code [here](https://github.com/mesqueeb/is-what/blob/master/src/index.ts).
 
 ## Tests
 
