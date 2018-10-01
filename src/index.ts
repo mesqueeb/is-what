@@ -5,7 +5,7 @@
  * @param {*} payload
  * @returns {string}
  */
-function getType(payload: any): string {
+export function getType (payload: any): string {
   return Object.prototype.toString.call(payload).slice(8, -1)
 }
 
@@ -15,7 +15,7 @@ function getType(payload: any): string {
  * @param {*} payload
  * @returns {payload is undefined}
  */
-function isUndefined(payload: any): payload is undefined {
+export function isUndefined (payload: any): payload is undefined {
   return getType(payload) === 'Undefined'
 }
 
@@ -25,10 +25,9 @@ function isUndefined(payload: any): payload is undefined {
  * @param {*} payload
  * @returns {payload is null}
  */
-function isNull(payload: any): payload is null {
+export function isNull (payload: any): payload is null {
   return getType(payload) === 'Null'
 }
-
 
 /**
  * Returns whether the payload is an object
@@ -36,10 +35,9 @@ function isNull(payload: any): payload is null {
  * @param {*} payload
  * @returns {payload is object}
  */
-function isObject(payload: any): payload is object {
+export function isObject (payload: any): payload is object {
   return getType(payload) === 'Object'
 }
-
 
 /**
  * Returns whether the payload is a function
@@ -47,7 +45,7 @@ function isObject(payload: any): payload is object {
  * @param {*} payload
  * @returns {payload is Function}
  */
-function isFunction(payload: any): payload is Function {
+export function isFunction (payload: any): payload is Function {
   return getType(payload) === 'Function'
 }
 
@@ -57,7 +55,7 @@ function isFunction(payload: any): payload is Function {
  * @param {*} payload
  * @returns {payload is undefined}
  */
-function isArray(payload: any): payload is any[] {
+export function isArray (payload: any): payload is any[] {
   return getType(payload) === 'Array'
 }
 
@@ -67,7 +65,7 @@ function isArray(payload: any): payload is any[] {
  * @param {*} payload
  * @returns {payload is string}
  */
-function isString(payload: any): payload is string {
+export function isString (payload: any): payload is string {
   return getType(payload) === 'String'
 }
 
@@ -79,7 +77,7 @@ function isString(payload: any): payload is string {
  * @param {*} payload
  * @returns {payload is number}
  */
-function isNumber(payload: any): payload is number {
+export function isNumber (payload: any): payload is number {
   return (getType(payload) === 'Number' && !isNaN(payload))
 }
 
@@ -89,7 +87,7 @@ function isNumber(payload: any): payload is number {
  * @param {*} payload
  * @returns {payload is boolean}
  */
-function isBoolean(payload: any): payload is boolean {
+export function isBoolean (payload: any): payload is boolean {
   return getType(payload) === 'Boolean'
 }
 
@@ -99,7 +97,7 @@ function isBoolean(payload: any): payload is boolean {
  * @param {*} payload
  * @returns {payload is RegExp}
  */
-function isRegExp(payload: any): payload is RegExp {
+export function isRegExp (payload: any): payload is RegExp {
   return getType(payload) === 'RegExp'
 }
 /**
@@ -108,7 +106,7 @@ function isRegExp(payload: any): payload is RegExp {
  * @param {*} payload
  * @returns {payload is Date}
  */
-function isDate(payload: any): payload is Date {
+export function isDate (payload: any): payload is Date {
   return (getType(payload) === 'Date' && !isNaN(payload))
 }
 
@@ -123,7 +121,7 @@ function isDate(payload: any): payload is Date {
  * @throws {TypeError} Will throw type error if type is an invalid type
  * @returns {payload is T}
  */
-function isType<T extends Function>(payload: any, type: T): payload is T {
+export function isType<T extends Function> (payload: any, type: T): payload is T {
   if (!(type instanceof Function)) {
     throw new TypeError('Type must be a function')
   }
@@ -133,20 +131,4 @@ function isType<T extends Function>(payload: any, type: T): payload is T {
   // Classes usually have names (as functions usually have names)
   const name: string | undefined | null = (<any>type).name
   return (getType(payload) === name) || Boolean(payload && (payload.constructor === type))
-}
-
-
-export {
-  getType,
-  isUndefined,
-  isNull,
-  isObject,
-  isFunction,
-  isArray,
-  isString,
-  isNumber,
-  isBoolean,
-  isRegExp,
-  isDate,
-  isType
 }
