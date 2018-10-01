@@ -104,6 +104,38 @@ function isDate(payload) {
     return (getType(payload) === 'Date' && !isNaN(payload));
 }
 /**
+ * Returns whether the payload is a Symbol
+ *
+ * @param {*} payload
+ * @returns {payload is Symbol}
+ */
+function isSymbol(payload) {
+    return (getType(payload) === 'Symbol');
+}
+/**
+ * Returns whether the payload is a Class
+ *
+ * @param {*} payload
+ * @returns {payload is }
+ */
+// export function isClass (payload: any): payload is Object {
+//   return (getType(payload) === '')
+// }
+/**
+ * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
+ *
+ * @param {*} payload
+ * @returns {*}
+ */
+function isPrimitive(payload) {
+    return (isBoolean(payload) ||
+        isNull(payload) ||
+        isUndefined(payload) ||
+        isNumber(payload) ||
+        isString(payload) ||
+        isSymbol(payload));
+}
+/**
  * Does a generic check to check that the given payload is of a given type.
  * In cases like Number, it will return true for NaN as NaN is a Number (thanks javascript!);
  * It will, however, differentiate between object and null
@@ -137,4 +169,6 @@ exports.isNumber = isNumber;
 exports.isBoolean = isBoolean;
 exports.isRegExp = isRegExp;
 exports.isDate = isDate;
+exports.isSymbol = isSymbol;
+exports.isPrimitive = isPrimitive;
 exports.isType = isType;

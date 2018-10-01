@@ -78,6 +78,26 @@ export declare function isRegExp(payload: any): payload is RegExp;
  */
 export declare function isDate(payload: any): payload is Date;
 /**
+ * Returns whether the payload is a Symbol
+ *
+ * @param {*} payload
+ * @returns {payload is Symbol}
+ */
+export declare function isSymbol(payload: any): payload is Symbol;
+/**
+ * Returns whether the payload is a Class
+ *
+ * @param {*} payload
+ * @returns {payload is }
+ */
+/**
+ * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
+ *
+ * @param {*} payload
+ * @returns {*}
+ */
+export declare function isPrimitive(payload: any): any;
+/**
  * Does a generic check to check that the given payload is of a given type.
  * In cases like Number, it will return true for NaN as NaN is a Number (thanks javascript!);
  * It will, however, differentiate between object and null

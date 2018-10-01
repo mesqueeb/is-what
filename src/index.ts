@@ -100,6 +100,7 @@ export function isBoolean (payload: any): payload is boolean {
 export function isRegExp (payload: any): payload is RegExp {
   return getType(payload) === 'RegExp'
 }
+
 /**
  * Returns whether the payload is a date, and that the date is Valid
  *
@@ -108,6 +109,43 @@ export function isRegExp (payload: any): payload is RegExp {
  */
 export function isDate (payload: any): payload is Date {
   return (getType(payload) === 'Date' && !isNaN(payload))
+}
+
+/**
+ * Returns whether the payload is a Symbol
+ *
+ * @param {*} payload
+ * @returns {payload is Symbol}
+ */
+export function isSymbol (payload: any): payload is Symbol {
+  return (getType(payload) === 'Symbol')
+}
+
+/**
+ * Returns whether the payload is a Class
+ *
+ * @param {*} payload
+ * @returns {payload is }
+ */
+// export function isClass (payload: any): payload is Object {
+//   return (getType(payload) === '')
+// }
+
+/**
+ * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
+ *
+ * @param {*} payload
+ * @returns {*}
+ */
+export function isPrimitive (payload: any): any {
+  return (
+    isBoolean(payload) ||
+    isNull(payload) ||
+    isUndefined(payload) ||
+    isNumber(payload) ||
+    isString(payload) ||
+    isSymbol(payload)
+  )
 }
 
 /**
