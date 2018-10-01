@@ -6,7 +6,8 @@
   "module": "dist/index.esm.js",
   "typings": "types/index.d.ts",
   "scripts": {
-    "test": "ava",
+    "test": "jest",
+    "test-w": "jest --watchAll",
     "build": "rollup -c ./build/rollup.js && npm run test"
   },
   "repository": {
@@ -25,10 +26,18 @@
   },
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "devDependencies": {
-    "ava": "1.0.0-beta.8",
+    "@babel/core": "^7.1.0",
+    "@types/babel-core": "^6.25.5",
+    "@types/jest": "^23.3.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "regenerator-runtime": "^0.12.1",
     "rollup": "^0.65.2",
     "rollup-plugin-typescript2": "^0.17.0",
     "typescript": "^3.0.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
 }
