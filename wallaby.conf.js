@@ -1,7 +1,7 @@
 module.exports = function (wallaby) {
   return {
     files: [
-      'src/**/*.js',
+      'src/**/*.ts',
       'dist/**/*.js'
     ],
     tests: [
@@ -12,11 +12,12 @@ module.exports = function (wallaby) {
       runner: 'node'
     },
     compilers: {
-      '+(src|test)/**/*.js': wallaby.compilers.babel(
+      '+(src|test)/**/*.js': wallaby.compilers.typeScript()
+      // '+(src|test)/**/*.js': wallaby.compilers.babel(
         // {
         //   presets: ['@babel/preset-env', '@ava/babel-preset-stage-4']
         // }
-      )
+      // )
     },
     testFramework: 'jest',
     debug: true
