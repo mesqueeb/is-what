@@ -12,13 +12,10 @@ module.exports = function (wallaby) {
       runner: 'node'
     },
     compilers: {
-      '+(dist|test)/**/*.js': wallaby.compilers.typeScript(),
-      '+(src)/**/*.ts': wallaby.compilers.typeScript()
-      // '+(src|test)/**/*.js': wallaby.compilers.babel(
-        // {
-        //   presets: ['@babel/preset-env', '@ava/babel-preset-stage-4']
-        // }
-      // )
+      '**/*.+(js|ts)': wallaby.compilers.typeScript({allowJs: true, outDir: './bin'})
+    },
+    preprocessors: {
+      '**/*.jsts': file => file.changeExt('js').content
     },
     testFramework: 'jest',
     debug: true
