@@ -24,8 +24,9 @@ isType('', String) // returns true
 getType('') // returns 'String'
 ```
 
-**Exception:**<br>
-Checking for `isNumber` and `isDate` will return `false` if the payload is `NaN` or an invalid date.
+#### Useful number & date exception:
+
+Checking for `isNumber` and `isDate` will return `false` if the payload is `NaN` or an invalid date. This is done intentionally and especially useful when you need to check if numbers or dates are correct in your functions!
 
 ```js
 isNumber(NaN) // returns false
