@@ -55,10 +55,10 @@ function fn (payload: string | number): number {
 `isObject` with TypeScript will declare the payload to be an object type with any props:
 
 ```TypeScript
-function isObject (payload: any): payload is {[key: any]: any} {
+function isObject (payload: any): payload is {[key: string]: any} {
   return isObject(payload)
 }
-// The reason to return `{[key: any]: any}` is to be able to do
+// The reason to return `{[key: string]: any}` is to be able to do
 if (isObject(payload) && payload.id) return payload.id
 // if isObject() would return `payload is object` then it would give an error at `payload.id`
 ```
