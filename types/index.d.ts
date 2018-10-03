@@ -23,9 +23,11 @@ export declare function isNull(payload: any): payload is null;
  * Returns whether the payload is an object
  *
  * @param {*} payload
- * @returns {payload is object}
+ * @returns {payload is {[key: string]: any}}
  */
-export declare function isObject(payload: any): payload is object;
+export declare function isObject(payload: any): payload is {
+    [key: string]: any;
+};
 /**
  * Returns whether the payload is an object like a type passed in < >
  *
@@ -94,12 +96,6 @@ export declare function isDate(payload: any): payload is Date;
  * @returns {payload is Symbol}
  */
 export declare function isSymbol(payload: any): payload is Symbol;
-/**
- * Returns whether the payload is a Class
- *
- * @param {*} payload
- * @returns {payload is }
- */
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *

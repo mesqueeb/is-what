@@ -35,8 +35,15 @@ isDate(new Date('---- invalid date ----')) // returns false
 
 ### TypeScript usage example:
 
+is-what makes TypeScript know the type during if statements. This means that a check returns the type of the payload for TypeScript users.
+
 ```TypeScript
-// is-what makes TypeScript know the type during if statements:
+function isNumber (payload: any): payload is number {
+  // return boolean
+}
+// As you can see above, all functions return a boolean for JavaScript, but pass the payload type to TypeScript.
+
+// usage example:
 function fn (payload: string | number): number {
   if (isNumber(payload)) {
     // ↑ TypeScript already knows payload is a number here!
@@ -45,17 +52,27 @@ function fn (payload: string | number): number {
 }
 ```
 
-One other useful function especially for TypeScript is `isObjectLike`:
+`isObject` with TypeScript will declare the payload to be an object type with any props:
+
+```TypeScript
+function isObject (payload: any): payload is {[key: any]: any} {
+  return isObject(payload)
+}
+// The reason to return `{[key: any]: any}` is to be able to do
+if (isObject(payload) && payload.id) return payload.id
+// if isObject() would return `payload is object` then it would give an error at `payload.id`
+```
+
+If you want more control over which kind of objects are allowed you can use `isObjectLike<T>`:
 
 ```TypeScript
 function isObjectLike<T extends object> (payload: any): payload is T {
   return isObject(payload)
 }
-// Eg. check if it's an object and has the `id` prop:
-if (isObjectLike<{id: any}>(payload)) {
-  return payload.id
-}
-// with regular isObject() it will give an error that the prop `id` does not exist on the object.
+// usage examples:
+isObjectLike<{specificKey: string}>(payload)
+isObjectLike<object>(payload)
+// you can just pass a specific type for TS to check on.
 ```
 
 ### Source code

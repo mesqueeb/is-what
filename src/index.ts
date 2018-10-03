@@ -1,4 +1,3 @@
-
 /**
  * Returns the object type of the given payload
  *
@@ -33,9 +32,9 @@ export function isNull (payload: any): payload is null {
  * Returns whether the payload is an object
  *
  * @param {*} payload
- * @returns {payload is object}
+ * @returns {payload is {[key: string]: any}}
  */
-export function isObject (payload: any): payload is object {
+export function isObject (payload: any): payload is {[key: string]: any} {
   return getType(payload) === 'Object'
 }
 
@@ -133,16 +132,6 @@ export function isDate (payload: any): payload is Date {
 export function isSymbol (payload: any): payload is Symbol {
   return (getType(payload) === 'Symbol')
 }
-
-/**
- * Returns whether the payload is a Class
- *
- * @param {*} payload
- * @returns {payload is }
- */
-// export function isClass (payload: any): payload is Object {
-//   return (getType(payload) === '')
-// }
 
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
