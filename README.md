@@ -45,6 +45,19 @@ function fn (payload: string | number): number {
 }
 ```
 
+One other useful function especially for TypeScript is `isObjectLike`:
+
+```TypeScript
+function isObjectLike<T extends object> (payload: any): payload is T {
+  return isObject(payload)
+}
+// Eg. check if it's an object and has the `id` prop:
+if (isObjectLike<{id: any}>(payload)) {
+  return payload.id
+}
+// with regular isObject() it will give an error that the prop `id` does not exist on the object.
+```
+
 ### Source code
 
 It's litterally just these functions:

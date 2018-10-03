@@ -27,6 +27,16 @@ export declare function isNull(payload: any): payload is null;
  */
 export declare function isObject(payload: any): payload is object;
 /**
+ * Returns whether the payload is an object like a type passed in < >
+ *
+ * Usage: isObjectLike<{id: any}>(payload) // will make sure it's an object and has an `id` prop.
+ *
+ * @template T this must be passed in < >
+ * @param {*} payload
+ * @returns {payload is T}
+ */
+export declare function isObjectLike<T extends object>(payload: any): payload is T;
+/**
  * Returns whether the payload is a function
  *
  * @param {*} payload

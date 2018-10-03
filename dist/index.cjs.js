@@ -39,6 +39,18 @@ function isObject(payload) {
     return getType(payload) === 'Object';
 }
 /**
+ * Returns whether the payload is an object like a type passed in < >
+ *
+ * Usage: isObjectLike<{id: any}>(payload) // will make sure it's an object and has an `id` prop.
+ *
+ * @template T this must be passed in < >
+ * @param {*} payload
+ * @returns {payload is T}
+ */
+function isObjectLike(payload) {
+    return isObject(payload);
+}
+/**
  * Returns whether the payload is a function
  *
  * @param {*} payload
@@ -162,6 +174,7 @@ exports.getType = getType;
 exports.isUndefined = isUndefined;
 exports.isNull = isNull;
 exports.isObject = isObject;
+exports.isObjectLike = isObjectLike;
 exports.isFunction = isFunction;
 exports.isArray = isArray;
 exports.isString = isString;
