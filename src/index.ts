@@ -29,12 +29,24 @@ export function isNull (payload: any): payload is null {
 }
 
 /**
- * Returns whether the payload is an object
+ * Returns whether the payload is an plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
  * @returns {payload is {[key: string]: any}}
  */
 export function isObject (payload: any): payload is {[key: string]: any} {
+  const isObject = getType(payload) === 'Object'
+  if (!isObject) return false
+  return (payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype)
+}
+
+/**
+ * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
+ *
+ * @param {*} payload
+ * @returns {payload is {[key: string]: any}}
+ */
+export function isAnyObject (payload: any): payload is {[key: string]: any} {
   return getType(payload) === 'Object'
 }
 

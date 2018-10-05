@@ -30,12 +30,24 @@ function isNull(payload) {
     return getType(payload) === 'Null';
 }
 /**
- * Returns whether the payload is an object
+ * Returns whether the payload is an plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
  * @returns {payload is {[key: string]: any}}
  */
 function isObject(payload) {
+    var isObject = getType(payload) === 'Object';
+    if (!isObject)
+        return false;
+    return (payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype);
+}
+/**
+ * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
+ *
+ * @param {*} payload
+ * @returns {payload is {[key: string]: any}}
+ */
+function isAnyObject(payload) {
     return getType(payload) === 'Object';
 }
 /**
@@ -165,6 +177,7 @@ exports.getType = getType;
 exports.isUndefined = isUndefined;
 exports.isNull = isNull;
 exports.isObject = isObject;
+exports.isAnyObject = isAnyObject;
 exports.isObjectLike = isObjectLike;
 exports.isFunction = isFunction;
 exports.isArray = isArray;
