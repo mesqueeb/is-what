@@ -60,7 +60,7 @@ export function isAnyObject (payload: any): payload is {[key: string]: any} {
  * @returns {payload is T}
  */
 export function isObjectLike<T extends object> (payload: any): payload is T {
-  return isObject(payload)
+  return isAnyObject(payload)
 }
 
 /**

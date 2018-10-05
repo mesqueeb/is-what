@@ -56,7 +56,7 @@ function isAnyObject(payload) {
  * @returns {payload is T}
  */
 function isObjectLike(payload) {
-    return isObject(payload);
+    return isAnyObject(payload);
 }
 /**
  * Returns whether the payload is a function
