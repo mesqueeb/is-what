@@ -2,6 +2,7 @@ import {
   isUndefined,
   isNull,
   isObject,
+  isAnyObject,
   isFunction,
   isArray,
   isString,
@@ -109,4 +110,41 @@ test('Generic isType', () => {
   // Not sure if this would be the expected behaviour but everything is an object
   // so I would say so
   expect(isType(myClass, Object)).toBe(true)
+})
+
+test('isObject vs isAnyObject', () => {
+  function MyClass () {}
+  // This is correct old fashion syntax for classes, if this is missing
+  MyClass.prototype.constructor = MyClass
+  const myClass = new MyClass()
+  class MyClass2 {}
+  const myClass2 = new MyClass()
+  const mySpecialObject = {}
+  Object.setPrototypeOf(mySpecialObject, {toDate: function () { return new Date() }})
+  // IS OBJECT
+  // plain object
+  expect(isObject({})).toBe(true)
+  expect(isObject(new Object())).toBe(true)
+  // classes & prototypes
+  expect(isObject(myClass)).toBe(false)
+  expect(isObject(myClass2)).toBe(false)
+  expect(isObject(mySpecialObject)).toBe(false)
+  // arrays and dates
+  expect(isObject([])).toBe(false)
+  expect(isObject(new Array())).toBe(false)
+  expect(isObject(new Date('_'))).toBe(false)
+  expect(isObject(new Date())).toBe(false)
+  // IS ANY OBJECT
+  // plain object
+  expect(isAnyObject({})).toBe(true)
+  expect(isAnyObject(new Object())).toBe(true)
+  // classes & prototypes
+  expect(isAnyObject(myClass)).toBe(true)
+  expect(isAnyObject(myClass2)).toBe(true)
+  expect(isAnyObject(mySpecialObject)).toBe(true)
+  // arrays and dates
+  expect(isAnyObject([])).toBe(false)
+  expect(isAnyObject(new Array())).toBe(false)
+  expect(isAnyObject(new Date('_'))).toBe(false)
+  expect(isAnyObject(new Date())).toBe(false)
 })
