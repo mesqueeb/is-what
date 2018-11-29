@@ -1,8 +1,9 @@
 import {
+  isObject,
+  isPlainObject,
+  isAnyObject,
   isUndefined,
   isNull,
-  isObject,
-  isAnyObject,
   isFunction,
   isArray,
   isString,
@@ -125,15 +126,24 @@ test('isObject vs isAnyObject', () => {
   // plain object
   expect(isObject({})).toBe(true)
   expect(isObject(new Object())).toBe(true)
+  expect(isPlainObject({})).toBe(true)
+  expect(isPlainObject(new Object())).toBe(true)
   // classes & prototypes
   expect(isObject(myClass)).toBe(false)
   expect(isObject(myClass2)).toBe(false)
   expect(isObject(mySpecialObject)).toBe(false)
+  expect(isPlainObject(myClass)).toBe(false)
+  expect(isPlainObject(myClass2)).toBe(false)
+  expect(isPlainObject(mySpecialObject)).toBe(false)
   // arrays and dates
   expect(isObject([])).toBe(false)
   expect(isObject(new Array())).toBe(false)
   expect(isObject(new Date('_'))).toBe(false)
   expect(isObject(new Date())).toBe(false)
+  expect(isPlainObject([])).toBe(false)
+  expect(isPlainObject(new Array())).toBe(false)
+  expect(isPlainObject(new Date('_'))).toBe(false)
+  expect(isPlainObject(new Date())).toBe(false)
   // IS ANY OBJECT
   // plain object
   expect(isAnyObject({})).toBe(true)

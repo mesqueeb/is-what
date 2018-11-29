@@ -26,16 +26,24 @@ function isNull(payload) {
     return getType(payload) === 'Null';
 }
 /**
- * Returns whether the payload is an plain JavaScript object (excluding special classes or objects with other prototypes)
+ * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
+ *
+ * @param {*} payload
+ * @returns {payload is {[key: string]: any}}
+ */
+function isPlainObject(payload) {
+    if (getType(payload) !== 'Object')
+        return false;
+    return (payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype);
+}
+/**
+ * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
  * @returns {payload is {[key: string]: any}}
  */
 function isObject(payload) {
-    var isObject = getType(payload) === 'Object';
-    if (!isObject)
-        return false;
-    return (payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype);
+    return isPlainObject(payload);
 }
 /**
  * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
@@ -169,4 +177,4 @@ function isType(payload, type) {
     return (getType(payload) === name) || Boolean(payload && (payload.constructor === type));
 }
 
-export { getType, isUndefined, isNull, isObject, isAnyObject, isObjectLike, isFunction, isArray, isString, isNumber, isBoolean, isRegExp, isDate, isSymbol, isPrimitive, isType };
+export { getType, isUndefined, isNull, isPlainObject, isObject, isAnyObject, isObjectLike, isFunction, isArray, isString, isNumber, isBoolean, isRegExp, isDate, isSymbol, isPrimitive, isType };

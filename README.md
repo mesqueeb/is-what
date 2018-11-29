@@ -10,7 +10,7 @@ Very simple &amp; small JS type check functions. It's fully TypeScript supported
 
 ### Functions
 
-isString, isNumber, isBoolean, isObject, isFunction, isArray, isUndefined, isNull, isRegExp, isDate, isSymbol, isPrimitive, isType, getType
+isPlainObject, isAnyObject, isString, isNumber, isBoolean, isFunction, isArray, isUndefined, isNull, isRegExp, isDate, isSymbol, isPrimitive, isType, getType
 
 ### Usage
 
@@ -24,9 +24,11 @@ isType('', String) // returns true
 getType('') // returns 'String'
 ```
 
-#### isObject vs isAnyObject
+#### isPlainObject vs isAnyObject
 
-Checking for a JavaScript object can be really difficult. In JavaScript you can create classes that will behave just like JavaScript objects but might have completely different prototypes. With is-what I opted for a **strict** check on isObject only returning `true` on plain JavaScript objects and not on classes or others. `isAnyObject` will be more loose and return `true` even if the object is not a regular JavaScript object.
+Checking for a JavaScript object can be really difficult. In JavaScript you can create classes that will behave just like JavaScript objects but might have completely different prototypes. With is-what I went for this classification:
+- `isPlainObject` will only return `true` on plain JavaScript objects and not on classes or others
+- `isAnyObject` will be more loose and return `true` on regular objects, classes, etc.
 
 ```js
 const plainObject = {hello: 'I am a good old object.'}
@@ -38,18 +40,18 @@ class SpecialObject {
 const specialObject = new SpecialObject('I am a special object! I am a class!!!')
 
 // let's check:
-import { isObject, isAnyObject, getType } from 'is-what'
+import { isPlainObject, isAnyObject, getType } from 'is-what'
 // plainObject
-isObject(plainObject) // returns true
+isPlainObject(plainObject) // returns true
 isAnyObject(plainObject) // returns true
 getType(plainObject) // returns 'Object'
 // specialObject
-isObject(specialObject) // returns false !!!!!!!!!
+isPlainObject(specialObject) // returns false !!!!!!!!!
 isAnyObject(specialObject) // returns true
 getType(specialObject) // returns 'Object'
 ```
 
-> Please note that `isObject` will only return `true` for normal plain JavaScript object.
+> Please note that `isPlainObject` will only return `true` for normal plain JavaScript object.
 
 #### Useful number & date exception:
 
@@ -79,14 +81,14 @@ function fn (payload: string | number): number {
 }
 ```
 
-`isObject` and `isAnyObject` with TypeScript will declare the payload to be an object type with any props:
+`isPlainObject` and `isAnyObject` with TypeScript will declare the payload to be an object type with any props:
 
 ```TypeScript
-function isObject (payload: any): payload is {[key: string]: any}
+function isPlainObject (payload: any): payload is {[key: string]: any}
 function isAnyObject (payload: any): payload is {[key: string]: any}
 // The reason to return `{[key: string]: any}` is to be able to do
-if (isObject(payload) && payload.id) return payload.id
-// if isObject() would return `payload is object` then it would give an error at `payload.id`
+if (isPlainObject(payload) && payload.id) return payload.id
+// if isPlainObject() would return `payload is object` then it would give an error at `payload.id`
 ```
 
 If you want more control over which kind of objects are allowed you can use `isObjectLike<T>`:

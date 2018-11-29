@@ -20,7 +20,16 @@ export declare function isUndefined(payload: any): payload is undefined;
  */
 export declare function isNull(payload: any): payload is null;
 /**
- * Returns whether the payload is an plain JavaScript object (excluding special classes or objects with other prototypes)
+ * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
+ *
+ * @param {*} payload
+ * @returns {payload is {[key: string]: any}}
+ */
+export declare function isPlainObject(payload: any): payload is {
+    [key: string]: any;
+};
+/**
+ * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
  * @returns {payload is {[key: string]: any}}
