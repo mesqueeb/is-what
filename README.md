@@ -6,7 +6,9 @@ npm i is-what
 
 Very simple &amp; small JS type check functions. It's fully TypeScript supported!
 
-**Motivation:** I built is-what because the existing solutions were all too complex or too poorly built.
+## Motivation
+
+I built is-what because the existing solutions were all too complex or too poorly built.
 
 I was looking for:
 - A simple way to check any kind of type (including non-primitives)
@@ -33,7 +35,7 @@ isType, getType
 
 is-what is really easy to use, and all functions above work just like you'd expect.
 
-**The regular ones** above all return `true` or `false`.
+**The regular ones** all return `true` or `false`.
 
 ```js
 import { isString, isDate, isNumber } from 'is-what'
@@ -43,7 +45,7 @@ isDate(new Date()) // returns true
 isNumber(0) // returns true
 ```
 
-**The special ones** you'll probably won't need much
+**The special ones** you probably won't need much but do:
 
 ```js
 import { getType, isType } from 'is-what'
@@ -53,7 +55,7 @@ getType('') // returns 'String'
 isType('', String) // returns true
 ```
 
-And **the important ones**...
+And then **the important ones**... ↓
 
 ### isPlainObject vs isAnyObject
 
@@ -62,7 +64,10 @@ Checking for a JavaScript object can be really difficult. In JavaScript you can 
 - `isAnyObject` will be more loose and return `true` on regular objects, classes, etc.
 
 ```js
+// define a plain object
 const plainObject = {hello: 'I am a good old object.'}
+
+// define a special object
 class SpecialObject {
   constructor (somethingSpecial) {
     this.speciality = somethingSpecial
@@ -70,13 +75,12 @@ class SpecialObject {
 }
 const specialObject = new SpecialObject('I am a special object! I am a class instance!!!')
 
-// let's check:
-import { isPlainObject, isAnyObject, getType } from 'is-what'
-// plainObject
+// check the plain object
 isPlainObject(plainObject) // returns true
 isAnyObject(plainObject) // returns true
 getType(plainObject) // returns 'Object'
-// specialObject
+
+// check the special object
 isPlainObject(specialObject) // returns false !!!!!!!!!
 isAnyObject(specialObject) // returns true
 getType(specialObject) // returns 'Object'
@@ -84,7 +88,7 @@ getType(specialObject) // returns 'Object'
 
 > Please note that `isPlainObject` will only return `true` for normal plain JavaScript object.
 
-### Useful number & date exception:
+## Useful number & date exception:
 
 Checking for `isNumber` and `isDate` will return `false` if the payload is `NaN` or an invalid date. This is done intentionally and especially useful when you need to check if numbers or dates are correct in your functions!
 
