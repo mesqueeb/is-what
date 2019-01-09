@@ -6,25 +6,56 @@ npm i is-what
 
 Very simple &amp; small JS type check functions. It's fully TypeScript supported!
 
-**Motivation:** I built is-what because the existing solutions were all too complex.
+**Motivation:** I built is-what because the existing solutions were all too complex or too poorly built.
 
-### Functions
+I was looking for:
+- A simple way to check any kind of type (including non-primitives)
+- Be able to check if an object is a plain object `{}` or not ‼️
+- Let TypeScript automatically know what type a value is when checking
 
-isPlainObject, isAnyObject, isString, isNumber, isBoolean, isFunction, isArray, isUndefined, isNull, isRegExp, isDate, isSymbol, isPrimitive, isType, getType
+And that's exactly what `is-what` is! (what a great wordplay 😃)
 
-### Usage
+## Included functions in is-what
+
+**The important ones:**
+
+isPlainObject, isAnyObject
+
+**The regulars:**
+
+isString, isNumber, isBoolean, isFunction, isArray, isUndefined, isNull, isRegExp, isDate, isSymbol, isPrimitive
+
+**The special ones:**
+
+isType, getType
+
+## Usage
 
 is-what is really easy to use, and all functions above work just like you'd expect.
 
+**The regular ones** above all return `true` or `false`.
+
 ```js
-import { isString, isType, getType } from 'is-what'
+import { isString, isDate, isNumber } from 'is-what'
 
 isString('') // returns true
-isType('', String) // returns true
-getType('') // returns 'String'
+isDate(new Date()) // returns true
+isNumber(0) // returns true
 ```
 
-#### isPlainObject vs isAnyObject
+**The special ones** you'll probably won't need much
+
+```js
+import { getType, isType } from 'is-what'
+
+getType('') // returns 'String'
+// pass a Type as second param:
+isType('', String) // returns true
+```
+
+And **the important ones**...
+
+### isPlainObject vs isAnyObject
 
 Checking for a JavaScript object can be really difficult. In JavaScript you can create classes that will behave just like JavaScript objects but might have completely different prototypes. With is-what I went for this classification:
 - `isPlainObject` will only return `true` on plain JavaScript objects and not on classes or others
@@ -37,7 +68,7 @@ class SpecialObject {
     this.speciality = somethingSpecial
   }
 }
-const specialObject = new SpecialObject('I am a special object! I am a class!!!')
+const specialObject = new SpecialObject('I am a special object! I am a class instance!!!')
 
 // let's check:
 import { isPlainObject, isAnyObject, getType } from 'is-what'
@@ -53,7 +84,7 @@ getType(specialObject) // returns 'Object'
 
 > Please note that `isPlainObject` will only return `true` for normal plain JavaScript object.
 
-#### Useful number & date exception:
+### Useful number & date exception:
 
 Checking for `isNumber` and `isDate` will return `false` if the payload is `NaN` or an invalid date. This is done intentionally and especially useful when you need to check if numbers or dates are correct in your functions!
 
@@ -62,7 +93,7 @@ isNumber(NaN) // returns false
 isDate(new Date('---- invalid date ----')) // returns false
 ```
 
-### TypeScript usage example:
+## TypeScript usage example:
 
 is-what makes TypeScript know the type during if statements. This means that a check returns the type of the payload for TypeScript users.
 
@@ -103,7 +134,15 @@ isObjectLike<object>(payload)
 // you can just pass a specific type for TS to check on.
 ```
 
-### Source code
+## Meet the family
+
+- [is-what](https://github.com/mesqueeb/is-what)
+- [merge-anything](https://github.com/mesqueeb/merge-anything)
+- [filter-anything](https://github.com/mesqueeb/filter-anything)
+- [find-and-replace-anything](https://github.com/mesqueeb/find-and-replace-anything)
+- copy-anything (WIP)
+
+## Source code
 
 It's litterally just these functions:
 
@@ -124,9 +163,3 @@ function isAnyObject (payload) {
 ```
 
 See the full source code [here](https://github.com/mesqueeb/is-what/blob/master/src/index.ts).
-
-## Tests
-
-```
-npm run test
-```
