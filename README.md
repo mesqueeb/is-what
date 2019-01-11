@@ -29,7 +29,7 @@ isString, isNumber, isBoolean, isFunction, isArray, isUndefined, isNull, isRegEx
 
 **The special ones:**
 
-isType, getType
+isType, getType, isObjectLike
 
 ## Usage
 
@@ -54,6 +54,8 @@ getType('') // returns 'String'
 // pass a Type as second param:
 isType('', String) // returns true
 ```
+
+(`isObjectLike` is explained at the TypeScript chapter down below)
 
 And then **the important ones**... ↓
 
@@ -97,7 +99,7 @@ isNumber(NaN) // returns false
 isDate(new Date('---- invalid date ----')) // returns false
 ```
 
-## TypeScript usage example:
+## TypeScript
 
 is-what makes TypeScript know the type during if statements. This means that a check returns the type of the payload for TypeScript users.
 
@@ -126,24 +128,33 @@ if (isPlainObject(payload) && payload.id) return payload.id
 // if isPlainObject() would return `payload is object` then it would give an error at `payload.id`
 ```
 
+### isObjectLike
+
 If you want more control over which kind of objects are allowed you can use `isObjectLike<T>`:
+
+```TypeScript
+import { isObjectLike } from 'is-what'
+// usage examples:
+isObjectLike<{specificKey: string}>(payload)
+isObjectLike<object>(payload)
+// you can pass a specific type for TS to check on.
+```
+
+`isObjectLike<T>` works like this under the hood:
 
 ```TypeScript
 function isObjectLike<T extends object> (payload: any): payload is T {
   return isAnyObject(payload)
 }
-// usage examples:
-isObjectLike<{specificKey: string}>(payload)
-isObjectLike<object>(payload)
-// you can just pass a specific type for TS to check on.
 ```
 
 ## Meet the family
 
-- [is-what](https://github.com/mesqueeb/is-what)
-- [merge-anything](https://github.com/mesqueeb/merge-anything)
-- [filter-anything](https://github.com/mesqueeb/filter-anything)
-- [find-and-replace-anything](https://github.com/mesqueeb/find-and-replace-anything)
+- [is-what 🙉](https://github.com/mesqueeb/is-what)
+- [merge-anything 🥡](https://github.com/mesqueeb/merge-anything)
+- [filter-anything ⚔️](https://github.com/mesqueeb/filter-anything)
+- [find-and-replace-anything 🎣](https://github.com/mesqueeb/find-and-replace-anything)
+- [compare-anything 🛰](https://github.com/mesqueeb/compare-anything)
 - copy-anything (WIP)
 
 ## Source code
