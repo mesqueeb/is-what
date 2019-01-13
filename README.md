@@ -155,7 +155,7 @@ function isObjectLike<T extends object> (payload: any): payload is T {
 - [filter-anything ⚔️](https://github.com/mesqueeb/filter-anything)
 - [find-and-replace-anything 🎣](https://github.com/mesqueeb/find-and-replace-anything)
 - [compare-anything 🛰](https://github.com/mesqueeb/compare-anything)
-- copy-anything (WIP)
+- [copy-anything 🎭](https://github.com/mesqueeb/copy-anything)
 
 ## Source code
 
