@@ -78,6 +78,20 @@ export declare function isArray(payload: any): payload is any[];
  */
 export declare function isString(payload: any): payload is string;
 /**
+ * Returns whether the payload is a string, BUT returns false for ''
+ *
+ * @param {*} payload
+ * @returns {payload is string}
+ */
+export declare function isFullString(payload: any): payload is string;
+/**
+ * Returns whether the payload is ''
+ *
+ * @param {*} payload
+ * @returns {payload is string}
+ */
+export declare function isEmptyString(payload: any): payload is string;
+/**
  * Returns whether the payload is a number
  *
  * This will return false for NaN

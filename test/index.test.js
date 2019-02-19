@@ -7,6 +7,8 @@ import {
   isFunction,
   isArray,
   isString,
+  isEmptyString,
+  isFullString,
   isBoolean,
   isRegExp,
   isNumber,
@@ -26,6 +28,8 @@ test('Basic true tests', () => {
   expect(isArray(new Array())).toBe(true)
   expect(isString('')).toBe(true)
   expect(isString('_')).toBe(true)
+  expect(isEmptyString('')).toBe(true)
+  expect(isFullString(' ')).toBe(true)
   expect(isBoolean(true)).toBe(true)
   expect(isBoolean(false)).toBe(true)
   expect(isRegExp(/./)).toBe(true)
@@ -46,6 +50,8 @@ test('Basic false tests', () => {
   expect(isFunction(NaN)).toBe(false)
   expect(isArray(NaN)).toBe(false)
   expect(isString(NaN)).toBe(false)
+  expect(isEmptyString(' ')).toBe(false)
+  expect(isFullString('')).toBe(false)
   expect(isBoolean(NaN)).toBe(false)
   expect(isRegExp(NaN)).toBe(false)
   expect(isSymbol(NaN)).toBe(false)

@@ -12,40 +12,56 @@ I built is-what because the existing solutions were all too complex or too poorl
 
 I was looking for:
 - A simple way to check any kind of type (including non-primitives)
-- Be able to check if an object is a plain object `{}` or not ‼️
+- Be able to check if an object is a plain object `{}` or a special object (like a class instance) ‼️
 - Let TypeScript automatically know what type a value is when checking
 
 And that's exactly what `is-what` is! (what a great wordplay 😃)
 
-## Included functions in is-what
-
-**The important ones:**
-
-isPlainObject, isAnyObject
-
-**The regulars:**
-
-isString, isNumber, isBoolean, isFunction, isArray, isUndefined, isNull, isRegExp, isDate, isSymbol, isPrimitive
-
-**The special ones:**
-
-isType, getType, isObjectLike
-
 ## Usage
 
-is-what is really easy to use, and all functions above work just like you'd expect.
-
-**The regular ones** all return `true` or `false`.
+is-what is really easy to use, and most functions work just like you'd expect.
 
 ```js
-import { isString, isDate, isNumber } from 'is-what'
-
-isString('') // returns true
-isDate(new Date()) // returns true
-isNumber(0) // returns true
+// import functions you want to use like so:
+import { isString, isDate, isPlainObject } from 'is-what'
 ```
 
-**The special ones** you probably won't need much but do:
+1. First I'll go over the simple functions available. Only `isNumber` and `isDate` have special treatment.
+2. After that I'll talk about working with Objects (plain objects vs class instances etc.).
+3. Lastly I'll talk about TypeScript implementation
+
+### Simple type check functions
+
+```js
+// strings
+isString('') // true
+isEmptyString('') // true
+isFullString('') // false
+
+// numbers
+isNumber(0) // true
+isNumber(NaN) // false
+
+// dates
+isDate(new Date()) // true
+isDate(new Date('invalid date')) // false
+
+isBoolean(false) // true
+isFunction(function () {}) // true
+isArray([]) // true
+isUndefined(undefined) // true
+isNull(null) // true
+isRegExp(/\s/gi) // true
+isSymbol(Symbol()) // true
+
+// primitives
+isPrimitive('') // true
+// true for any of: boolean, null, undefined, number, string, symbol
+```
+
+### Getting and checking for specific types
+
+You can check for specific types with `getType` and `isType`:
 
 ```js
 import { getType, isType } from 'is-what'
@@ -55,13 +71,10 @@ getType('') // returns 'String'
 isType('', String) // returns true
 ```
 
-(`isObjectLike` is explained at the TypeScript chapter down below)
-
-And then **the important ones**... ↓
-
 ### isPlainObject vs isAnyObject
 
 Checking for a JavaScript object can be really difficult. In JavaScript you can create classes that will behave just like JavaScript objects but might have completely different prototypes. With is-what I went for this classification:
+
 - `isPlainObject` will only return `true` on plain JavaScript objects and not on classes or others
 - `isAnyObject` will be more loose and return `true` on regular objects, classes, etc.
 
@@ -89,15 +102,6 @@ getType(specialObject) // returns 'Object'
 ```
 
 > Please note that `isPlainObject` will only return `true` for normal plain JavaScript object.
-
-## Useful number & date exception:
-
-Checking for `isNumber` and `isDate` will return `false` if the payload is `NaN` or an invalid date. This is done intentionally and especially useful when you need to check if numbers or dates are correct in your functions!
-
-```js
-isNumber(NaN) // returns false
-isDate(new Date('---- invalid date ----')) // returns false
-```
 
 ## TypeScript
 

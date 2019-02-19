@@ -103,6 +103,26 @@ export function isString (payload: any): payload is string {
 }
 
 /**
+ * Returns whether the payload is a string, BUT returns false for ''
+ *
+ * @param {*} payload
+ * @returns {payload is string}
+ */
+export function isFullString (payload: any): payload is string {
+  return isString(payload) && payload !== ''
+}
+
+/**
+ * Returns whether the payload is ''
+ *
+ * @param {*} payload
+ * @returns {payload is string}
+ */
+export function isEmptyString (payload: any): payload is string {
+  return payload === ''
+}
+
+/**
  * Returns whether the payload is a number
  *
  * This will return false for NaN

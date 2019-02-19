@@ -94,6 +94,24 @@ function isString(payload) {
     return getType(payload) === 'String';
 }
 /**
+ * Returns whether the payload is a string, BUT returns false for ''
+ *
+ * @param {*} payload
+ * @returns {payload is string}
+ */
+function isFullString(payload) {
+    return isString(payload) && payload !== '';
+}
+/**
+ * Returns whether the payload is ''
+ *
+ * @param {*} payload
+ * @returns {payload is string}
+ */
+function isEmptyString(payload) {
+    return payload === '';
+}
+/**
  * Returns whether the payload is a number
  *
  * This will return false for NaN
@@ -177,4 +195,4 @@ function isType(payload, type) {
     return (getType(payload) === name) || Boolean(payload && (payload.constructor === type));
 }
 
-export { getType, isUndefined, isNull, isPlainObject, isObject, isAnyObject, isObjectLike, isFunction, isArray, isString, isNumber, isBoolean, isRegExp, isDate, isSymbol, isPrimitive, isType };
+export { getType, isUndefined, isNull, isPlainObject, isObject, isAnyObject, isObjectLike, isFunction, isArray, isString, isFullString, isEmptyString, isNumber, isBoolean, isRegExp, isDate, isSymbol, isPrimitive, isType };
