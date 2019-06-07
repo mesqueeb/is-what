@@ -101,7 +101,7 @@ isAnyObject(specialObject) // returns true
 getType(specialObject) // returns 'Object'
 ```
 
-> Please note that `isPlainObject` will only return `true` for normal plain JavaScript object.
+> Please note that `isPlainObject` will only return `true` for normal plain JavaScript objects.
 
 ## TypeScript
 
