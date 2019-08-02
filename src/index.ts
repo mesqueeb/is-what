@@ -170,7 +170,7 @@ export function isDate (payload: any): payload is Date {
  * @param {*} payload
  * @returns {payload is Symbol}
  */
-export function isSymbol (payload: any): payload is Symbol {
+export function isSymbol (payload: any): payload is symbol {
   return (getType(payload) === 'Symbol')
 }
 
@@ -180,7 +180,7 @@ export function isSymbol (payload: any): payload is Symbol {
  * @param {*} payload
  * @returns {*}
  */
-export function isPrimitive (payload: any): any {
+export function isPrimitive (payload: any): payload is boolean | null | undefined | number | string | symbol {
   return (
     isBoolean(payload) ||
     isNull(payload) ||
