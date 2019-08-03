@@ -153,7 +153,7 @@ function isDate(payload) {
  * Returns whether the payload is a Symbol
  *
  * @param {*} payload
- * @returns {payload is Symbol}
+ * @returns {payload is symbol}
  */
 function isSymbol(payload) {
     return (getType(payload) === 'Symbol');
@@ -162,7 +162,7 @@ function isSymbol(payload) {
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload
- * @returns {*}
+ * @returns {(payload is boolean | null | undefined | number | string | symbol)}
  */
 function isPrimitive(payload) {
     return (isBoolean(payload) ||

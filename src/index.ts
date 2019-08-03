@@ -168,7 +168,7 @@ export function isDate (payload: any): payload is Date {
  * Returns whether the payload is a Symbol
  *
  * @param {*} payload
- * @returns {payload is Symbol}
+ * @returns {payload is symbol}
  */
 export function isSymbol (payload: any): payload is symbol {
   return (getType(payload) === 'Symbol')
@@ -178,7 +178,7 @@ export function isSymbol (payload: any): payload is symbol {
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload
- * @returns {*}
+ * @returns {(payload is boolean | null | undefined | number | string | symbol)}
  */
 export function isPrimitive (payload: any): payload is boolean | null | undefined | number | string | symbol {
   return (
