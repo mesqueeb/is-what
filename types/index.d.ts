@@ -127,14 +127,14 @@ export declare function isDate(payload: any): payload is Date;
  * @param {*} payload
  * @returns {payload is Symbol}
  */
-export declare function isSymbol(payload: any): payload is Symbol;
+export declare function isSymbol(payload: any): payload is symbol;
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload
  * @returns {*}
  */
-export declare function isPrimitive(payload: any): any;
+export declare function isPrimitive(payload: any): payload is boolean | null | undefined | number | string | symbol;
 /**
  * Does a generic check to check that the given payload is of a given type.
  * In cases like Number, it will return true for NaN as NaN is a Number (thanks javascript!);
