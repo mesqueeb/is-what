@@ -1,6 +1,6 @@
 {
   "name": "is-what",
-  "version": "3.3.1",
+  "version": "3.4.0",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -42,17 +42,17 @@
   },
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.7.4",
     "@types/babel-core": "^6.25.6",
-    "@types/jest": "^23.3.14",
+    "@types/jest": "^24.0.23",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^24.8.0",
+    "babel-jest": "^24.9.0",
     "babel-preset-env": "^1.7.0",
-    "jest": "^24.8.0",
-    "regenerator-runtime": "^0.12.1",
-    "rollup": "^0.65.2",
-    "rollup-plugin-typescript2": "^0.21.2",
-    "typescript": "^3.5.3"
+    "jest": "^24.9.0",
+    "regenerator-runtime": "^0.13.3",
+    "rollup": "^1.27.4",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "typescript": "^3.7.2"
   },
   "dependencies": {}
 }
