@@ -15,7 +15,9 @@ import {
   isDate,
   isSymbol,
   isPrimitive,
-  isType
+  isType,
+  isBlob,
+  isFile,
 } from '../dist/index.cjs'
 
 test('Basic true tests', () => {
@@ -38,6 +40,8 @@ test('Basic true tests', () => {
   expect(isNumber(1)).toBe(true)
   expect(isDate(new Date())).toBe(true)
   expect(isSymbol(Symbol())).toBe(true)
+  expect(isBlob(new Blob())).toBe(true)
+  expect(isFile(new File([''], '', { type: 'text/html' }))).toBe(true)
 })
 
 test('Basic false tests', () => {

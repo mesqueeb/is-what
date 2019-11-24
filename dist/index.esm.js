@@ -141,6 +141,15 @@ function isRegExp(payload) {
     return getType(payload) === 'RegExp';
 }
 /**
+ * Returns whether the payload is a Symbol
+ *
+ * @param {*} payload
+ * @returns {payload is symbol}
+ */
+function isSymbol(payload) {
+    return (getType(payload) === 'Symbol');
+}
+/**
  * Returns whether the payload is a date, and that the date is Valid
  *
  * @param {*} payload
@@ -150,13 +159,22 @@ function isDate(payload) {
     return (getType(payload) === 'Date' && !isNaN(payload));
 }
 /**
- * Returns whether the payload is a Symbol
+ * Returns whether the payload is a blob
  *
  * @param {*} payload
- * @returns {payload is symbol}
+ * @returns {payload is Blob}
  */
-function isSymbol(payload) {
-    return (getType(payload) === 'Symbol');
+function isBlob(payload) {
+    return getType(payload) === 'Blob';
+}
+/**
+ * Returns whether the payload is a file
+ *
+ * @param {*} payload
+ * @returns {payload is File}
+ */
+function isFile(payload) {
+    return getType(payload) === 'File';
 }
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
@@ -195,4 +213,4 @@ function isType(payload, type) {
     return (getType(payload) === name) || Boolean(payload && (payload.constructor === type));
 }
 
-export { getType, isUndefined, isNull, isPlainObject, isObject, isAnyObject, isObjectLike, isFunction, isArray, isString, isFullString, isEmptyString, isNumber, isBoolean, isRegExp, isDate, isSymbol, isPrimitive, isType };
+export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyString, isFile, isFullString, isFunction, isNull, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isRegExp, isString, isSymbol, isType, isUndefined };

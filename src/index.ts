@@ -155,6 +155,16 @@ export function isRegExp (payload: any): payload is RegExp {
 }
 
 /**
+ * Returns whether the payload is a Symbol
+ *
+ * @param {*} payload
+ * @returns {payload is symbol}
+ */
+export function isSymbol (payload: any): payload is symbol {
+  return (getType(payload) === 'Symbol')
+}
+
+/**
  * Returns whether the payload is a date, and that the date is Valid
  *
  * @param {*} payload
@@ -165,13 +175,23 @@ export function isDate (payload: any): payload is Date {
 }
 
 /**
- * Returns whether the payload is a Symbol
+ * Returns whether the payload is a blob
  *
  * @param {*} payload
- * @returns {payload is symbol}
+ * @returns {payload is Blob}
  */
-export function isSymbol (payload: any): payload is symbol {
-  return (getType(payload) === 'Symbol')
+export function isBlob (payload: any): payload is Blob {
+  return getType(payload) === 'Blob'
+}
+
+/**
+ * Returns whether the payload is a file
+ *
+ * @param {*} payload
+ * @returns {payload is File}
+ */
+export function isFile (payload: any): payload is File {
+  return getType(payload) === 'File'
 }
 
 /**

@@ -115,6 +115,13 @@ export declare function isBoolean(payload: any): payload is boolean;
  */
 export declare function isRegExp(payload: any): payload is RegExp;
 /**
+ * Returns whether the payload is a Symbol
+ *
+ * @param {*} payload
+ * @returns {payload is symbol}
+ */
+export declare function isSymbol(payload: any): payload is symbol;
+/**
  * Returns whether the payload is a date, and that the date is Valid
  *
  * @param {*} payload
@@ -122,12 +129,19 @@ export declare function isRegExp(payload: any): payload is RegExp;
  */
 export declare function isDate(payload: any): payload is Date;
 /**
- * Returns whether the payload is a Symbol
+ * Returns whether the payload is a blob
  *
  * @param {*} payload
- * @returns {payload is symbol}
+ * @returns {payload is Blob}
  */
-export declare function isSymbol(payload: any): payload is symbol;
+export declare function isBlob(payload: any): payload is Blob;
+/**
+ * Returns whether the payload is a file
+ *
+ * @param {*} payload
+ * @returns {payload is File}
+ */
+export declare function isFile(payload: any): payload is File;
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *

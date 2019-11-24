@@ -145,6 +145,15 @@ function isRegExp(payload) {
     return getType(payload) === 'RegExp';
 }
 /**
+ * Returns whether the payload is a Symbol
+ *
+ * @param {*} payload
+ * @returns {payload is symbol}
+ */
+function isSymbol(payload) {
+    return (getType(payload) === 'Symbol');
+}
+/**
  * Returns whether the payload is a date, and that the date is Valid
  *
  * @param {*} payload
@@ -154,13 +163,22 @@ function isDate(payload) {
     return (getType(payload) === 'Date' && !isNaN(payload));
 }
 /**
- * Returns whether the payload is a Symbol
+ * Returns whether the payload is a blob
  *
  * @param {*} payload
- * @returns {payload is symbol}
+ * @returns {payload is Blob}
  */
-function isSymbol(payload) {
-    return (getType(payload) === 'Symbol');
+function isBlob(payload) {
+    return getType(payload) === 'Blob';
+}
+/**
+ * Returns whether the payload is a file
+ *
+ * @param {*} payload
+ * @returns {payload is File}
+ */
+function isFile(payload) {
+    return getType(payload) === 'File';
 }
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
@@ -200,21 +218,23 @@ function isType(payload, type) {
 }
 
 exports.getType = getType;
-exports.isUndefined = isUndefined;
-exports.isNull = isNull;
-exports.isPlainObject = isPlainObject;
-exports.isObject = isObject;
 exports.isAnyObject = isAnyObject;
-exports.isObjectLike = isObjectLike;
-exports.isFunction = isFunction;
 exports.isArray = isArray;
-exports.isString = isString;
-exports.isFullString = isFullString;
-exports.isEmptyString = isEmptyString;
-exports.isNumber = isNumber;
+exports.isBlob = isBlob;
 exports.isBoolean = isBoolean;
-exports.isRegExp = isRegExp;
 exports.isDate = isDate;
-exports.isSymbol = isSymbol;
+exports.isEmptyString = isEmptyString;
+exports.isFile = isFile;
+exports.isFullString = isFullString;
+exports.isFunction = isFunction;
+exports.isNull = isNull;
+exports.isNumber = isNumber;
+exports.isObject = isObject;
+exports.isObjectLike = isObjectLike;
+exports.isPlainObject = isPlainObject;
 exports.isPrimitive = isPrimitive;
+exports.isRegExp = isRegExp;
+exports.isString = isString;
+exports.isSymbol = isSymbol;
 exports.isType = isType;
+exports.isUndefined = isUndefined;

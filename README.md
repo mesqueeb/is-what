@@ -46,6 +46,7 @@ isNumber(NaN) // false
 isDate(new Date()) // true
 isDate(new Date('invalid date')) // false
 
+// others
 isBoolean(false) // true
 isFunction(function () {}) // true
 isArray([]) // true
@@ -53,6 +54,8 @@ isUndefined(undefined) // true
 isNull(null) // true
 isRegExp(/\s/gi) // true
 isSymbol(Symbol()) // true
+isBlob(new Blob()) // true
+isFile(new File([''], '', { type: 'text/html' })) // true
 
 // primitives
 isPrimitive('') // true
