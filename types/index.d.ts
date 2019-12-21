@@ -150,6 +150,13 @@ export declare function isFile(payload: any): payload is File;
  */
 export declare function isPrimitive(payload: any): payload is boolean | null | undefined | number | string | symbol;
 /**
+ * Returns true whether the payload is null or undefined
+ *
+ * @param {*} payload
+ * @returns {(payload is null | undefined)}
+ */
+export declare function isNullOrUndefined(payload: any): payload is null | undefined;
+/**
  * Does a generic check to check that the given payload is of a given type.
  * In cases like Number, it will return true for NaN as NaN is a Number (thanks javascript!);
  * It will, however, differentiate between object and null

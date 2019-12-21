@@ -34,9 +34,9 @@ export function isNull (payload: any): payload is null {
  * @param {*} payload
  * @returns {payload is {[key: string]: any}}
  */
-export function isPlainObject (payload: any): payload is {[key: string]: any} {
+export function isPlainObject (payload: any): payload is { [key: string]: any } {
   if (getType(payload) !== 'Object') return false
-  return (payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype)
+  return payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype
 }
 
 /**
@@ -45,7 +45,7 @@ export function isPlainObject (payload: any): payload is {[key: string]: any} {
  * @param {*} payload
  * @returns {payload is {[key: string]: any}}
  */
-export function isObject (payload: any): payload is {[key: string]: any} {
+export function isObject (payload: any): payload is { [key: string]: any } {
   return isPlainObject(payload)
 }
 
@@ -55,7 +55,7 @@ export function isObject (payload: any): payload is {[key: string]: any} {
  * @param {*} payload
  * @returns {payload is {[key: string]: any}}
  */
-export function isAnyObject (payload: any): payload is {[key: string]: any} {
+export function isAnyObject (payload: any): payload is { [key: string]: any } {
   return getType(payload) === 'Object'
 }
 
@@ -131,7 +131,7 @@ export function isEmptyString (payload: any): payload is string {
  * @returns {payload is number}
  */
 export function isNumber (payload: any): payload is number {
-  return (getType(payload) === 'Number' && !isNaN(payload))
+  return getType(payload) === 'Number' && !isNaN(payload)
 }
 
 /**
@@ -161,7 +161,7 @@ export function isRegExp (payload: any): payload is RegExp {
  * @returns {payload is symbol}
  */
 export function isSymbol (payload: any): payload is symbol {
-  return (getType(payload) === 'Symbol')
+  return getType(payload) === 'Symbol'
 }
 
 /**
@@ -171,7 +171,7 @@ export function isSymbol (payload: any): payload is symbol {
  * @returns {payload is Date}
  */
 export function isDate (payload: any): payload is Date {
-  return (getType(payload) === 'Date' && !isNaN(payload))
+  return getType(payload) === 'Date' && !isNaN(payload)
 }
 
 /**
@@ -200,7 +200,9 @@ export function isFile (payload: any): payload is File {
  * @param {*} payload
  * @returns {(payload is boolean | null | undefined | number | string | symbol)}
  */
-export function isPrimitive (payload: any): payload is boolean | null | undefined | number | string | symbol {
+export function isPrimitive (
+  payload: any
+): payload is boolean | null | undefined | number | string | symbol {
   return (
     isBoolean(payload) ||
     isNull(payload) ||
@@ -209,6 +211,16 @@ export function isPrimitive (payload: any): payload is boolean | null | undefine
     isString(payload) ||
     isSymbol(payload)
   )
+}
+
+/**
+ * Returns true whether the payload is null or undefined
+ *
+ * @param {*} payload
+ * @returns {(payload is null | undefined)}
+ */
+export function isNullOrUndefined (payload: any): payload is null | undefined {
+  return isNull(payload) || isUndefined(payload)
 }
 
 /**
@@ -231,5 +243,5 @@ export function isType<T extends Function> (payload: any, type: T): payload is T
   }
   // Classes usually have names (as functions usually have names)
   const name: string | undefined | null = (<any>type).name
-  return (getType(payload) === name) || Boolean(payload && (payload.constructor === type))
+  return getType(payload) === name || Boolean(payload && payload.constructor === type)
 }

@@ -1,6 +1,6 @@
 {
   "name": "is-what",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

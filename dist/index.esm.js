@@ -34,7 +34,7 @@ function isNull(payload) {
 function isPlainObject(payload) {
     if (getType(payload) !== 'Object')
         return false;
-    return (payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype);
+    return payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype;
 }
 /**
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
@@ -120,7 +120,7 @@ function isEmptyString(payload) {
  * @returns {payload is number}
  */
 function isNumber(payload) {
-    return (getType(payload) === 'Number' && !isNaN(payload));
+    return getType(payload) === 'Number' && !isNaN(payload);
 }
 /**
  * Returns whether the payload is a boolean
@@ -147,7 +147,7 @@ function isRegExp(payload) {
  * @returns {payload is symbol}
  */
 function isSymbol(payload) {
-    return (getType(payload) === 'Symbol');
+    return getType(payload) === 'Symbol';
 }
 /**
  * Returns whether the payload is a date, and that the date is Valid
@@ -156,7 +156,7 @@ function isSymbol(payload) {
  * @returns {payload is Date}
  */
 function isDate(payload) {
-    return (getType(payload) === 'Date' && !isNaN(payload));
+    return getType(payload) === 'Date' && !isNaN(payload);
 }
 /**
  * Returns whether the payload is a blob
@@ -191,6 +191,15 @@ function isPrimitive(payload) {
         isSymbol(payload));
 }
 /**
+ * Returns true whether the payload is null or undefined
+ *
+ * @param {*} payload
+ * @returns {(payload is null | undefined)}
+ */
+function isNullOrUndefined(payload) {
+    return isNull(payload) || isUndefined(payload);
+}
+/**
  * Does a generic check to check that the given payload is of a given type.
  * In cases like Number, it will return true for NaN as NaN is a Number (thanks javascript!);
  * It will, however, differentiate between object and null
@@ -210,7 +219,7 @@ function isType(payload, type) {
     }
     // Classes usually have names (as functions usually have names)
     var name = type.name;
-    return (getType(payload) === name) || Boolean(payload && (payload.constructor === type));
+    return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
 
-export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyString, isFile, isFullString, isFunction, isNull, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isRegExp, isString, isSymbol, isType, isUndefined };
+export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyString, isFile, isFullString, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isRegExp, isString, isSymbol, isType, isUndefined };

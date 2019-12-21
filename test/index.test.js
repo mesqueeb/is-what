@@ -4,6 +4,7 @@ import {
   isAnyObject,
   isUndefined,
   isNull,
+  isNullOrUndefined,
   isFunction,
   isArray,
   isString,
@@ -23,6 +24,8 @@ import {
 test('Basic true tests', () => {
   expect(isUndefined(undefined)).toBe(true)
   expect(isNull(null)).toBe(true)
+  expect(isNullOrUndefined(null)).toBe(true)
+  expect(isNullOrUndefined(undefined)).toBe(true)
   expect(isObject({})).toBe(true)
   expect(isObject(new Object())).toBe(true)
   expect(isFunction(_ => {})).toBe(true)
@@ -59,6 +62,7 @@ test('Basic false tests', () => {
   expect(isBoolean(NaN)).toBe(false)
   expect(isRegExp(NaN)).toBe(false)
   expect(isSymbol(NaN)).toBe(false)
+  expect(isNullOrUndefined(NaN)).toBe(false)
 })
 
 test('Primitive tests', () => {
@@ -131,7 +135,11 @@ test('isObject vs isAnyObject', () => {
   class MyClass2 {}
   const myClass2 = new MyClass()
   const mySpecialObject = {}
-  Object.setPrototypeOf(mySpecialObject, {toDate: function () { return new Date() }})
+  Object.setPrototypeOf(mySpecialObject, {
+    toDate: function () {
+      return new Date()
+    },
+  })
   // IS OBJECT
   // plain object
   expect(isObject({})).toBe(true)
