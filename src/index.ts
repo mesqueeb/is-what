@@ -238,10 +238,10 @@ export function isType<T extends Function> (payload: any, type: T): payload is T
   if (!(type instanceof Function)) {
     throw new TypeError('Type must be a function')
   }
-  if (!type.hasOwnProperty('prototype')) {
+  if (!Object.prototype.hasOwnProperty.call(type, 'prototype')) {
     throw new TypeError('Type is not a class')
   }
   // Classes usually have names (as functions usually have names)
-  const name: string | undefined | null = (<any>type).name
+  const name: string | undefined | null = (type as any).name
   return getType(payload) === name || Boolean(payload && payload.constructor === type)
 }

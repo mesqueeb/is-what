@@ -1,6 +1,7 @@
 {
   "name": "is-what",
-  "version": "3.5.0",
+  "sideEffects": false,
+  "version": "3.5.1",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -8,7 +9,9 @@
   "scripts": {
     "test": "jest",
     "test-w": "jest --watchAll",
-    "build": "rollup -c ./build/rollup.js && npm run test"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "rollup": "rollup -c ./build/rollup.js",
+    "build": "npm run lint && npm run rollup && npm run test"
   },
   "repository": {
     "type": "git",
@@ -42,17 +45,22 @@
   },
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "devDependencies": {
-    "@babel/core": "^7.7.4",
+    "@babel/core": "^7.8.3",
     "@types/babel-core": "^6.25.6",
-    "@types/jest": "^24.0.23",
+    "@types/jest": "^24.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
     "babel-preset-env": "^1.7.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-tree-shaking": "^1.8.0",
     "jest": "^24.9.0",
     "regenerator-runtime": "^0.13.3",
-    "rollup": "^1.27.4",
-    "rollup-plugin-typescript2": "^0.25.2",
-    "typescript": "^3.7.2"
+    "rollup": "^1.29.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "typescript": "^3.7.5"
   },
   "dependencies": {}
 }

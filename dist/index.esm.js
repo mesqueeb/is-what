@@ -214,7 +214,7 @@ function isType(payload, type) {
     if (!(type instanceof Function)) {
         throw new TypeError('Type must be a function');
     }
-    if (!type.hasOwnProperty('prototype')) {
+    if (!Object.prototype.hasOwnProperty.call(type, 'prototype')) {
         throw new TypeError('Type is not a class');
     }
     // Classes usually have names (as functions usually have names)
