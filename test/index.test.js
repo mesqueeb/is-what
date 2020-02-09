@@ -1,3 +1,4 @@
+// @ts-check
 import {
   isObject,
   isPlainObject,
@@ -19,6 +20,7 @@ import {
   isType,
   isBlob,
   isFile,
+  isPromise,
 } from '../dist/index.cjs'
 
 test('Basic true tests', () => {
@@ -45,6 +47,7 @@ test('Basic true tests', () => {
   expect(isSymbol(Symbol())).toBe(true)
   expect(isBlob(new Blob())).toBe(true)
   expect(isFile(new File([''], '', { type: 'text/html' }))).toBe(true)
+  expect(isPromise(new Promise((resolve, reject) => {}))).toBe(true)
 })
 
 test('Basic false tests', () => {

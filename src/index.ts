@@ -195,6 +195,16 @@ export function isFile (payload: any): payload is File {
 }
 
 /**
+ * Returns whether the payload is a promise
+ *
+ * @param {*} payload
+ * @returns {payload is Promise}
+ */
+export function isPromise (payload: any): payload is Promise<any> {
+  return getType(payload) === 'Promise'
+}
+
+/**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload

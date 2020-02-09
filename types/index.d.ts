@@ -143,6 +143,13 @@ export declare function isBlob(payload: any): payload is Blob;
  */
 export declare function isFile(payload: any): payload is File;
 /**
+ * Returns whether the payload is a promise
+ *
+ * @param {*} payload
+ * @returns {payload is Promise}
+ */
+export declare function isPromise(payload: any): payload is Promise<any>;
+/**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload

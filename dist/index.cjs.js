@@ -181,6 +181,15 @@ function isFile(payload) {
     return getType(payload) === 'File';
 }
 /**
+ * Returns whether the payload is a promise
+ *
+ * @param {*} payload
+ * @returns {payload is Promise}
+ */
+function isPromise(payload) {
+    return getType(payload) === 'Promise';
+}
+/**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload
@@ -243,6 +252,7 @@ exports.isObject = isObject;
 exports.isObjectLike = isObjectLike;
 exports.isPlainObject = isPlainObject;
 exports.isPrimitive = isPrimitive;
+exports.isPromise = isPromise;
 exports.isRegExp = isRegExp;
 exports.isString = isString;
 exports.isSymbol = isSymbol;

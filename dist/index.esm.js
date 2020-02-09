@@ -177,6 +177,15 @@ function isFile(payload) {
     return getType(payload) === 'File';
 }
 /**
+ * Returns whether the payload is a promise
+ *
+ * @param {*} payload
+ * @returns {payload is Promise}
+ */
+function isPromise(payload) {
+    return getType(payload) === 'Promise';
+}
+/**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload
@@ -222,4 +231,4 @@ function isType(payload, type) {
     return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
 
-export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyString, isFile, isFullString, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isRegExp, isString, isSymbol, isType, isUndefined };
+export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyString, isFile, isFullString, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isPromise, isRegExp, isString, isSymbol, isType, isUndefined };
