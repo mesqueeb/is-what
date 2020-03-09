@@ -132,7 +132,7 @@ function isBoolean(payload) {
     return getType(payload) === 'Boolean';
 }
 /**
- * Returns whether the payload is a regular expression
+ * Returns whether the payload is a regular expression (RegExp)
  *
  * @param {*} payload
  * @returns {payload is RegExp}
@@ -150,7 +150,7 @@ function isSymbol(payload) {
     return getType(payload) === 'Symbol';
 }
 /**
- * Returns whether the payload is a date, and that the date is Valid
+ * Returns whether the payload is a Date, and that the date is valid
  *
  * @param {*} payload
  * @returns {payload is Date}
@@ -159,7 +159,7 @@ function isDate(payload) {
     return getType(payload) === 'Date' && !isNaN(payload);
 }
 /**
- * Returns whether the payload is a blob
+ * Returns whether the payload is a Blob
  *
  * @param {*} payload
  * @returns {payload is Blob}
@@ -168,7 +168,7 @@ function isBlob(payload) {
     return getType(payload) === 'Blob';
 }
 /**
- * Returns whether the payload is a file
+ * Returns whether the payload is a File
  *
  * @param {*} payload
  * @returns {payload is File}
@@ -177,13 +177,22 @@ function isFile(payload) {
     return getType(payload) === 'File';
 }
 /**
- * Returns whether the payload is a promise
+ * Returns whether the payload is a Promise
  *
  * @param {*} payload
  * @returns {payload is Promise}
  */
 function isPromise(payload) {
     return getType(payload) === 'Promise';
+}
+/**
+ * Returns whether the payload is an Error
+ *
+ * @param {*} payload
+ * @returns {payload is Error}
+ */
+function isError(payload) {
+    return getType(payload) === 'Error';
 }
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
@@ -231,4 +240,4 @@ function isType(payload, type) {
     return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
 
-export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyString, isFile, isFullString, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isPromise, isRegExp, isString, isSymbol, isType, isUndefined };
+export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyString, isError, isFile, isFullString, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isPromise, isRegExp, isString, isSymbol, isType, isUndefined };

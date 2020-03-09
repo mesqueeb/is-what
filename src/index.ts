@@ -145,7 +145,7 @@ export function isBoolean (payload: any): payload is boolean {
 }
 
 /**
- * Returns whether the payload is a regular expression
+ * Returns whether the payload is a regular expression (RegExp)
  *
  * @param {*} payload
  * @returns {payload is RegExp}
@@ -165,7 +165,7 @@ export function isSymbol (payload: any): payload is symbol {
 }
 
 /**
- * Returns whether the payload is a date, and that the date is Valid
+ * Returns whether the payload is a Date, and that the date is valid
  *
  * @param {*} payload
  * @returns {payload is Date}
@@ -175,7 +175,7 @@ export function isDate (payload: any): payload is Date {
 }
 
 /**
- * Returns whether the payload is a blob
+ * Returns whether the payload is a Blob
  *
  * @param {*} payload
  * @returns {payload is Blob}
@@ -185,7 +185,7 @@ export function isBlob (payload: any): payload is Blob {
 }
 
 /**
- * Returns whether the payload is a file
+ * Returns whether the payload is a File
  *
  * @param {*} payload
  * @returns {payload is File}
@@ -195,13 +195,23 @@ export function isFile (payload: any): payload is File {
 }
 
 /**
- * Returns whether the payload is a promise
+ * Returns whether the payload is a Promise
  *
  * @param {*} payload
  * @returns {payload is Promise}
  */
 export function isPromise (payload: any): payload is Promise<any> {
   return getType(payload) === 'Promise'
+}
+
+/**
+ * Returns whether the payload is an Error
+ *
+ * @param {*} payload
+ * @returns {payload is Error}
+ */
+export function isError (payload: any): payload is Error {
+  return getType(payload) === 'Error'
 }
 
 /**

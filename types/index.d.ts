@@ -108,7 +108,7 @@ export declare function isNumber(payload: any): payload is number;
  */
 export declare function isBoolean(payload: any): payload is boolean;
 /**
- * Returns whether the payload is a regular expression
+ * Returns whether the payload is a regular expression (RegExp)
  *
  * @param {*} payload
  * @returns {payload is RegExp}
@@ -122,33 +122,40 @@ export declare function isRegExp(payload: any): payload is RegExp;
  */
 export declare function isSymbol(payload: any): payload is symbol;
 /**
- * Returns whether the payload is a date, and that the date is Valid
+ * Returns whether the payload is a Date, and that the date is valid
  *
  * @param {*} payload
  * @returns {payload is Date}
  */
 export declare function isDate(payload: any): payload is Date;
 /**
- * Returns whether the payload is a blob
+ * Returns whether the payload is a Blob
  *
  * @param {*} payload
  * @returns {payload is Blob}
  */
 export declare function isBlob(payload: any): payload is Blob;
 /**
- * Returns whether the payload is a file
+ * Returns whether the payload is a File
  *
  * @param {*} payload
  * @returns {payload is File}
  */
 export declare function isFile(payload: any): payload is File;
 /**
- * Returns whether the payload is a promise
+ * Returns whether the payload is a Promise
  *
  * @param {*} payload
  * @returns {payload is Promise}
  */
 export declare function isPromise(payload: any): payload is Promise<any>;
+/**
+ * Returns whether the payload is an Error
+ *
+ * @param {*} payload
+ * @returns {payload is Error}
+ */
+export declare function isError(payload: any): payload is Error;
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *

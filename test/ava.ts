@@ -1,5 +1,6 @@
 import test from 'ava'
 import {
+  isError,
   isObject,
   isPlainObject,
   isAnyObject,
@@ -26,6 +27,7 @@ import {
 // const blob = Buffer.from([])
 
 test('Basic true tests', t => {
+  t.is(isError(new Error('')), true)
   t.is(isUndefined(undefined), true)
   t.is(isNull(null), true)
   t.is(isNullOrUndefined(null), true)
@@ -56,6 +58,7 @@ test('Basic true tests', t => {
 })
 
 test('Basic false tests', t => {
+  t.is(isError({}), false)
   t.is(isNumber(NaN), false)
   t.is(isDate(new Date('_')), false)
   t.is(isDate(NaN), false)
