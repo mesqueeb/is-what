@@ -19,6 +19,10 @@ import {
   isSymbol,
   isPrimitive,
   isType,
+  isMap,
+  isWeakMap,
+  isSet,
+  isWeakSet,
   // isBlob,
   // isFile,
   isPromise,
@@ -52,6 +56,10 @@ test('Basic true tests', t => {
   t.is(isNumber(1), true)
   t.is(isDate(new Date()), true)
   t.is(isSymbol(Symbol()), true)
+  t.is(isMap(new Map()), true)
+  t.is(isWeakMap(new WeakMap()), true)
+  t.is(isSet(new Set()), true)
+  t.is(isWeakSet(new WeakSet()), true)
   // t.is(isBlob(blob), true)
   // t.is(isFile(new File([''], '', { type: 'text/html' })), true)
   t.is(isPromise(new Promise((resolve, reject) => {})), true)
@@ -73,6 +81,10 @@ test('Basic false tests', t => {
   t.is(isBoolean(NaN), false)
   t.is(isRegExp(NaN), false)
   t.is(isSymbol(NaN), false)
+  t.is(isMap(new WeakMap()), false)
+  t.is(isWeakMap(new Map()), false)
+  t.is(isSet(new WeakSet()), false)
+  t.is(isWeakSet(new Set()), false)
   t.is(isNullOrUndefined(NaN), false)
 })
 

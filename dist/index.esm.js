@@ -141,6 +141,42 @@ function isRegExp(payload) {
     return getType(payload) === 'RegExp';
 }
 /**
+ * Returns whether the payload is a Map
+ *
+ * @param {*} payload
+ * @returns {payload is Map}
+ */
+function isMap(payload) {
+    return getType(payload) === 'Map';
+}
+/**
+ * Returns whether the payload is a WeakMap
+ *
+ * @param {*} payload
+ * @returns {payload is WeakMap}
+ */
+function isWeakMap(payload) {
+    return getType(payload) === 'WeakMap';
+}
+/**
+ * Returns whether the payload is a Set
+ *
+ * @param {*} payload
+ * @returns {payload is Set}
+ */
+function isSet(payload) {
+    return getType(payload) === 'Set';
+}
+/**
+ * Returns whether the payload is a WeakSet
+ *
+ * @param {*} payload
+ * @returns {payload is WeakSet}
+ */
+function isWeakSet(payload) {
+    return getType(payload) === 'WeakSet';
+}
+/**
  * Returns whether the payload is a Symbol
  *
  * @param {*} payload
@@ -240,4 +276,4 @@ function isType(payload, type) {
     return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
 
-export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyString, isError, isFile, isFullString, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isPromise, isRegExp, isString, isSymbol, isType, isUndefined };
+export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyString, isError, isFile, isFullString, isFunction, isMap, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };

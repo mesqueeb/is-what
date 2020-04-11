@@ -155,6 +155,46 @@ export function isRegExp (payload: any): payload is RegExp {
 }
 
 /**
+ * Returns whether the payload is a Map
+ *
+ * @param {*} payload
+ * @returns {payload is Map}
+ */
+export function isMap (payload: any): payload is Map<any, any> {
+  return getType(payload) === 'Map'
+}
+
+/**
+ * Returns whether the payload is a WeakMap
+ *
+ * @param {*} payload
+ * @returns {payload is WeakMap}
+ */
+export function isWeakMap (payload: any): payload is WeakMap<any, any> {
+  return getType(payload) === 'WeakMap'
+}
+
+/**
+ * Returns whether the payload is a Set
+ *
+ * @param {*} payload
+ * @returns {payload is Set}
+ */
+export function isSet (payload: any): payload is Set<any> {
+  return getType(payload) === 'Set'
+}
+
+/**
+ * Returns whether the payload is a WeakSet
+ *
+ * @param {*} payload
+ * @returns {payload is WeakSet}
+ */
+export function isWeakSet (payload: any): payload is WeakSet<any> {
+  return getType(payload) === 'WeakSet'
+}
+
+/**
  * Returns whether the payload is a Symbol
  *
  * @param {*} payload

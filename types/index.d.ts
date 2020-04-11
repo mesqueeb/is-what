@@ -115,6 +115,34 @@ export declare function isBoolean(payload: any): payload is boolean;
  */
 export declare function isRegExp(payload: any): payload is RegExp;
 /**
+ * Returns whether the payload is a Map
+ *
+ * @param {*} payload
+ * @returns {payload is Map}
+ */
+export declare function isMap(payload: any): payload is Map<any, any>;
+/**
+ * Returns whether the payload is a WeakMap
+ *
+ * @param {*} payload
+ * @returns {payload is WeakMap}
+ */
+export declare function isWeakMap(payload: any): payload is WeakMap<any, any>;
+/**
+ * Returns whether the payload is a Set
+ *
+ * @param {*} payload
+ * @returns {payload is Set}
+ */
+export declare function isSet(payload: any): payload is Set<any>;
+/**
+ * Returns whether the payload is a WeakSet
+ *
+ * @param {*} payload
+ * @returns {payload is WeakSet}
+ */
+export declare function isWeakSet(payload: any): payload is WeakSet<any>;
+/**
  * Returns whether the payload is a Symbol
  *
  * @param {*} payload

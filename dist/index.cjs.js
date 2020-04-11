@@ -145,6 +145,42 @@ function isRegExp(payload) {
     return getType(payload) === 'RegExp';
 }
 /**
+ * Returns whether the payload is a Map
+ *
+ * @param {*} payload
+ * @returns {payload is Map}
+ */
+function isMap(payload) {
+    return getType(payload) === 'Map';
+}
+/**
+ * Returns whether the payload is a WeakMap
+ *
+ * @param {*} payload
+ * @returns {payload is WeakMap}
+ */
+function isWeakMap(payload) {
+    return getType(payload) === 'WeakMap';
+}
+/**
+ * Returns whether the payload is a Set
+ *
+ * @param {*} payload
+ * @returns {payload is Set}
+ */
+function isSet(payload) {
+    return getType(payload) === 'Set';
+}
+/**
+ * Returns whether the payload is a WeakSet
+ *
+ * @param {*} payload
+ * @returns {payload is WeakSet}
+ */
+function isWeakSet(payload) {
+    return getType(payload) === 'WeakSet';
+}
+/**
  * Returns whether the payload is a Symbol
  *
  * @param {*} payload
@@ -255,6 +291,7 @@ exports.isError = isError;
 exports.isFile = isFile;
 exports.isFullString = isFullString;
 exports.isFunction = isFunction;
+exports.isMap = isMap;
 exports.isNull = isNull;
 exports.isNullOrUndefined = isNullOrUndefined;
 exports.isNumber = isNumber;
@@ -264,7 +301,10 @@ exports.isPlainObject = isPlainObject;
 exports.isPrimitive = isPrimitive;
 exports.isPromise = isPromise;
 exports.isRegExp = isRegExp;
+exports.isSet = isSet;
 exports.isString = isString;
 exports.isSymbol = isSymbol;
 exports.isType = isType;
 exports.isUndefined = isUndefined;
+exports.isWeakMap = isWeakMap;
+exports.isWeakSet = isWeakSet;
