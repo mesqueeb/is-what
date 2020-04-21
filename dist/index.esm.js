@@ -29,7 +29,7 @@ function isNull(payload) {
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is {[key: string]: unknown}}
  */
 function isPlainObject(payload) {
     if (getType(payload) !== 'Object')
@@ -40,16 +40,16 @@ function isPlainObject(payload) {
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is {[key: string]: unknown}}
  */
 function isObject(payload) {
     return isPlainObject(payload);
 }
 /**
- * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
+ * Returns whether the payload is an unknown kind of object (including special classes or objects with different prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is {[key: string]: unknown}}
  */
 function isAnyObject(payload) {
     return getType(payload) === 'Object';
@@ -57,7 +57,7 @@ function isAnyObject(payload) {
 /**
  * Returns whether the payload is an object like a type passed in < >
  *
- * Usage: isObjectLike<{id: any}>(payload) // will make sure it's an object and has an `id` prop.
+ * Usage: isObjectLike<{id: unknown}>(payload) // will make sure it's an object and has an `id` prop.
  *
  * @template T this must be passed in < >
  * @param {*} payload
