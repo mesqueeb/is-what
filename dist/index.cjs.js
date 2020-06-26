@@ -235,7 +235,7 @@ function isError(payload) {
     return getType(payload) === 'Error';
 }
 /**
- * Returns whether the payload is an Error
+ * Returns whether the payload is `NaN` but also a `number`
  *
  * @param {*} payload
  * @returns {payload is typeof NaN}

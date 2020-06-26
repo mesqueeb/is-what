@@ -255,7 +255,7 @@ export function isError (payload: any): payload is Error {
 }
 
 /**
- * Returns whether the payload is an Error
+ * Returns whether the payload is `NaN` but also a `number`
  *
  * @param {*} payload
  * @returns {payload is typeof NaN}
