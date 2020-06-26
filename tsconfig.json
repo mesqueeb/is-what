@@ -4,6 +4,7 @@
     "declarationDir": "./types/"
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "test/**/*"
   ]
 }

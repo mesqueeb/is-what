@@ -255,6 +255,16 @@ export function isError (payload: any): payload is Error {
 }
 
 /**
+ * Returns whether the payload is an Error
+ *
+ * @param {*} payload
+ * @returns {payload is typeof NaN}
+ */
+export function isNaNValue (payload: any): payload is typeof NaN {
+  return getType(payload) === 'Number' && isNaN(payload)
+}
+
+/**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload

@@ -235,6 +235,15 @@ function isError(payload) {
     return getType(payload) === 'Error';
 }
 /**
+ * Returns whether the payload is an Error
+ *
+ * @param {*} payload
+ * @returns {payload is typeof NaN}
+ */
+function isNaNValue(payload) {
+    return getType(payload) === 'Number' && isNaN(payload);
+}
+/**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload
@@ -292,6 +301,7 @@ exports.isFile = isFile;
 exports.isFullString = isFullString;
 exports.isFunction = isFunction;
 exports.isMap = isMap;
+exports.isNaNValue = isNaNValue;
 exports.isNull = isNull;
 exports.isNullOrUndefined = isNullOrUndefined;
 exports.isNumber = isNumber;

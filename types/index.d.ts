@@ -185,6 +185,13 @@ export declare function isPromise(payload: any): payload is Promise<any>;
  */
 export declare function isError(payload: any): payload is Error;
 /**
+ * Returns whether the payload is an Error
+ *
+ * @param {*} payload
+ * @returns {payload is typeof NaN}
+ */
+export declare function isNaNValue(payload: any): payload is typeof NaN;
+/**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
  *
  * @param {*} payload

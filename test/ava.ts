@@ -26,6 +26,7 @@ import {
   // isBlob,
   // isFile,
   isPromise,
+  isNaNValue,
 } from '../src/index'
 
 // const blob = Buffer.from([])
@@ -86,6 +87,39 @@ test('Basic false tests', t => {
   t.is(isSet(new WeakSet()), false)
   t.is(isWeakSet(new Set()), false)
   t.is(isNullOrUndefined(NaN), false)
+})
+
+test('NaN tests', t => {
+  t.is(isNaNValue(NaN), true)
+  t.is(isNaNValue(new Error('')), false)
+  t.is(isNaNValue(undefined), false)
+  t.is(isNaNValue(null), false)
+  t.is(isNaNValue(undefined), false)
+  t.is(isNaNValue({}), false)
+  t.is(isNaNValue(new Object()), false)
+  t.is(
+    isNaNValue(_ => {}),
+    false
+  )
+  t.is(isNaNValue([]), false)
+  t.is(isNaNValue(new Array()), false)
+  t.is(isNaNValue(''), false)
+  t.is(isNaNValue('_'), false)
+  t.is(isNaNValue(''), false)
+  t.is(isNaNValue(' '), false)
+  t.is(isNaNValue(true), false)
+  t.is(isNaNValue(false), false)
+  t.is(isNaNValue(/./), false)
+  t.is(isNaNValue(/./gi), false)
+  t.is(isNaNValue(0), false)
+  t.is(isNaNValue(1), false)
+  t.is(isNaNValue(new Date()), false)
+  t.is(isNaNValue(Symbol()), false)
+  t.is(isNaNValue(new Map()), false)
+  t.is(isNaNValue(new WeakMap()), false)
+  t.is(isNaNValue(new Set()), false)
+  t.is(isNaNValue(new WeakSet()), false)
+  t.is(isNaNValue(new Promise((resolve, reject) => {})), false)
 })
 
 test('Primitive tests', t => {
