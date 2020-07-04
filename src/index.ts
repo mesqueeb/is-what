@@ -50,6 +50,16 @@ export function isObject (payload: any): payload is { [key: string]: any } {
 }
 
 /**
+ * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)
+ *
+ * @param {*} payload
+ * @returns {payload is {}}
+ */
+export function isEmptyObject (payload: any): payload is {} {
+  return isPlainObject(payload) && Object.keys(payload).length === 0
+}
+
+/**
  * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
  *
  * @param {*} payload

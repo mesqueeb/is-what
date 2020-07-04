@@ -50,6 +50,15 @@ function isObject(payload) {
     return isPlainObject(payload);
 }
 /**
+ * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)
+ *
+ * @param {*} payload
+ * @returns {payload is {}}
+ */
+function isEmptyObject(payload) {
+    return isPlainObject(payload) && Object.keys(payload).length === 0;
+}
+/**
  * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
  *
  * @param {*} payload
@@ -295,6 +304,7 @@ exports.isArray = isArray;
 exports.isBlob = isBlob;
 exports.isBoolean = isBoolean;
 exports.isDate = isDate;
+exports.isEmptyObject = isEmptyObject;
 exports.isEmptyString = isEmptyString;
 exports.isError = isError;
 exports.isFile = isFile;

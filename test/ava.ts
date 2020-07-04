@@ -27,6 +27,7 @@ import {
   // isFile,
   isPromise,
   isNaNValue,
+  isEmptyObject,
 } from '../src/index'
 
 // const blob = Buffer.from([])
@@ -87,6 +88,23 @@ test('Basic false tests', t => {
   t.is(isSet(new WeakSet()), false)
   t.is(isWeakSet(new Set()), false)
   t.is(isNullOrUndefined(NaN), false)
+})
+
+test('isEmptyObject', t => {
+  t.is(isEmptyObject({}), true)
+  t.is(isEmptyObject(new Object()), true)
+
+  t.is(isEmptyObject('{}'), false)
+  t.is(isEmptyObject('{}'), false)
+  t.is(isEmptyObject(null), false)
+  t.is(isEmptyObject(new Date()), false)
+  t.is(isEmptyObject(new Error('')), false)
+  t.is(isEmptyObject(new Date()), false)
+  t.is(isEmptyObject(Symbol()), false)
+  t.is(isEmptyObject(new Map()), false)
+  t.is(isEmptyObject(new WeakMap()), false)
+  t.is(isEmptyObject(new Set()), false)
+  t.is(isEmptyObject(new WeakSet()), false)
 })
 
 test('NaN tests', t => {
