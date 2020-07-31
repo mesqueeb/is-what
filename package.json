@@ -1,7 +1,7 @@
 {
   "name": "is-what",
   "sideEffects": false,
-  "version": "3.10.0",
+  "version": "3.11.0",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -47,28 +47,33 @@
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.11.0",
     "@types/babel-core": "^6.25.6",
-    "@types/jest": "^25.2.1",
-    "@typescript-eslint/eslint-plugin": "^2.27.0",
-    "@typescript-eslint/parser": "^2.27.0",
-    "ava": "^3.6.0",
+    "@types/jest": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "ava": "^3.11.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^25.3.0",
+    "babel-jest": "^25.5.1",
     "babel-preset-env": "^1.7.0",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-tree-shaking": "^1.8.0",
-    "jest": "^25.3.0",
-    "regenerator-runtime": "^0.13.5",
+    "jest": "^25.5.4",
+    "regenerator-runtime": "^0.13.7",
     "rollup": "^1.32.1",
-    "rollup-plugin-typescript2": "^0.26.0",
+    "rollup-plugin-typescript2": "^0.27.1",
     "tsconfig-paths": "^3.9.0",
-    "ts-node": "^8.8.2",
-    "typescript": "^3.8.3"
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
   },
   "ava": {
-    "extensions": ["ts"],
-    "require": ["tsconfig-paths/register", "ts-node/register"]
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "tsconfig-paths/register",
+      "ts-node/register"
+    ]
   }
 }

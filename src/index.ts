@@ -103,6 +103,16 @@ export function isArray (payload: any): payload is any[] {
 }
 
 /**
+ * Returns whether the payload is a an empty array
+ *
+ * @param {*} payload
+ * @returns {payload is []}
+ */
+export function isEmptyArray (payload: any): payload is [] {
+  return isArray(payload) && payload.length === 0
+}
+
+/**
  * Returns whether the payload is a string
  *
  * @param {*} payload

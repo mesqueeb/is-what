@@ -98,6 +98,15 @@ function isArray(payload) {
     return getType(payload) === 'Array';
 }
 /**
+ * Returns whether the payload is a an empty array
+ *
+ * @param {*} payload
+ * @returns {payload is []}
+ */
+function isEmptyArray(payload) {
+    return isArray(payload) && payload.length === 0;
+}
+/**
  * Returns whether the payload is a string
  *
  * @param {*} payload
@@ -304,6 +313,7 @@ exports.isArray = isArray;
 exports.isBlob = isBlob;
 exports.isBoolean = isBoolean;
 exports.isDate = isDate;
+exports.isEmptyArray = isEmptyArray;
 exports.isEmptyObject = isEmptyObject;
 exports.isEmptyString = isEmptyString;
 exports.isError = isError;

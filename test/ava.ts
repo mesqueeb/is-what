@@ -1,6 +1,7 @@
 import test from 'ava'
 import {
   isError,
+  isEmptyArray,
   isObject,
   isPlainObject,
   isAnyObject,
@@ -105,6 +106,24 @@ test('isEmptyObject', t => {
   t.is(isEmptyObject(new WeakMap()), false)
   t.is(isEmptyObject(new Set()), false)
   t.is(isEmptyObject(new WeakSet()), false)
+})
+
+test('isEmptyArray', t => {
+  t.is(isEmptyArray([]), true)
+  t.is(isEmptyArray(new Array()), true)
+  t.is(isEmptyArray(new Array(0)), true)
+  
+  t.is(isEmptyArray(new Array(1)), false)
+  t.is(isEmptyArray([undefined]), false)
+  t.is(isEmptyArray(null), false)
+  t.is(isEmptyArray(new Date()), false)
+  t.is(isEmptyArray(new Error('')), false)
+  t.is(isEmptyArray(new Date()), false)
+  t.is(isEmptyArray(Symbol()), false)
+  t.is(isEmptyArray(new Map()), false)
+  t.is(isEmptyArray(new WeakMap()), false)
+  t.is(isEmptyArray(new Set()), false)
+  t.is(isEmptyArray(new WeakSet()), false)
 })
 
 test('NaN tests', t => {

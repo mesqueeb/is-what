@@ -78,6 +78,13 @@ export declare function isFunction(payload: any): payload is Function;
  */
 export declare function isArray(payload: any): payload is any[];
 /**
+ * Returns whether the payload is a an empty array
+ *
+ * @param {*} payload
+ * @returns {payload is []}
+ */
+export declare function isEmptyArray(payload: any): payload is [];
+/**
  * Returns whether the payload is a string
  *
  * @param {*} payload
