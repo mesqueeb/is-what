@@ -1,10 +1,12 @@
 # is What? 🙉
 
+Very simple &amp; small JS type check functions. It's fully TypeScript supported!
+
 ```
 npm i is-what
 ```
 
-Very simple &amp; small JS type check functions. It's fully TypeScript supported!
+Or for deno available at: `"deno.land/x/is_what"`
 
 ## Motivation
 
