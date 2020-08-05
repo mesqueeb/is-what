@@ -112,7 +112,7 @@ getType(specialObject) // returns 'Object'
 
 is-what makes TypeScript know the type during if statements. This means that a check returns the type of the payload for TypeScript users.
 
-```TypeScript
+```ts
 function isNumber (payload: any): payload is number {
   // return boolean
 }
@@ -129,7 +129,7 @@ function fn (payload: string | number): number {
 
 `isPlainObject` and `isAnyObject` with TypeScript will declare the payload to be an object type with any props:
 
-```TypeScript
+```ts
 function isPlainObject (payload: any): payload is {[key: string]: any}
 function isAnyObject (payload: any): payload is {[key: string]: any}
 // The reason to return `{[key: string]: any}` is to be able to do
@@ -141,7 +141,7 @@ if (isPlainObject(payload) && payload.id) return payload.id
 
 If you want more control over which kind of objects are allowed you can use `isObjectLike<T>`:
 
-```TypeScript
+```ts
 import { isObjectLike } from 'is-what'
 // usage examples:
 isObjectLike<{specificKey: string}>(payload)
@@ -151,7 +151,7 @@ isObjectLike<object>(payload)
 
 `isObjectLike<T>` works like this under the hood:
 
-```TypeScript
+```ts
 function isObjectLike<T extends object> (payload: any): payload is T {
   return isAnyObject(payload)
 }
