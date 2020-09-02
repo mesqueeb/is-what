@@ -276,3 +276,34 @@ test('isObject vs isAnyObject', t => {
   t.is(isAnyObject(new Date('_')), false)
   t.is(isAnyObject(new Date()), false)
 })
+
+test('type related tests', t => {
+  t.pass()
+  // const fn: string | ((k: number) => string) = (p) => 'a'
+  // if (!isFunction(fn)) {
+  //   fn
+  // }
+
+  // const a: Record<string, number> = {}
+  
+  // a[fn(1)] = fn(2)
+
+  // const myArray: string | string[] = ['a', 'b']
+  // if (!isArray(myArray)) {
+  //   myArray
+  // }
+
+  // const a: Record<string, number> = {}
+  
+  // a[myArray[1]] = myArray[0]
+
+  // const myArray: string | any[] = [1, 2, 'a', 'b']
+  // if (!isArray(myArray)) {
+  //   myArray
+  // }
+
+  // const a: Record<string, number> = {}
+  
+  // a[myArray[1]] = myArray[0]
+
+})

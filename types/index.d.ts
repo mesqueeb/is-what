@@ -1,3 +1,5 @@
+export declare type AnyFunction = (...args: any[]) => any;
+export declare type AnyClass = new (...args: any[]) => any;
 /**
  * Returns the object type of the given payload
  *
@@ -23,36 +25,32 @@ export declare function isNull(payload: any): payload is null;
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is Record<string, any>}
  */
-export declare function isPlainObject(payload: any): payload is {
-    [key: string]: any;
-};
+export declare function isPlainObject(payload: any): payload is Record<string, any>;
 /**
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is Record<string, any>}
  */
-export declare function isObject(payload: any): payload is {
-    [key: string]: any;
-};
+export declare function isObject(payload: any): payload is Record<string, any>;
 /**
  * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {}}
+ * @returns {payload is { [K in any]: never }}
  */
-export declare function isEmptyObject(payload: any): payload is {};
+export declare function isEmptyObject(payload: any): payload is {
+    [K in any]: never;
+};
 /**
  * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is Record<string, any>}
  */
-export declare function isAnyObject(payload: any): payload is {
-    [key: string]: any;
-};
+export declare function isAnyObject(payload: any): payload is Record<string, any>;
 /**
  * Returns whether the payload is an object like a type passed in < >
  *
@@ -62,19 +60,19 @@ export declare function isAnyObject(payload: any): payload is {
  * @param {*} payload
  * @returns {payload is T}
  */
-export declare function isObjectLike<T extends object>(payload: any): payload is T;
+export declare function isObjectLike<T extends Record<string, any>>(payload: any): payload is T;
 /**
  * Returns whether the payload is a function
  *
  * @param {*} payload
- * @returns {payload is Function}
+ * @returns {payload is AnyFunction}
  */
-export declare function isFunction(payload: any): payload is Function;
+export declare function isFunction(payload: any): payload is AnyFunction;
 /**
  * Returns whether the payload is an array
  *
- * @param {*} payload
- * @returns {payload is undefined}
+ * @param {any} payload
+ * @returns {payload is any[]}
  */
 export declare function isArray(payload: any): payload is any[];
 /**
@@ -106,9 +104,9 @@ export declare function isFullString(payload: any): payload is string;
  */
 export declare function isEmptyString(payload: any): payload is string;
 /**
- * Returns whether the payload is a number
+ * Returns whether the payload is a number (but not NaN)
  *
- * This will return false for NaN
+ * This will return `false` for `NaN`!!
  *
  * @param {*} payload
  * @returns {payload is number}
@@ -132,28 +130,28 @@ export declare function isRegExp(payload: any): payload is RegExp;
  * Returns whether the payload is a Map
  *
  * @param {*} payload
- * @returns {payload is Map}
+ * @returns {payload is Map<any, any>}
  */
 export declare function isMap(payload: any): payload is Map<any, any>;
 /**
  * Returns whether the payload is a WeakMap
  *
  * @param {*} payload
- * @returns {payload is WeakMap}
+ * @returns {payload is WeakMap<any, any>}
  */
 export declare function isWeakMap(payload: any): payload is WeakMap<any, any>;
 /**
  * Returns whether the payload is a Set
  *
  * @param {*} payload
- * @returns {payload is Set}
+ * @returns {payload is Set<any>}
  */
 export declare function isSet(payload: any): payload is Set<any>;
 /**
  * Returns whether the payload is a WeakSet
  *
  * @param {*} payload
- * @returns {payload is WeakSet}
+ * @returns {payload is WeakSet<any>}
  */
 export declare function isWeakSet(payload: any): payload is WeakSet<any>;
 /**
@@ -188,7 +186,7 @@ export declare function isFile(payload: any): payload is File;
  * Returns whether the payload is a Promise
  *
  * @param {*} payload
- * @returns {payload is Promise}
+ * @returns {payload is Promise<any>}
  */
 export declare function isPromise(payload: any): payload is Promise<any>;
 /**
@@ -199,7 +197,7 @@ export declare function isPromise(payload: any): payload is Promise<any>;
  */
 export declare function isError(payload: any): payload is Error;
 /**
- * Returns whether the payload is `NaN` but also a `number`
+ * Returns whether the payload is literally the value `NaN` (it's `NaN` and also a `number`)
  *
  * @param {*} payload
  * @returns {payload is typeof NaN}
@@ -230,4 +228,4 @@ export declare function isNullOrUndefined(payload: any): payload is null | undef
  * @throws {TypeError} Will throw type error if type is an invalid type
  * @returns {payload is T}
  */
-export declare function isType<T extends Function>(payload: any, type: T): payload is T;
+export declare function isType<T extends AnyFunction | AnyClass>(payload: any, type: T): payload is T;

@@ -1,3 +1,6 @@
+export type AnyFunction = (...args: any[]) => any
+export type AnyClass = new (...args: any[]) => any
+
 /**
  * Returns the object type of the given payload
  *
@@ -32,9 +35,9 @@ export function isNull (payload: any): payload is null {
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is Record<string, any>}
  */
-export function isPlainObject (payload: any): payload is { [key: string]: any } {
+export function isPlainObject (payload: any): payload is Record<string, any> {
   if (getType(payload) !== 'Object') return false
   return payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype
 }
@@ -43,9 +46,9 @@ export function isPlainObject (payload: any): payload is { [key: string]: any } 
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is Record<string, any>}
  */
-export function isObject (payload: any): payload is { [key: string]: any } {
+export function isObject (payload: any): payload is Record<string, any> {
   return isPlainObject(payload)
 }
 
@@ -53,9 +56,9 @@ export function isObject (payload: any): payload is { [key: string]: any } {
  * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {}}
+ * @returns {payload is { [K in any]: never }}
  */
-export function isEmptyObject (payload: any): payload is {} {
+export function isEmptyObject (payload: any): payload is { [K in any]: never } {
   return isPlainObject(payload) && Object.keys(payload).length === 0
 }
 
@@ -63,9 +66,9 @@ export function isEmptyObject (payload: any): payload is {} {
  * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is Record<string, any>}
  */
-export function isAnyObject (payload: any): payload is { [key: string]: any } {
+export function isAnyObject (payload: any): payload is Record<string, any> {
   return getType(payload) === 'Object'
 }
 
@@ -78,7 +81,7 @@ export function isAnyObject (payload: any): payload is { [key: string]: any } {
  * @param {*} payload
  * @returns {payload is T}
  */
-export function isObjectLike<T extends object> (payload: any): payload is T {
+export function isObjectLike<T extends Record<string, any>> (payload: any): payload is T {
   return isAnyObject(payload)
 }
 
@@ -86,17 +89,17 @@ export function isObjectLike<T extends object> (payload: any): payload is T {
  * Returns whether the payload is a function
  *
  * @param {*} payload
- * @returns {payload is Function}
+ * @returns {payload is AnyFunction}
  */
-export function isFunction (payload: any): payload is Function {
+export function isFunction (payload: any): payload is AnyFunction {
   return getType(payload) === 'Function'
 }
 
 /**
  * Returns whether the payload is an array
  *
- * @param {*} payload
- * @returns {payload is undefined}
+ * @param {any} payload
+ * @returns {payload is any[]}
  */
 export function isArray (payload: any): payload is any[] {
   return getType(payload) === 'Array'
@@ -143,9 +146,9 @@ export function isEmptyString (payload: any): payload is string {
 }
 
 /**
- * Returns whether the payload is a number
+ * Returns whether the payload is a number (but not NaN)
  *
- * This will return false for NaN
+ * This will return `false` for `NaN`!!
  *
  * @param {*} payload
  * @returns {payload is number}
@@ -178,7 +181,7 @@ export function isRegExp (payload: any): payload is RegExp {
  * Returns whether the payload is a Map
  *
  * @param {*} payload
- * @returns {payload is Map}
+ * @returns {payload is Map<any, any>}
  */
 export function isMap (payload: any): payload is Map<any, any> {
   return getType(payload) === 'Map'
@@ -188,7 +191,7 @@ export function isMap (payload: any): payload is Map<any, any> {
  * Returns whether the payload is a WeakMap
  *
  * @param {*} payload
- * @returns {payload is WeakMap}
+ * @returns {payload is WeakMap<any, any>}
  */
 export function isWeakMap (payload: any): payload is WeakMap<any, any> {
   return getType(payload) === 'WeakMap'
@@ -198,7 +201,7 @@ export function isWeakMap (payload: any): payload is WeakMap<any, any> {
  * Returns whether the payload is a Set
  *
  * @param {*} payload
- * @returns {payload is Set}
+ * @returns {payload is Set<any>}
  */
 export function isSet (payload: any): payload is Set<any> {
   return getType(payload) === 'Set'
@@ -208,7 +211,7 @@ export function isSet (payload: any): payload is Set<any> {
  * Returns whether the payload is a WeakSet
  *
  * @param {*} payload
- * @returns {payload is WeakSet}
+ * @returns {payload is WeakSet<any>}
  */
 export function isWeakSet (payload: any): payload is WeakSet<any> {
   return getType(payload) === 'WeakSet'
@@ -258,7 +261,7 @@ export function isFile (payload: any): payload is File {
  * Returns whether the payload is a Promise
  *
  * @param {*} payload
- * @returns {payload is Promise}
+ * @returns {payload is Promise<any>}
  */
 export function isPromise (payload: any): payload is Promise<any> {
   return getType(payload) === 'Promise'
@@ -275,7 +278,7 @@ export function isError (payload: any): payload is Error {
 }
 
 /**
- * Returns whether the payload is `NaN` but also a `number`
+ * Returns whether the payload is literally the value `NaN` (it's `NaN` and also a `number`)
  *
  * @param {*} payload
  * @returns {payload is typeof NaN}
@@ -324,7 +327,7 @@ export function isNullOrUndefined (payload: any): payload is null | undefined {
  * @throws {TypeError} Will throw type error if type is an invalid type
  * @returns {payload is T}
  */
-export function isType<T extends Function> (payload: any, type: T): payload is T {
+export function isType<T extends AnyFunction | AnyClass> (payload: any, type: T): payload is T {
   if (!(type instanceof Function)) {
     throw new TypeError('Type must be a function')
   }

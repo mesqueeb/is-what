@@ -29,7 +29,7 @@ function isNull(payload) {
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is Record<string, any>}
  */
 function isPlainObject(payload) {
     if (getType(payload) !== 'Object')
@@ -40,7 +40,7 @@ function isPlainObject(payload) {
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is Record<string, any>}
  */
 function isObject(payload) {
     return isPlainObject(payload);
@@ -49,7 +49,7 @@ function isObject(payload) {
  * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is {}}
+ * @returns {payload is { [K in any]: never }}
  */
 function isEmptyObject(payload) {
     return isPlainObject(payload) && Object.keys(payload).length === 0;
@@ -58,7 +58,7 @@ function isEmptyObject(payload) {
  * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
  *
  * @param {*} payload
- * @returns {payload is {[key: string]: any}}
+ * @returns {payload is Record<string, any>}
  */
 function isAnyObject(payload) {
     return getType(payload) === 'Object';
@@ -79,7 +79,7 @@ function isObjectLike(payload) {
  * Returns whether the payload is a function
  *
  * @param {*} payload
- * @returns {payload is Function}
+ * @returns {payload is AnyFunction}
  */
 function isFunction(payload) {
     return getType(payload) === 'Function';
@@ -87,8 +87,8 @@ function isFunction(payload) {
 /**
  * Returns whether the payload is an array
  *
- * @param {*} payload
- * @returns {payload is undefined}
+ * @param {any} payload
+ * @returns {payload is any[]}
  */
 function isArray(payload) {
     return getType(payload) === 'Array';
@@ -130,9 +130,9 @@ function isEmptyString(payload) {
     return payload === '';
 }
 /**
- * Returns whether the payload is a number
+ * Returns whether the payload is a number (but not NaN)
  *
- * This will return false for NaN
+ * This will return `false` for `NaN`!!
  *
  * @param {*} payload
  * @returns {payload is number}
@@ -162,7 +162,7 @@ function isRegExp(payload) {
  * Returns whether the payload is a Map
  *
  * @param {*} payload
- * @returns {payload is Map}
+ * @returns {payload is Map<any, any>}
  */
 function isMap(payload) {
     return getType(payload) === 'Map';
@@ -171,7 +171,7 @@ function isMap(payload) {
  * Returns whether the payload is a WeakMap
  *
  * @param {*} payload
- * @returns {payload is WeakMap}
+ * @returns {payload is WeakMap<any, any>}
  */
 function isWeakMap(payload) {
     return getType(payload) === 'WeakMap';
@@ -180,7 +180,7 @@ function isWeakMap(payload) {
  * Returns whether the payload is a Set
  *
  * @param {*} payload
- * @returns {payload is Set}
+ * @returns {payload is Set<any>}
  */
 function isSet(payload) {
     return getType(payload) === 'Set';
@@ -189,7 +189,7 @@ function isSet(payload) {
  * Returns whether the payload is a WeakSet
  *
  * @param {*} payload
- * @returns {payload is WeakSet}
+ * @returns {payload is WeakSet<any>}
  */
 function isWeakSet(payload) {
     return getType(payload) === 'WeakSet';
@@ -234,7 +234,7 @@ function isFile(payload) {
  * Returns whether the payload is a Promise
  *
  * @param {*} payload
- * @returns {payload is Promise}
+ * @returns {payload is Promise<any>}
  */
 function isPromise(payload) {
     return getType(payload) === 'Promise';
@@ -249,7 +249,7 @@ function isError(payload) {
     return getType(payload) === 'Error';
 }
 /**
- * Returns whether the payload is `NaN` but also a `number`
+ * Returns whether the payload is literally the value `NaN` (it's `NaN` and also a `number`)
  *
  * @param {*} payload
  * @returns {payload is typeof NaN}
