@@ -18,7 +18,7 @@ import typescript from 'rollup-plugin-typescript2'
 // ------------------------------------------------------------------------------------------
 // setup
 // ------------------------------------------------------------------------------------------
-const pkg = require('../package.json')
+const pkg = require('./package.json')
 const name = pkg.name
 const className = name.replace(/(^\w|-\w)/g, c => c.replace('-', '').toUpperCase())
 const external = Object.keys(pkg.dependencies || [])

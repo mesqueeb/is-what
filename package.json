@@ -1,18 +1,18 @@
 {
   "name": "is-what",
   "sideEffects": false,
-  "version": "3.11.1",
+  "version": "3.11.2",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "typings": "types/index.d.ts",
   "scripts": {
-    "ava": "ava",
-    "test": "jest",
-    "test-w": "jest --watchAll",
+    "test": "ava",
+    "jest": "jest",
+    "jest-w": "jest --watchAll",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "rollup": "rollup -c ./build/rollup.js",
-    "build": "npm run lint && npm run rollup && npm run test"
+    "rollup": "rollup -c ./build.js",
+    "build": "rm -rf types && rm -rf dist && npm run lint && npm run rollup && npm run test && npm run jest"
   },
   "repository": {
     "type": "git",
@@ -47,25 +47,25 @@
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.11.0",
+    "@babel/core": "^7.11.5",
     "@types/babel-core": "^6.25.6",
-    "@types/jest": "^25.2.3",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
-    "ava": "^3.11.0",
+    "@types/jest": "^26.0.12",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "ava": "^3.12.1",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^25.5.1",
+    "babel-jest": "^26.3.0",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.8.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-tree-shaking": "^1.8.0",
-    "jest": "^25.5.4",
+    "jest": "^26.4.2",
     "regenerator-runtime": "^0.13.7",
-    "rollup": "^1.32.1",
-    "rollup-plugin-typescript2": "^0.27.1",
+    "rollup": "^2.26.9",
+    "rollup-plugin-typescript2": "^0.27.2",
     "tsconfig-paths": "^3.9.0",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
   },
   "ava": {
     "extensions": [
