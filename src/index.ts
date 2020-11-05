@@ -93,8 +93,7 @@ export function isObjectLike<T extends Record<string, any>> (payload: any): payl
  * @returns {payload is AnyFunction}
  */
 export function isFunction (payload: any): payload is AnyFunction {
-  const type = getType(payload)
-  return type === 'Function' || type === 'AsyncFunction'
+  return typeof payload === "function"
 }
 
 /**

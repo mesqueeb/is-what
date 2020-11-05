@@ -92,6 +92,8 @@ test('isFunction', t => {
   t.is(isFunction(function () {}), true)
   t.is(isFunction(async () => {}), true)
   t.is(isFunction(async function () {}), true)
+  t.is(isFunction(function * () {}), true)
+  t.is(isFunction(async function * () {}), true)
   const _ = { fn: () => {}, method () {} }
   t.is(isFunction(_.fn), true)
   t.is(isFunction(_.method), true)

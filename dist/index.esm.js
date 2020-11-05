@@ -82,8 +82,7 @@ function isObjectLike(payload) {
  * @returns {payload is AnyFunction}
  */
 function isFunction(payload) {
-    var type = getType(payload);
-    return type === 'Function' || type === 'AsyncFunction';
+    return typeof payload === "function";
 }
 /**
  * Returns whether the payload is an array
