@@ -1,4 +1,5 @@
 export type AnyFunction = (...args: any[]) => any
+export type AnyAsyncFunction = (...args: any[]) => Promise<any>
 export type AnyClass = new (...args: any[]) => any
 
 /**
@@ -86,13 +87,14 @@ export function isObjectLike<T extends Record<string, any>> (payload: any): payl
 }
 
 /**
- * Returns whether the payload is a function
+ * Returns whether the payload is a function (regular or async)
  *
  * @param {*} payload
  * @returns {payload is AnyFunction}
  */
 export function isFunction (payload: any): payload is AnyFunction {
-  return getType(payload) === 'Function'
+  const type = getType(payload)
+  return type === 'Function' || type === 'AsyncFunction'
 }
 
 /**

@@ -76,13 +76,14 @@ function isObjectLike(payload) {
     return isAnyObject(payload);
 }
 /**
- * Returns whether the payload is a function
+ * Returns whether the payload is a function (regular or async)
  *
  * @param {*} payload
  * @returns {payload is AnyFunction}
  */
 function isFunction(payload) {
-    return getType(payload) === 'Function';
+    var type = getType(payload);
+    return type === 'Function' || type === 'AsyncFunction';
 }
 /**
  * Returns whether the payload is an array

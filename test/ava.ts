@@ -41,10 +41,6 @@ test('Basic true tests', t => {
   t.is(isNullOrUndefined(undefined), true)
   t.is(isObject({}), true)
   t.is(isObject(new Object()), true)
-  t.is(
-    isFunction(_ => {}),
-    true
-  )
   t.is(isArray([]), true)
   t.is(isArray(new Array()), true)
   t.is(isString(''), true)
@@ -76,7 +72,6 @@ test('Basic false tests', t => {
   t.is(isUndefined(NaN), false)
   t.is(isNull(NaN), false)
   t.is(isObject(NaN), false)
-  t.is(isFunction(NaN), false)
   t.is(isArray(NaN), false)
   t.is(isString(NaN), false)
   t.is(isEmptyString(' '), false)
@@ -89,6 +84,17 @@ test('Basic false tests', t => {
   t.is(isSet(new WeakSet()), false)
   t.is(isWeakSet(new Set()), false)
   t.is(isNullOrUndefined(NaN), false)
+})
+
+test('isFunction', t => {
+  t.is(isFunction(NaN), false)
+  t.is(isFunction(() => {}), true)
+  t.is(isFunction(function () {}), true)
+  t.is(isFunction(async () => {}), true)
+  t.is(isFunction(async function () {}), true)
+  const _ = { fn: () => {}, method () {} }
+  t.is(isFunction(_.fn), true)
+  t.is(isFunction(_.method), true)
 })
 
 test('isEmptyObject', t => {
@@ -135,7 +141,7 @@ test('NaN tests', t => {
   t.is(isNaNValue({}), false)
   t.is(isNaNValue(new Object()), false)
   t.is(
-    isNaNValue(_ => {}),
+    isNaNValue(() => {}),
     false
   )
   t.is(isNaNValue([]), false)
@@ -177,7 +183,7 @@ test('Primitive tests', t => {
   t.is(isPrimitive(new Object()), false)
   t.is(isPrimitive(new Date()), false)
   t.is(
-    isPrimitive(_ => {}),
+    isPrimitive(() => {}),
     false
   )
 })
@@ -187,11 +193,14 @@ test('Date exception', t => {
 })
 
 test('Generic isType', t => {
-  function MyClass () {}
+  // -----------------------------
   // This is correct old fashion syntax for classes, if this is missing
+  function MyClass () {}
   MyClass.prototype.constructor = MyClass
-  class MyOtherClass {}
+  // @ts-ignore
   const myClass = new MyClass()
+  // -----------------------------
+  class MyOtherClass { constructor() {} }
   // this is expected behaviour
   t.is(isType('', String), true)
   t.is(isType('_', String), true)
@@ -204,7 +213,7 @@ test('Generic isType', t => {
   t.is(isType([], Array), true)
   t.is(isType(new Array(), Array), true)
   t.is(
-    isType(_ => {}, Function),
+    isType(() => {}, Function),
     true
   )
   t.is(isType(true, Boolean), true)
@@ -228,12 +237,15 @@ test('Generic isType', t => {
 })
 
 test('isObject vs isAnyObject', t => {
-  function MyClass () {}
+  // -----------------------------
   // This is correct old fashion syntax for classes, if this is missing
+  function MyClass () {}
   MyClass.prototype.constructor = MyClass
+  // @ts-ignore
   const myClass = new MyClass()
-  class MyClass2 {}
-  const myClass2 = new MyClass()
+  // -----------------------------
+  class MyClass2 { constructor() {} }
+  const myClass2 = new MyClass2()
   const mySpecialObject = {}
   Object.setPrototypeOf(mySpecialObject, {
     toDate: function () {

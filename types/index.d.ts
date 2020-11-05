@@ -1,4 +1,5 @@
 export declare type AnyFunction = (...args: any[]) => any;
+export declare type AnyAsyncFunction = (...args: any[]) => Promise<any>;
 export declare type AnyClass = new (...args: any[]) => any;
 /**
  * Returns the object type of the given payload
@@ -62,7 +63,7 @@ export declare function isAnyObject(payload: any): payload is Record<string, any
  */
 export declare function isObjectLike<T extends Record<string, any>>(payload: any): payload is T;
 /**
- * Returns whether the payload is a function
+ * Returns whether the payload is a function (regular or async)
  *
  * @param {*} payload
  * @returns {payload is AnyFunction}
