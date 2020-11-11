@@ -24,6 +24,7 @@ import {
   isWeakMap,
   isSet,
   isWeakSet,
+  isFullArray,
   // isBlob,
   // isFile,
   isPromise,
@@ -132,6 +133,27 @@ test('isEmptyArray', t => {
   t.is(isEmptyArray(new WeakMap()), false)
   t.is(isEmptyArray(new Set()), false)
   t.is(isEmptyArray(new WeakSet()), false)
+})
+
+test('isFullArray', t => {
+  t.is(isFullArray(new Array(1)), true)
+  t.is(isFullArray([undefined]), true)
+  t.is(isFullArray([null]), true)
+  t.is(isFullArray(['']), true)
+  
+  t.is(isFullArray([]), false)
+  t.is(isFullArray(new Array()), false)
+  t.is(isFullArray(new Array(0)), false)
+  
+  t.is(isFullArray(null), false)
+  t.is(isFullArray(new Date()), false)
+  t.is(isFullArray(new Error('')), false)
+  t.is(isFullArray(new Date()), false)
+  t.is(isFullArray(Symbol()), false)
+  t.is(isFullArray(new Map()), false)
+  t.is(isFullArray(new WeakMap()), false)
+  t.is(isFullArray(new Set()), false)
+  t.is(isFullArray(new WeakSet()), false)
 })
 
 test('NaN tests', t => {

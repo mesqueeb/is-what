@@ -94,6 +94,15 @@ function isArray(payload) {
     return getType(payload) === 'Array';
 }
 /**
+ * Returns whether the payload is a an array with at least 1 item
+ *
+ * @param {*} payload
+ * @returns {payload is any[]}
+ */
+function isFullArray(payload) {
+    return isArray(payload) && payload.length > 0;
+}
+/**
  * Returns whether the payload is a an empty array
  *
  * @param {*} payload
@@ -303,4 +312,4 @@ function isType(payload, type) {
     return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
 
-export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyArray, isEmptyObject, isEmptyString, isError, isFile, isFullString, isFunction, isMap, isNaNValue, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };
+export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyArray, isEmptyObject, isEmptyString, isError, isFile, isFullArray, isFullString, isFunction, isMap, isNaNValue, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };

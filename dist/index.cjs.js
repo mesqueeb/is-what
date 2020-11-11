@@ -98,6 +98,15 @@ function isArray(payload) {
     return getType(payload) === 'Array';
 }
 /**
+ * Returns whether the payload is a an array with at least 1 item
+ *
+ * @param {*} payload
+ * @returns {payload is any[]}
+ */
+function isFullArray(payload) {
+    return isArray(payload) && payload.length > 0;
+}
+/**
  * Returns whether the payload is a an empty array
  *
  * @param {*} payload
@@ -318,6 +327,7 @@ exports.isEmptyObject = isEmptyObject;
 exports.isEmptyString = isEmptyString;
 exports.isError = isError;
 exports.isFile = isFile;
+exports.isFullArray = isFullArray;
 exports.isFullString = isFullString;
 exports.isFunction = isFunction;
 exports.isMap = isMap;

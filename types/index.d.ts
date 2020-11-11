@@ -77,6 +77,13 @@ export declare function isFunction(payload: any): payload is AnyFunction;
  */
 export declare function isArray(payload: any): payload is any[];
 /**
+ * Returns whether the payload is a an array with at least 1 item
+ *
+ * @param {*} payload
+ * @returns {payload is any[]}
+ */
+export declare function isFullArray(payload: any): payload is any[];
+/**
  * Returns whether the payload is a an empty array
  *
  * @param {*} payload
