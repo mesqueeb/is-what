@@ -124,6 +124,7 @@ function fn (payload: string | number): number {
     // ↑ TypeScript already knows payload is a number here!
     return payload
   }
+  return 0
 }
 ```
 
