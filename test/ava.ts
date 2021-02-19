@@ -30,6 +30,7 @@ import {
   isPromise,
   isNaNValue,
   isEmptyObject,
+  isOneOf,
 } from '../src/index'
 
 // const blob = Buffer.from([])
@@ -311,6 +312,30 @@ test('isObject vs isAnyObject', t => {
   t.is(isAnyObject(new Array()), false)
   t.is(isAnyObject(new Date('_')), false)
   t.is(isAnyObject(new Date()), false)
+})
+
+test('isOneOf', t => {
+  t.is(isOneOf(isString, isNumber)('_'), true)
+  t.is(isOneOf(isString, isNumber)(1), true)
+  t.is(isOneOf(isString, isNumber)(undefined), false)
+
+  t.is(isOneOf(isString, isNumber, isBoolean)('_'), true)
+  t.is(isOneOf(isString, isNumber, isBoolean)(1), true)
+  t.is(isOneOf(isString, isNumber, isBoolean)(true), true)
+  t.is(isOneOf(isString, isNumber, isBoolean)(undefined), false)
+
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray)('_'), true)
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray)(1), true)
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray)(true), true)
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray)([]), true)
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray)(undefined), false)
+
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray, isPlainObject)('_'), true)
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray, isPlainObject)(1), true)
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray, isPlainObject)(true), true)
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray, isPlainObject)([]), true)
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray, isPlainObject)({}), true)
+  t.is(isOneOf(isString, isNumber, isBoolean, isArray, isPlainObject)(undefined), false)
 })
 
 test('type related tests', t => {
