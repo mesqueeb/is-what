@@ -286,8 +286,9 @@ function isPrimitive(payload) {
  * @param {*} payload
  * @returns {(payload is null | undefined)}
  */
-function isNullOrUndefined(payload) {
-    return isNull(payload) || isUndefined(payload);
+var isNullOrUndefined = isOneOf(isNull, isUndefined);
+function isOneOf(a, b, c, d, e) {
+    return function (value) { return a(value) || b(value) || (!!c && c(value)) || (!!d && d(value)) || (!!e && e(value)); };
 }
 /**
  * Does a generic check to check that the given payload is of a given type.
@@ -312,4 +313,4 @@ function isType(payload, type) {
     return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
 
-export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyArray, isEmptyObject, isEmptyString, isError, isFile, isFullArray, isFullString, isFunction, isMap, isNaNValue, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isPlainObject, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };
+export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyArray, isEmptyObject, isEmptyString, isError, isFile, isFullArray, isFullString, isFunction, isMap, isNaNValue, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isOneOf, isPlainObject, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };

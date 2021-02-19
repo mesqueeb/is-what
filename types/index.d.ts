@@ -1,6 +1,7 @@
 export declare type AnyFunction = (...args: any[]) => any;
 export declare type AnyAsyncFunction = (...args: any[]) => Promise<any>;
 export declare type AnyClass = new (...args: any[]) => any;
+declare type TypeGuard<A, B extends A> = (payload: A) => payload is B;
 /**
  * Returns the object type of the given payload
  *
@@ -224,7 +225,11 @@ export declare function isPrimitive(payload: any): payload is boolean | null | u
  * @param {*} payload
  * @returns {(payload is null | undefined)}
  */
-export declare function isNullOrUndefined(payload: any): payload is null | undefined;
+export declare const isNullOrUndefined: TypeGuard<any, null | undefined>;
+export declare function isOneOf<A, B extends A, C extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>): TypeGuard<A, B | C>;
+export declare function isOneOf<A, B extends A, C extends A, D extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>, c: TypeGuard<A, D>): TypeGuard<A, B | C | D>;
+export declare function isOneOf<A, B extends A, C extends A, D extends A, E extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>, c: TypeGuard<A, D>, d: TypeGuard<A, E>): TypeGuard<A, B | C | D | E>;
+export declare function isOneOf<A, B extends A, C extends A, D extends A, E extends A, F extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>, c: TypeGuard<A, D>, d: TypeGuard<A, E>, e: TypeGuard<A, F>): TypeGuard<A, B | C | D | E | F>;
 /**
  * Does a generic check to check that the given payload is of a given type.
  * In cases like Number, it will return true for NaN as NaN is a Number (thanks javascript!);
@@ -237,3 +242,4 @@ export declare function isNullOrUndefined(payload: any): payload is null | undef
  * @returns {payload is T}
  */
 export declare function isType<T extends AnyFunction | AnyClass>(payload: any, type: T): payload is T;
+export {};

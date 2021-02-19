@@ -290,8 +290,9 @@ function isPrimitive(payload) {
  * @param {*} payload
  * @returns {(payload is null | undefined)}
  */
-function isNullOrUndefined(payload) {
-    return isNull(payload) || isUndefined(payload);
+var isNullOrUndefined = isOneOf(isNull, isUndefined);
+function isOneOf(a, b, c, d, e) {
+    return function (value) { return a(value) || b(value) || (!!c && c(value)) || (!!d && d(value)) || (!!e && e(value)); };
 }
 /**
  * Does a generic check to check that the given payload is of a given type.
@@ -337,6 +338,7 @@ exports.isNullOrUndefined = isNullOrUndefined;
 exports.isNumber = isNumber;
 exports.isObject = isObject;
 exports.isObjectLike = isObjectLike;
+exports.isOneOf = isOneOf;
 exports.isPlainObject = isPlainObject;
 exports.isPrimitive = isPrimitive;
 exports.isPromise = isPromise;
