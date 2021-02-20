@@ -2,7 +2,7 @@ export type AnyFunction = (...args: any[]) => any
 export type AnyAsyncFunction = (...args: any[]) => Promise<any>
 export type AnyClass = new (...args: any[]) => any
 
-type TypeGuard<A, B extends A> = (payload: A) => payload is B;
+type TypeGuard<A, B extends A> = (payload: A) => payload is B
 
 /**
  * Returns the object type of the given payload
@@ -10,7 +10,7 @@ type TypeGuard<A, B extends A> = (payload: A) => payload is B;
  * @param {*} payload
  * @returns {string}
  */
-export function getType (payload: any): string {
+export function getType(payload: any): string {
   return Object.prototype.toString.call(payload).slice(8, -1)
 }
 
@@ -20,7 +20,7 @@ export function getType (payload: any): string {
  * @param {*} payload
  * @returns {payload is undefined}
  */
-export function isUndefined (payload: any): payload is undefined {
+export function isUndefined(payload: any): payload is undefined {
   return getType(payload) === 'Undefined'
 }
 
@@ -30,7 +30,7 @@ export function isUndefined (payload: any): payload is undefined {
  * @param {*} payload
  * @returns {payload is null}
  */
-export function isNull (payload: any): payload is null {
+export function isNull(payload: any): payload is null {
   return getType(payload) === 'Null'
 }
 
@@ -40,7 +40,7 @@ export function isNull (payload: any): payload is null {
  * @param {*} payload
  * @returns {payload is Record<string, any>}
  */
-export function isPlainObject (payload: any): payload is Record<string, any> {
+export function isPlainObject(payload: any): payload is Record<string, any> {
   if (getType(payload) !== 'Object') return false
   return payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype
 }
@@ -51,7 +51,7 @@ export function isPlainObject (payload: any): payload is Record<string, any> {
  * @param {*} payload
  * @returns {payload is Record<string, any>}
  */
-export function isObject (payload: any): payload is Record<string, any> {
+export function isObject(payload: any): payload is Record<string, any> {
   return isPlainObject(payload)
 }
 
@@ -61,7 +61,7 @@ export function isObject (payload: any): payload is Record<string, any> {
  * @param {*} payload
  * @returns {payload is { [K in any]: never }}
  */
-export function isEmptyObject (payload: any): payload is { [K in any]: never } {
+export function isEmptyObject(payload: any): payload is { [K in any]: never } {
   return isPlainObject(payload) && Object.keys(payload).length === 0
 }
 
@@ -71,7 +71,7 @@ export function isEmptyObject (payload: any): payload is { [K in any]: never } {
  * @param {*} payload
  * @returns {payload is Record<string, any>}
  */
-export function isAnyObject (payload: any): payload is Record<string, any> {
+export function isAnyObject(payload: any): payload is Record<string, any> {
   return getType(payload) === 'Object'
 }
 
@@ -84,7 +84,7 @@ export function isAnyObject (payload: any): payload is Record<string, any> {
  * @param {*} payload
  * @returns {payload is T}
  */
-export function isObjectLike<T extends Record<string, any>> (payload: any): payload is T {
+export function isObjectLike<T extends Record<string, any>>(payload: any): payload is T {
   return isAnyObject(payload)
 }
 
@@ -94,8 +94,8 @@ export function isObjectLike<T extends Record<string, any>> (payload: any): payl
  * @param {*} payload
  * @returns {payload is AnyFunction}
  */
-export function isFunction (payload: any): payload is AnyFunction {
-  return typeof payload === "function"
+export function isFunction(payload: any): payload is AnyFunction {
+  return typeof payload === 'function'
 }
 
 /**
@@ -104,7 +104,7 @@ export function isFunction (payload: any): payload is AnyFunction {
  * @param {any} payload
  * @returns {payload is any[]}
  */
-export function isArray (payload: any): payload is any[] {
+export function isArray(payload: any): payload is any[] {
   return getType(payload) === 'Array'
 }
 
@@ -114,7 +114,7 @@ export function isArray (payload: any): payload is any[] {
  * @param {*} payload
  * @returns {payload is any[]}
  */
-export function isFullArray (payload: any): payload is any[] {
+export function isFullArray(payload: any): payload is any[] {
   return isArray(payload) && payload.length > 0
 }
 
@@ -124,7 +124,7 @@ export function isFullArray (payload: any): payload is any[] {
  * @param {*} payload
  * @returns {payload is []}
  */
-export function isEmptyArray (payload: any): payload is [] {
+export function isEmptyArray(payload: any): payload is [] {
   return isArray(payload) && payload.length === 0
 }
 
@@ -134,7 +134,7 @@ export function isEmptyArray (payload: any): payload is [] {
  * @param {*} payload
  * @returns {payload is string}
  */
-export function isString (payload: any): payload is string {
+export function isString(payload: any): payload is string {
   return getType(payload) === 'String'
 }
 
@@ -144,7 +144,7 @@ export function isString (payload: any): payload is string {
  * @param {*} payload
  * @returns {payload is string}
  */
-export function isFullString (payload: any): payload is string {
+export function isFullString(payload: any): payload is string {
   return isString(payload) && payload !== ''
 }
 
@@ -154,7 +154,7 @@ export function isFullString (payload: any): payload is string {
  * @param {*} payload
  * @returns {payload is string}
  */
-export function isEmptyString (payload: any): payload is string {
+export function isEmptyString(payload: any): payload is string {
   return payload === ''
 }
 
@@ -166,7 +166,7 @@ export function isEmptyString (payload: any): payload is string {
  * @param {*} payload
  * @returns {payload is number}
  */
-export function isNumber (payload: any): payload is number {
+export function isNumber(payload: any): payload is number {
   return getType(payload) === 'Number' && !isNaN(payload)
 }
 
@@ -176,7 +176,7 @@ export function isNumber (payload: any): payload is number {
  * @param {*} payload
  * @returns {payload is boolean}
  */
-export function isBoolean (payload: any): payload is boolean {
+export function isBoolean(payload: any): payload is boolean {
   return getType(payload) === 'Boolean'
 }
 
@@ -186,7 +186,7 @@ export function isBoolean (payload: any): payload is boolean {
  * @param {*} payload
  * @returns {payload is RegExp}
  */
-export function isRegExp (payload: any): payload is RegExp {
+export function isRegExp(payload: any): payload is RegExp {
   return getType(payload) === 'RegExp'
 }
 
@@ -196,7 +196,7 @@ export function isRegExp (payload: any): payload is RegExp {
  * @param {*} payload
  * @returns {payload is Map<any, any>}
  */
-export function isMap (payload: any): payload is Map<any, any> {
+export function isMap(payload: any): payload is Map<any, any> {
   return getType(payload) === 'Map'
 }
 
@@ -206,7 +206,7 @@ export function isMap (payload: any): payload is Map<any, any> {
  * @param {*} payload
  * @returns {payload is WeakMap<any, any>}
  */
-export function isWeakMap (payload: any): payload is WeakMap<any, any> {
+export function isWeakMap(payload: any): payload is WeakMap<any, any> {
   return getType(payload) === 'WeakMap'
 }
 
@@ -216,7 +216,7 @@ export function isWeakMap (payload: any): payload is WeakMap<any, any> {
  * @param {*} payload
  * @returns {payload is Set<any>}
  */
-export function isSet (payload: any): payload is Set<any> {
+export function isSet(payload: any): payload is Set<any> {
   return getType(payload) === 'Set'
 }
 
@@ -226,7 +226,7 @@ export function isSet (payload: any): payload is Set<any> {
  * @param {*} payload
  * @returns {payload is WeakSet<any>}
  */
-export function isWeakSet (payload: any): payload is WeakSet<any> {
+export function isWeakSet(payload: any): payload is WeakSet<any> {
   return getType(payload) === 'WeakSet'
 }
 
@@ -236,7 +236,7 @@ export function isWeakSet (payload: any): payload is WeakSet<any> {
  * @param {*} payload
  * @returns {payload is symbol}
  */
-export function isSymbol (payload: any): payload is symbol {
+export function isSymbol(payload: any): payload is symbol {
   return getType(payload) === 'Symbol'
 }
 
@@ -246,7 +246,7 @@ export function isSymbol (payload: any): payload is symbol {
  * @param {*} payload
  * @returns {payload is Date}
  */
-export function isDate (payload: any): payload is Date {
+export function isDate(payload: any): payload is Date {
   return getType(payload) === 'Date' && !isNaN(payload)
 }
 
@@ -256,7 +256,7 @@ export function isDate (payload: any): payload is Date {
  * @param {*} payload
  * @returns {payload is Blob}
  */
-export function isBlob (payload: any): payload is Blob {
+export function isBlob(payload: any): payload is Blob {
   return getType(payload) === 'Blob'
 }
 
@@ -266,7 +266,7 @@ export function isBlob (payload: any): payload is Blob {
  * @param {*} payload
  * @returns {payload is File}
  */
-export function isFile (payload: any): payload is File {
+export function isFile(payload: any): payload is File {
   return getType(payload) === 'File'
 }
 
@@ -276,7 +276,7 @@ export function isFile (payload: any): payload is File {
  * @param {*} payload
  * @returns {payload is Promise<any>}
  */
-export function isPromise (payload: any): payload is Promise<any> {
+export function isPromise(payload: any): payload is Promise<any> {
   return getType(payload) === 'Promise'
 }
 
@@ -286,7 +286,7 @@ export function isPromise (payload: any): payload is Promise<any> {
  * @param {*} payload
  * @returns {payload is Error}
  */
-export function isError (payload: any): payload is Error {
+export function isError(payload: any): payload is Error {
   return getType(payload) === 'Error'
 }
 
@@ -296,7 +296,7 @@ export function isError (payload: any): payload is Error {
  * @param {*} payload
  * @returns {payload is typeof NaN}
  */
-export function isNaNValue (payload: any): payload is typeof NaN {
+export function isNaNValue(payload: any): payload is typeof NaN {
   return getType(payload) === 'Number' && isNaN(payload)
 }
 
@@ -306,7 +306,7 @@ export function isNaNValue (payload: any): payload is typeof NaN {
  * @param {*} payload
  * @returns {(payload is boolean | null | undefined | number | string | symbol)}
  */
-export function isPrimitive (
+export function isPrimitive(
   payload: any
 ): payload is boolean | null | undefined | number | string | symbol {
   return (
@@ -325,14 +325,39 @@ export function isPrimitive (
  * @param {*} payload
  * @returns {(payload is null | undefined)}
  */
-export const isNullOrUndefined = isOneOf(isNull, isUndefined);
+export const isNullOrUndefined = isOneOf(isNull, isUndefined)
 
-export function isOneOf<A, B extends A, C extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>): TypeGuard<A, B | C>;
-export function isOneOf<A, B extends A, C extends A, D extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>, c: TypeGuard<A, D>): TypeGuard<A, B | C | D>;
-export function isOneOf<A, B extends A, C extends A, D extends A, E extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>, c: TypeGuard<A, D>, d: TypeGuard<A, E>): TypeGuard<A, B | C | D | E>;
-export function isOneOf<A, B extends A, C extends A, D extends A, E extends A, F extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>, c: TypeGuard<A, D>, d: TypeGuard<A, E>, e: TypeGuard<A, F>): TypeGuard<A, B | C | D | E | F>;
-export function isOneOf(a: AnyFunction, b: AnyFunction, c?: AnyFunction, d?: AnyFunction, e?: AnyFunction): (value: unknown) => boolean {
-  return (value) => a(value) || b(value) || (!!c && c(value)) || (!!d && d(value)) || (!!e && e(value));
+export function isOneOf<A, B extends A, C extends A>(
+  a: TypeGuard<A, B>,
+  b: TypeGuard<A, C>
+): TypeGuard<A, B | C>
+export function isOneOf<A, B extends A, C extends A, D extends A>(
+  a: TypeGuard<A, B>,
+  b: TypeGuard<A, C>,
+  c: TypeGuard<A, D>
+): TypeGuard<A, B | C | D>
+export function isOneOf<A, B extends A, C extends A, D extends A, E extends A>(
+  a: TypeGuard<A, B>,
+  b: TypeGuard<A, C>,
+  c: TypeGuard<A, D>,
+  d: TypeGuard<A, E>
+): TypeGuard<A, B | C | D | E>
+export function isOneOf<A, B extends A, C extends A, D extends A, E extends A, F extends A>(
+  a: TypeGuard<A, B>,
+  b: TypeGuard<A, C>,
+  c: TypeGuard<A, D>,
+  d: TypeGuard<A, E>,
+  e: TypeGuard<A, F>
+): TypeGuard<A, B | C | D | E | F>
+export function isOneOf(
+  a: AnyFunction,
+  b: AnyFunction,
+  c?: AnyFunction,
+  d?: AnyFunction,
+  e?: AnyFunction
+): (value: unknown) => boolean {
+  return (value) =>
+    a(value) || b(value) || (!!c && c(value)) || (!!d && d(value)) || (!!e && e(value))
 }
 
 /**
@@ -346,7 +371,7 @@ export function isOneOf(a: AnyFunction, b: AnyFunction, c?: AnyFunction, d?: Any
  * @throws {TypeError} Will throw type error if type is an invalid type
  * @returns {payload is T}
  */
-export function isType<T extends AnyFunction | AnyClass> (payload: any, type: T): payload is T {
+export function isType<T extends AnyFunction | AnyClass>(payload: any, type: T): payload is T {
   if (!(type instanceof Function)) {
     throw new TypeError('Type must be a function')
   }

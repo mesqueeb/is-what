@@ -86,7 +86,7 @@ function isObjectLike(payload) {
  * @returns {payload is AnyFunction}
  */
 function isFunction(payload) {
-    return typeof payload === "function";
+    return typeof payload === 'function';
 }
 /**
  * Returns whether the payload is an array
@@ -292,7 +292,9 @@ function isPrimitive(payload) {
  */
 var isNullOrUndefined = isOneOf(isNull, isUndefined);
 function isOneOf(a, b, c, d, e) {
-    return function (value) { return a(value) || b(value) || (!!c && c(value)) || (!!d && d(value)) || (!!e && e(value)); };
+    return function (value) {
+        return a(value) || b(value) || (!!c && c(value)) || (!!d && d(value)) || (!!e && e(value));
+    };
 }
 /**
  * Does a generic check to check that the given payload is of a given type.
