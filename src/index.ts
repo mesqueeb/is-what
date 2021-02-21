@@ -66,6 +66,16 @@ export function isEmptyObject(payload: any): payload is { [K in any]: never } {
 }
 
 /**
+ * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)
+ *
+ * @param {*} payload
+ * @returns {payload is Record<string, any>}
+ */
+export function isFullObject(payload: any): payload is Record<string, any> {
+  return isPlainObject(payload) && Object.keys(payload).length > 0
+}
+
+/**
  * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
  *
  * @param {*} payload
