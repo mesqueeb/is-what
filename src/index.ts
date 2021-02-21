@@ -1,6 +1,7 @@
 export type AnyFunction = (...args: any[]) => any
 export type AnyAsyncFunction = (...args: any[]) => Promise<any>
 export type AnyClass = new (...args: any[]) => any
+export type PlainObject = Record<string | number | symbol, any>
 
 type TypeGuard<A, B extends A> = (payload: A) => payload is B
 
@@ -38,9 +39,9 @@ export function isNull(payload: any): payload is null {
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is Record<string, any>}
+ * @returns {payload is PlainObject}
  */
-export function isPlainObject(payload: any): payload is Record<string, any> {
+export function isPlainObject(payload: any): payload is PlainObject {
   if (getType(payload) !== 'Object') return false
   return payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype
 }
@@ -49,9 +50,9 @@ export function isPlainObject(payload: any): payload is Record<string, any> {
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is Record<string, any>}
+ * @returns {payload is PlainObject}
  */
-export function isObject(payload: any): payload is Record<string, any> {
+export function isObject(payload: any): payload is PlainObject {
   return isPlainObject(payload)
 }
 
@@ -69,9 +70,9 @@ export function isEmptyObject(payload: any): payload is { [K in any]: never } {
  * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is Record<string, any>}
+ * @returns {payload is PlainObject}
  */
-export function isFullObject(payload: any): payload is Record<string, any> {
+export function isFullObject(payload: any): payload is PlainObject {
   return isPlainObject(payload) && Object.keys(payload).length > 0
 }
 
@@ -79,9 +80,9 @@ export function isFullObject(payload: any): payload is Record<string, any> {
  * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
  *
  * @param {*} payload
- * @returns {payload is Record<string, any>}
+ * @returns {payload is PlainObject}
  */
-export function isAnyObject(payload: any): payload is Record<string, any> {
+export function isAnyObject(payload: any): payload is PlainObject {
   return getType(payload) === 'Object'
 }
 
@@ -94,7 +95,7 @@ export function isAnyObject(payload: any): payload is Record<string, any> {
  * @param {*} payload
  * @returns {payload is T}
  */
-export function isObjectLike<T extends Record<string, any>>(payload: any): payload is T {
+export function isObjectLike<T extends PlainObject>(payload: any): payload is T {
   return isAnyObject(payload)
 }
 
