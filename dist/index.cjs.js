@@ -33,7 +33,7 @@ function isNull(payload) {
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is Record<string, any>}
+ * @returns {payload is PlainObject}
  */
 function isPlainObject(payload) {
     if (getType(payload) !== 'Object')
@@ -44,7 +44,7 @@ function isPlainObject(payload) {
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
  *
  * @param {*} payload
- * @returns {payload is Record<string, any>}
+ * @returns {payload is PlainObject}
  */
 function isObject(payload) {
     return isPlainObject(payload);
@@ -59,10 +59,19 @@ function isEmptyObject(payload) {
     return isPlainObject(payload) && Object.keys(payload).length === 0;
 }
 /**
+ * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)
+ *
+ * @param {*} payload
+ * @returns {payload is PlainObject}
+ */
+function isFullObject(payload) {
+    return isPlainObject(payload) && Object.keys(payload).length > 0;
+}
+/**
  * Returns whether the payload is an any kind of object (including special classes or objects with different prototypes)
  *
  * @param {*} payload
- * @returns {payload is Record<string, any>}
+ * @returns {payload is PlainObject}
  */
 function isAnyObject(payload) {
     return getType(payload) === 'Object';
@@ -331,6 +340,7 @@ exports.isEmptyString = isEmptyString;
 exports.isError = isError;
 exports.isFile = isFile;
 exports.isFullArray = isFullArray;
+exports.isFullObject = isFullObject;
 exports.isFullString = isFullString;
 exports.isFunction = isFunction;
 exports.isMap = isMap;
