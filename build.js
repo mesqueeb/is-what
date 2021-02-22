@@ -20,41 +20,23 @@ import typescript from 'rollup-plugin-typescript2'
 // ------------------------------------------------------------------------------------------
 const pkg = require('./package.json')
 const name = pkg.name
-const className = name.replace(/(^\w|-\w)/g, c => c.replace('-', '').toUpperCase())
-const external = Object.keys(pkg.dependencies || [])
-const plugins = [
-  typescript({ useTsconfigDeclarationDir: true, tsconfigOverride: { exclude: ['test/**/*'] } }),
-]
+const className = name.replace(/(^\w|-\w)/g, (c) => c.replace('-', '').toUpperCase())
 
-// ------------------------------------------------------------------------------------------
-// Builds
-// ------------------------------------------------------------------------------------------
-function defaults (config) {
-  // defaults
-  const defaults = {
-    plugins,
-    external,
-  }
-  // defaults.output
-  config.output = config.output.map(output => {
-    return Object.assign(
+export default [
+  {
+    input: 'src/index.ts',
+    output: [
       {
+        file: 'dist/index.js',
+        format: 'esm',
         sourcemap: false,
         name: className,
         exports: 'named',
       },
-      output
-    )
-  })
-  return Object.assign(defaults, config)
-}
-
-export default [
-  defaults({
-    input: 'src/index.ts',
-    output: [
-      { file: 'dist/index.cjs.js', format: 'cjs' },
-      { file: 'dist/index.esm.js', format: 'esm' },
     ],
-  }),
+    plugins: [
+      typescript({ useTsconfigDeclarationDir: true, tsconfigOverride: { exclude: ['test/**/*'] } }),
+    ],
+    external: Object.keys(pkg.dependencies || []),
+  },
 ]

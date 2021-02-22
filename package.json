@@ -3,9 +3,9 @@
   "sideEffects": false,
   "version": "3.14.1",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "typings": "types/index.d.ts",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "typings": "./types/index.d.ts",
   "scripts": {
     "test": "ava",
     "jest": "jest",
@@ -70,6 +70,10 @@
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.1.5"
   },
+  "engines": {
+    "node": ">=12.13",
+    "npm": ">=7"
+  },
   "ava": {
     "extensions": [
       "ts"
@@ -82,5 +86,25 @@
   "np": {
     "yarn": false,
     "branch": "production"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "tree-shaking"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier/@typescript-eslint"
+    ],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/ban-ts-ignore": "off",
+      "tree-shaking/no-side-effects-in-initialization": "error",
+      "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
   }
 }

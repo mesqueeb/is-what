@@ -1,4 +1,5 @@
 import test from 'ava'
+
 import {
   isError,
   isEmptyArray,
@@ -36,7 +37,7 @@ import {
 
 // const blob = Buffer.from([])
 
-test('Basic true tests', t => {
+test('Basic true tests', (t: any) => {
   t.is(isError(new Error('')), true)
   t.is(isUndefined(undefined), true)
   t.is(isNull(null), true)
@@ -44,8 +45,8 @@ test('Basic true tests', t => {
   t.is(isNullOrUndefined(undefined), true)
   t.is(isObject({}), true)
   t.is(isEmptyObject({}), true)
-  t.is(isFullObject({0: ''}), true)
-  t.is(isFullObject({'': ''}), true)
+  t.is(isFullObject({ 0: '' }), true)
+  t.is(isFullObject({ '': '' }), true)
   t.is(isObject(new Object()), true)
   t.is(isArray([]), true)
   t.is(isEmptyArray([]), true)
@@ -72,7 +73,7 @@ test('Basic true tests', t => {
   t.is(isPromise(new Promise((resolve, reject) => {})), true)
 })
 
-test('Basic false tests', t => {
+test('Basic false tests', (t: any) => {
   t.is(isError({}), false)
   t.is(isNumber(NaN), false)
   t.is(isDate(new Date('_')), false)
@@ -94,20 +95,38 @@ test('Basic false tests', t => {
   t.is(isNullOrUndefined(NaN), false)
 })
 
-test('isFunction', t => {
+test('isFunction', (t: any) => {
   t.is(isFunction(NaN), false)
-  t.is(isFunction(() => {}), true)
-  t.is(isFunction(function () {}), true)
-  t.is(isFunction(async () => {}), true)
-  t.is(isFunction(async function () {}), true)
-  t.is(isFunction(function * () {}), true)
-  t.is(isFunction(async function * () {}), true)
-  const _ = { fn: () => {}, method () {} }
+  t.is(
+    isFunction(() => {}),
+    true
+  )
+  t.is(
+    isFunction(function () {}),
+    true
+  )
+  t.is(
+    isFunction(async () => {}),
+    true
+  )
+  t.is(
+    isFunction(async function () {}),
+    true
+  )
+  t.is(
+    isFunction(function* () {}),
+    true
+  )
+  t.is(
+    isFunction(async function* () {}),
+    true
+  )
+  const _ = { fn: () => {}, method() {} }
   t.is(isFunction(_.fn), true)
   t.is(isFunction(_.method), true)
 })
 
-test('isEmptyObject', t => {
+test('isEmptyObject', (t: any) => {
   t.is(isEmptyObject({}), true)
   t.is(isEmptyObject(new Object()), true)
 
@@ -124,7 +143,7 @@ test('isEmptyObject', t => {
   t.is(isEmptyObject(new WeakSet()), false)
 })
 
-test('isEmptyArray', t => {
+test('isEmptyArray', (t: any) => {
   t.is(isEmptyArray([]), true)
   t.is(isEmptyArray(new Array()), true)
   t.is(isEmptyArray(new Array(0)), true)
@@ -142,7 +161,7 @@ test('isEmptyArray', t => {
   t.is(isEmptyArray(new WeakSet()), false)
 })
 
-test('isFullArray', t => {
+test('isFullArray', (t: any) => {
   t.is(isFullArray(new Array(1)), true)
   t.is(isFullArray([undefined]), true)
   t.is(isFullArray([null]), true)
@@ -163,7 +182,7 @@ test('isFullArray', t => {
   t.is(isFullArray(new WeakSet()), false)
 })
 
-test('NaN tests', t => {
+test('NaN tests', (t: any) => {
   t.is(isNaNValue(NaN), true)
   t.is(isNaNValue(new Error('')), false)
   t.is(isNaNValue(undefined), false)
@@ -196,7 +215,7 @@ test('NaN tests', t => {
   t.is(isNaNValue(new Promise((resolve, reject) => {})), false)
 })
 
-test('Primitive tests', t => {
+test('Primitive tests', (t: any) => {
   // true
   t.is(isPrimitive(0), true)
   t.is(isPrimitive(''), true)
@@ -219,19 +238,21 @@ test('Primitive tests', t => {
   )
 })
 
-test('Date exception', t => {
+test('Date exception', (t: any) => {
   t.is(isDate(new Date('_')), false)
 })
 
-test('Generic isType', t => {
+test('Generic isType', (t: any) => {
   // -----------------------------
   // This is correct old fashion syntax for classes, if this is missing
-  function MyClass () {}
+  function MyClass() {}
   MyClass.prototype.constructor = MyClass
   // @ts-ignore
   const myClass = new MyClass()
   // -----------------------------
-  class MyOtherClass { constructor() {} }
+  class MyOtherClass {
+    constructor() {}
+  }
   // this is expected behaviour
   t.is(isType('', String), true)
   t.is(isType('_', String), true)
@@ -267,15 +288,17 @@ test('Generic isType', t => {
   t.is(isType(myClass, Object), true)
 })
 
-test('isObject vs isAnyObject', t => {
+test('isObject vs isAnyObject', (t: any) => {
   // -----------------------------
   // This is correct old fashion syntax for classes, if this is missing
-  function MyClass () {}
+  function MyClass() {}
   MyClass.prototype.constructor = MyClass
   // @ts-ignore
   const myClass = new MyClass()
   // -----------------------------
-  class MyClass2 { constructor() {} }
+  class MyClass2 {
+    constructor() {}
+  }
   const myClass2 = new MyClass2()
   const mySpecialObject = {}
   Object.setPrototypeOf(mySpecialObject, {
@@ -320,7 +343,7 @@ test('isObject vs isAnyObject', t => {
   t.is(isAnyObject(new Date()), false)
 })
 
-test('isOneOf', t => {
+test('isOneOf', (t: any) => {
   t.is(isOneOf(isString, isNumber)('_'), true)
   t.is(isOneOf(isString, isNumber)(1), true)
   t.is(isOneOf(isString, isNumber)(undefined), false)
@@ -344,7 +367,7 @@ test('isOneOf', t => {
   t.is(isOneOf(isString, isNumber, isBoolean, isArray, isPlainObject)(undefined), false)
 })
 
-test('type related tests', t => {
+test('type related tests', (t: any) => {
   t.pass()
   // const fn: string | ((k: number) => string) = (p) => 'a'
   // if (!isFunction(fn)) {
@@ -372,5 +395,4 @@ test('type related tests', t => {
   // const a: Record<string, number> = {}
 
   // a[myArray[1]] = myArray[0]
-
 })
