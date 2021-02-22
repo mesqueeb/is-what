@@ -31,6 +31,7 @@ import {
   isNaNValue,
   isEmptyObject,
   isOneOf,
+  isFullObject,
 } from '../src/index'
 
 // const blob = Buffer.from([])
@@ -42,8 +43,13 @@ test('Basic true tests', t => {
   t.is(isNullOrUndefined(null), true)
   t.is(isNullOrUndefined(undefined), true)
   t.is(isObject({}), true)
+  t.is(isEmptyObject({}), true)
+  t.is(isFullObject({0: ''}), true)
+  t.is(isFullObject({'': ''}), true)
   t.is(isObject(new Object()), true)
   t.is(isArray([]), true)
+  t.is(isEmptyArray([]), true)
+  t.is(isFullArray(['']), true)
   t.is(isArray(new Array()), true)
   t.is(isString(''), true)
   t.is(isString('_'), true)
@@ -122,7 +128,7 @@ test('isEmptyArray', t => {
   t.is(isEmptyArray([]), true)
   t.is(isEmptyArray(new Array()), true)
   t.is(isEmptyArray(new Array(0)), true)
-  
+
   t.is(isEmptyArray(new Array(1)), false)
   t.is(isEmptyArray([undefined]), false)
   t.is(isEmptyArray(null), false)
@@ -141,11 +147,11 @@ test('isFullArray', t => {
   t.is(isFullArray([undefined]), true)
   t.is(isFullArray([null]), true)
   t.is(isFullArray(['']), true)
-  
+
   t.is(isFullArray([]), false)
   t.is(isFullArray(new Array()), false)
   t.is(isFullArray(new Array(0)), false)
-  
+
   t.is(isFullArray(null), false)
   t.is(isFullArray(new Date()), false)
   t.is(isFullArray(new Error('')), false)
@@ -346,7 +352,7 @@ test('type related tests', t => {
   // }
 
   // const a: Record<string, number> = {}
-  
+
   // a[fn(1)] = fn(2)
 
   // const myArray: string | string[] = ['a', 'b']
@@ -355,7 +361,7 @@ test('type related tests', t => {
   // }
 
   // const a: Record<string, number> = {}
-  
+
   // a[myArray[1]] = myArray[0]
 
   // const myArray: string | any[] = [1, 2, 'a', 'b']
@@ -364,7 +370,7 @@ test('type related tests', t => {
   // }
 
   // const a: Record<string, number> = {}
-  
+
   // a[myArray[1]] = myArray[0]
 
 })
