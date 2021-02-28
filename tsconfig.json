@@ -5,6 +5,7 @@
     "target": "ES2019",
     "lib": ["ES2020", "DOM"],
     "strict": true,
+    "moduleResolution": "node",
     "isolatedModules": true,
     "esModuleInterop": true,
     "declaration": true,
