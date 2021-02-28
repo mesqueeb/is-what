@@ -1,9 +1,7 @@
 /* eslint-disable */
 
-// npm install rollup-plugin-typescript2 typescript --save-dev
+// npm i -D rollup rollup-plugin-typescript2 typescript
 import typescript from 'rollup-plugin-typescript2'
-// import { terser } from 'rollup-plugin-terser'
-// import resolve from 'rollup-plugin-node-resolve'
 
 // ------------------------------------------------------------------------------------------
 // formats
