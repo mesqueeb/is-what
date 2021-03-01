@@ -33,7 +33,7 @@ import {
   isEmptyObject,
   isOneOf,
   isFullObject,
-} from '../src/index'
+} from '../src/index.js'
 
 // const blob = Buffer.from([])
 

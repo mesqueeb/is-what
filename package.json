@@ -75,9 +75,9 @@
     "npm": ">=7"
   },
   "ava": {
-    "extensions": [
-      "ts"
-    ],
+    "extensions": {
+      "ts": "module"
+    },
     "nonSemVerExperiments": {
       "configurableModuleFormat": true
     },
