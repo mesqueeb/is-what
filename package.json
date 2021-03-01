@@ -78,9 +78,12 @@
     "extensions": [
       "ts"
     ],
-    "require": [
-      "tsconfig-paths/register",
-      "ts-node/register"
+    "nonSemVerExperiments": {
+      "configurableModuleFormat": true
+    },
+    "nodeArguments": [
+      "--loader",
+      "ts-node/esm"
     ]
   },
   "np": {
