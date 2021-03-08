@@ -82,8 +82,7 @@
       "configurableModuleFormat": true
     },
     "nodeArguments": [
-      "--loader",
-      "ts-node/esm"
+      "--loader=ts-node/esm"
     ]
   },
   "np": {
