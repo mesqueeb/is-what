@@ -1,6 +1,6 @@
 # is What? 🙉
 
-Very simple &amp; small JS type check functions. It's fully TypeScript supported!
+Very simple & small JS type check functions. It's fully TypeScript supported!
 
 ```
 npm i is-what
@@ -13,6 +13,7 @@ Or for deno available at: `"deno.land/x/is_what"`
 I built is-what because the existing solutions were all too complex or too poorly built.
 
 I was looking for:
+
 - A simple way to check any kind of type (including non-primitives)
 - Be able to check if an object is a plain object `{}` or a special object (like a class instance) ‼️
 - Let TypeScript automatically know what type a value is when checking
@@ -85,11 +86,11 @@ Checking for a JavaScript object can be really difficult. In JavaScript you can 
 
 ```js
 // define a plain object
-const plainObject = {hello: 'I am a good old object.'}
+const plainObject = { hello: 'I am a good old object.' }
 
 // define a special object
 class SpecialObject {
-  constructor (somethingSpecial) {
+  constructor(somethingSpecial) {
     this.speciality = somethingSpecial
   }
 }
@@ -113,13 +114,13 @@ getType(specialObject) // returns 'Object'
 is-what makes TypeScript know the type during if statements. This means that a check returns the type of the payload for TypeScript users.
 
 ```ts
-function isNumber (payload: any): payload is number {
+function isNumber(payload: any): payload is number {
   // return boolean
 }
 // As you can see above, all functions return a boolean for JavaScript, but pass the payload type to TypeScript.
 
 // usage example:
-function fn (payload: string | number): number {
+function fn(payload: string | number): number {
   if (isNumber(payload)) {
     // ↑ TypeScript already knows payload is a number here!
     return payload
@@ -131,8 +132,8 @@ function fn (payload: string | number): number {
 `isPlainObject` and `isAnyObject` with TypeScript will declare the payload to be an object type with any props:
 
 ```ts
-function isPlainObject (payload: any): payload is {[key: string]: any}
-function isAnyObject (payload: any): payload is {[key: string]: any}
+function isPlainObject(payload: any): payload is { [key: string]: any }
+function isAnyObject(payload: any): payload is { [key: string]: any }
 // The reason to return `{[key: string]: any}` is to be able to do
 if (isPlainObject(payload) && payload.id) return payload.id
 // if isPlainObject() would return `payload is object` then it would give an error at `payload.id`
@@ -145,7 +146,7 @@ If you want more control over which kind of objects are allowed you can use `isO
 ```ts
 import { isObjectLike } from 'is-what'
 // usage examples:
-isObjectLike<{specificKey: string}>(payload)
+isObjectLike<{ specificKey: string }>(payload)
 isObjectLike<object>(payload)
 // you can pass a specific type for TS to check on.
 ```
@@ -153,7 +154,7 @@ isObjectLike<object>(payload)
 `isObjectLike<T>` works like this under the hood:
 
 ```ts
-function isObjectLike<T extends object> (payload: any): payload is T {
+function isObjectLike<T extends object>(payload: any): payload is T {
   return isAnyObject(payload)
 }
 ```
@@ -173,16 +174,16 @@ function isObjectLike<T extends object> (payload: any): payload is T {
 It's litterally just these functions:
 
 ```js
-function getType (payload) {
+function getType(payload) {
   return Object.prototype.toString.call(payload).slice(8, -1)
 }
-function isUndefined (payload) {
+function isUndefined(payload) {
   return getType(payload) === 'Undefined'
 }
-function isString (payload) {
+function isString(payload) {
   return getType(payload) === 'String'
 }
-function isAnyObject (payload) {
+function isAnyObject(payload) {
   return getType(payload) === 'Object'
 }
 // etc...
