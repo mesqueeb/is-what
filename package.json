@@ -45,23 +45,23 @@
   },
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "devDependencies": {
-    "@babel/core": "^7.12.17",
+    "@babel/core": "^7.13.8",
     "@types/babel-core": "^6.25.6",
-    "@typescript-eslint/eslint-plugin": "^4.15.1",
-    "@typescript-eslint/parser": "^4.15.1",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
     "ava": "^3.15.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^7.20.0",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-tree-shaking": "^1.8.0",
     "np": "^7.4.0",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.39.0",
+    "rollup": "^2.40.0",
     "rollup-plugin-typescript2": "^0.30.0",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.5"
+    "typescript": "^4.2.3"
   },
   "engines": {
     "node": ">=12.13",
@@ -93,7 +93,7 @@
       "eslint:recommended",
       "plugin:@typescript-eslint/eslint-recommended",
       "plugin:@typescript-eslint/recommended",
-      "prettier/@typescript-eslint"
+      "prettier"
     ],
     "rules": {
       "@typescript-eslint/no-explicit-any": "off",
