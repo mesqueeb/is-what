@@ -35,7 +35,17 @@ import {
   isFullObject,
 } from '../src/index.js'
 
-// const blob = Buffer.from([])
+// TODO: test isBlob
+// test('isBlob', () => {
+//   expect(isBlob(Blob)).toBe(false)
+//   expect(isBlob(new Blob())).toBe(true)
+// })
+
+// TODO: test isFile
+// test('isFile', () => {
+//   expect(isFile(File)).toBe(false)
+//   expect(isFile(new File([''], '', { type: 'text/html' }))).toBe(true)
+// })
 
 test('Basic true tests', (t: any) => {
   t.is(isError(new Error('')), true)
