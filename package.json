@@ -5,7 +5,7 @@
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "type": "module",
   "exports": "./dist/index.js",
-  "typings": "./types/index.d.ts",
+  "types": "./types/index.d.ts",
   "scripts": {
     "test": "ava",
     "lint": "tsc --noEmit src/index.ts && eslint . --ext .js,.jsx,.ts,.tsx",
