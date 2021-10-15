@@ -130,6 +130,20 @@ export declare function isEmptyString(payload: any): payload is string;
  */
 export declare function isNumber(payload: any): payload is number;
 /**
+ * Returns whether the payload is a positive number (but not 0)
+ *
+ * @param {*} payload
+ * @returns {payload is number}
+ */
+export declare function isPositiveNumber(payload: any): payload is number;
+/**
+ * Returns whether the payload is a negative number (but not 0)
+ *
+ * @param {*} payload
+ * @returns {payload is number}
+ */
+export declare function isNegativeNumber(payload: any): payload is number;
+/**
  * Returns whether the payload is a boolean
  *
  * @param {*} payload

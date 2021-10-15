@@ -159,6 +159,24 @@ function isNumber(payload) {
     return getType(payload) === 'Number' && !isNaN(payload);
 }
 /**
+ * Returns whether the payload is a positive number (but not 0)
+ *
+ * @param {*} payload
+ * @returns {payload is number}
+ */
+function isPositiveNumber(payload) {
+    return isNumber(payload) && payload > 0;
+}
+/**
+ * Returns whether the payload is a negative number (but not 0)
+ *
+ * @param {*} payload
+ * @returns {payload is number}
+ */
+function isNegativeNumber(payload) {
+    return isNumber(payload) && payload < 0;
+}
+/**
  * Returns whether the payload is a boolean
  *
  * @param {*} payload
@@ -322,4 +340,4 @@ function isType(payload, type) {
     return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
 
-export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyArray, isEmptyObject, isEmptyString, isError, isFile, isFullArray, isFullObject, isFullString, isFunction, isMap, isNaNValue, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isOneOf, isPlainObject, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };
+export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyArray, isEmptyObject, isEmptyString, isError, isFile, isFullArray, isFullObject, isFullString, isFunction, isMap, isNaNValue, isNegativeNumber, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isOneOf, isPlainObject, isPositiveNumber, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };
