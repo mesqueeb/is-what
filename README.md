@@ -36,6 +36,12 @@ import { isString, isDate, isPlainObject } from 'is-what'
 ### Simple type check functions
 
 ```js
+// basics
+isBoolean(true) // true
+isBoolean(false) // true
+isUndefined(undefined) // true
+isNull(null) // true
+
 // strings
 isString('') // true
 isEmptyString('') // true
@@ -43,38 +49,86 @@ isFullString('') // false
 
 // numbers
 isNumber(0) // true
-isNumber(NaN) // false
+isNumber('0') // false
+isNumber(NaN) // false *
+isPositiveNumber(1) // true
+isNegativeNumber(-1) // true
+// * see below for special NaN use cases!
+
+// arrays
+isArray([]) // true
+isEmptyArray([]) // true
+isFullArray([1]) // true
+
+// objects
+isPlainObject({}) // true *
+isEmptyObject({}) // true
+isFullObject({ a: 1 }) // true
+// * see below for special object (& class instance) use cases!
+
+// functions
+isFunction(function () {}) // true
+isFunction(() => {}) // true
 
 // dates
 isDate(new Date()) // true
 isDate(new Date('invalid date')) // false
 
+// maps & sets
+isMap(new Map()) // true
+isSet(new Set()) // true
+isWeakMap(new WeakMap()) // true
+isWeakSet(new WeakSet()) // true
+
 // others
-isBoolean(false) // true
-isFunction(function () {}) // true
-isArray([]) // true
-isUndefined(undefined) // true
-isNull(null) // true
 isRegExp(/\s/gi) // true
 isSymbol(Symbol()) // true
 isBlob(new Blob()) // true
 isFile(new File([''], '', { type: 'text/html' })) // true
+isError(new Error('')) // true
+isPromise(new Promise((resolve) => {})) // true
 
 // primitives
 isPrimitive('') // true
 // true for any of: boolean, null, undefined, number, string, symbol
 ```
 
-### Getting and checking for specific types
+### Let's talk about NaN
 
-You can check for specific types with `getType` and `isType`:
+`isNaN` is a built-in JS Function but it really makes no sense:
 
 ```js
-import { getType, isType } from 'is-what'
+// 1)
+typeof NaN === 'number' // true
+// 🤔 ("not a number" is a "number"...)
 
-getType('') // returns 'String'
-// pass a Type as second param:
-isType('', String) // returns true
+// 2)
+isNaN('1') // false
+// 🤔 the string '1' is not-"not a number"... so it's a number??
+
+// 3)
+isNaN('one') // true
+// 🤔 'one' is NaN but `NaN === 'one'` is false...
+```
+
+With is-what the way we treat NaN makes a little bit more sense:
+
+```js
+import { isNumber, isNaNValue } from 'is-what'
+
+// 1)
+isNumber(NaN) // false!
+// let's not treat NaN as a number
+
+// 2)
+isNaNValue('1') // false
+// if it's not NaN, it's not NaN!!
+
+// 3)
+isNaNValue('one') // false
+// if it's not NaN, it's not NaN!!
+
+isNaNValue(NaN) // true
 ```
 
 ### isPlainObject vs isAnyObject
@@ -109,6 +163,18 @@ getType(specialObject) // returns 'Object'
 
 > Please note that `isPlainObject` will only return `true` for normal plain JavaScript objects.
 
+### Getting and checking for specific types
+
+You can check for specific types with `getType` and `isType`:
+
+```js
+import { getType, isType } from 'is-what'
+
+getType('') // returns 'String'
+// pass a Type as second param:
+isType('', String) // returns true
+```
+
 ## TypeScript
 
 is-what makes TypeScript know the type during if statements. This means that a check returns the type of the payload for TypeScript users.
@@ -141,15 +207,29 @@ if (isPlainObject(payload) && payload.id) return payload.id
 
 ### isObjectLike
 
-If you want more control over which kind of objects are allowed you can use `isObjectLike<T>`:
+If you want more control over what kind of interface/type is casted when checking for objects.
+
+To cast to a specific type while checking for `isAnyObject`, can use `isObjectLike<T>`:
 
 ```ts
 import { isObjectLike } from 'is-what'
-// usage examples:
-isObjectLike<{ specificKey: string }>(payload)
-isObjectLike<object>(payload)
-// you can pass a specific type for TS to check on.
+
+const payload = { name: 'Mesqueeb' } // current type: `{ name: string }`
+
+// Without casting:
+if (isAnyObject(payload)) {
+  // in here `payload` is casted to: `Record<string | number | symbol, any>`
+  // WE LOOSE THE TYPE!
+}
+
+// With casting:
+// you can pass a specific type for TS that will be casted when the function returns
+if (isObjectLike<{ name: string }>(payload)) {
+  // in here `payload` is casted to: `{ name: string }`
+}
 ```
+
+Please note: this library will not actually check the shape of the object, you need to do that yourself.
 
 `isObjectLike<T>` works like this under the hood:
 
