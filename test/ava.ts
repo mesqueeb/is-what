@@ -17,6 +17,8 @@ import {
   isBoolean,
   isRegExp,
   isNumber,
+  isPositiveNumber,
+  isNegativeNumber,
   isDate,
   isSymbol,
   isPrimitive,
@@ -190,6 +192,15 @@ test('isFullArray', (t: any) => {
   t.is(isFullArray(new WeakMap()), false)
   t.is(isFullArray(new Set()), false)
   t.is(isFullArray(new WeakSet()), false)
+})
+
+test('isPositiveNumber / isNegativeNumber', (t: any) => {
+  t.is(isPositiveNumber(-1), false)
+  t.is(isPositiveNumber(0), false)
+  t.is(isPositiveNumber(1), true)
+  t.is(isNegativeNumber(-1), true)
+  t.is(isNegativeNumber(0), false)
+  t.is(isNegativeNumber(1), false)
 })
 
 test('NaN tests', (t: any) => {
