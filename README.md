@@ -1,5 +1,8 @@
 # is What? 🙉
 
+<a href="https://www.npmjs.com/package/is-what"><img src="https://img.shields.io/npm/v/is-what.svg" alt="Total Downloads"></a>
+<a href="https://www.npmjs.com/package/is-what"><img src="https://img.shields.io/npm/dw/is-what.svg" alt="Latest Stable Version"></a>
+
 Very simple & small JS type check functions. It's fully TypeScript supported!
 
 ```
