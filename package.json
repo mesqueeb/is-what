@@ -2,7 +2,7 @@
   "name": "is-what",
   "sideEffects": false,
   "type": "module",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "module": "./dist/index.es.js",
   "main": "./dist/index.cjs",
