@@ -9,7 +9,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "declaration": true,
-    "declarationDir": "./types/"
+    "declarationDir": "./dist/types/"
   },
   "include": ["src/**/*", "test/**/*"]
 }
