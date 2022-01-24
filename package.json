@@ -25,7 +25,7 @@
     "test": "vitest run",
     "lint": "tsc --noEmit src/index.ts && eslint . --ext .js,.jsx,.ts,.tsx",
     "rollup": "rollup -c ./build.js",
-    "build": "rimraf types && rimraf dist && npm run lint && npm run rollup && npm run test",
+    "build": "rimraf dist && npm run lint && npm run rollup && npm run test",
     "release": "npm run build && np"
   },
   "repository": {
