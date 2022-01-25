@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "vitest run",
-    "lint": "tsc --noEmit ./src/index.ts && eslint ./src --ext .ts",
+    "lint": "tsc --noEmit && eslint ./src --ext .ts",
     "build": "rollup -c ./scripts/build.js",
     "release": "npm run lint && del dist && npm run build && np"
   },
