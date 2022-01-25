@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "ES2020",
-    "target": "ES2019",
-    "lib": ["ES2020", "DOM"],
+    "module": "esnext",
+    "target": "es2019",
+    "lib": ["esnext", "DOM"],
     "strict": true,
     "moduleResolution": "node",
     "isolatedModules": true,
