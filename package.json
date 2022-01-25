@@ -23,10 +23,9 @@
   },
   "scripts": {
     "test": "vitest run",
-    "lint": "tsc --noEmit src/index.ts && eslint . --ext .js,.jsx,.ts,.tsx",
-    "rollup": "rollup -c ./build.js",
-    "build": "rimraf dist && npm run lint && npm run rollup && npm run test",
-    "release": "npm run build && np"
+    "lint": "tsc --noEmit ./src/index.ts && eslint ./src --ext .ts",
+    "build": "rollup -c ./scripts/build.js",
+    "release": "npm run lint && del dist && npm run build && np"
   },
   "repository": {
     "type": "git",
@@ -61,16 +60,16 @@
   },
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/parser": "^5.10.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-tree-shaking": "^1.10.0",
     "np": "^7.6.0",
     "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
     "rollup": "^2.66.0",
     "rollup-plugin-typescript2": "^0.31.1",
+    "trash-cli": "^5.0.0",
     "typescript": "^4.5.5",
     "vitest": "^0.2.1"
   },
@@ -87,6 +86,12 @@
     "branch": "production"
   },
   "eslintConfig": {
+    "ignorePatterns": [
+      "node_modules",
+      "dist",
+      "scripts",
+      "test"
+    ],
     "root": true,
     "parser": "@typescript-eslint/parser",
     "plugins": [
@@ -104,7 +109,7 @@
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/ban-ts-ignore": "off",
       "tree-shaking/no-side-effects-in-initialization": "error",
-      "@typescript-eslint/explicit-module-boundary-types": "off"
+      "@typescript-eslint/ban-ts-comment": "off"
     }
   }
 }
