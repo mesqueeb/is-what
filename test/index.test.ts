@@ -38,7 +38,7 @@ import {
   isEmptyObject,
   isOneOf,
   isFullObject,
-} from '../src/index.js'
+} from '../src/index'
 
 // TODO: test isBlob
 // test('isBlob', () => {
@@ -250,7 +250,8 @@ test('Generic isType', () => {
   // @ts-ignore
   const myClass = new MyClass()
   // -----------------------------
-  class MyOtherClass { constructor() {}
+  class MyOtherClass {
+    constructor() {}
   }
   // this is expected behaviour
   expect(isType('', String)).toEqual(true)
@@ -292,11 +293,15 @@ test('isObject vs isAnyObject', () => {
   // @ts-ignore
   const myClass = new MyClass()
   // -----------------------------
-  class MyClass2 { constructor() {}
+  class MyClass2 {
+    constructor() {}
   }
   const myClass2 = new MyClass2()
   const mySpecialObject = {}
-  Object.setPrototypeOf(mySpecialObject, { toDate: function () {   return new Date() },
+  Object.setPrototypeOf(mySpecialObject, {
+    toDate: function () {
+      return new Date()
+    },
   })
   // IS OBJECT
   // plain object
@@ -364,26 +369,18 @@ test('type related tests', () => {
   // if (!isFunction(fn)) {
   //   fn
   // }
-
   // const a: Record<string, number> = {}
-
   // a[fn(1)] = fn(2)
-
   // const myArray: string | string[] = ['a', 'b']
   // if (!isArray(myArray)) {
   //   myArray
   // }
-
   // const a: Record<string, number> = {}
-
   // a[myArray[1]] = myArray[0]
-
   // const myArray: string | any[] = [1, 2, 'a', 'b']
   // if (!isArray(myArray)) {
   //   myArray
   // }
-
   // const a: Record<string, number> = {}
-
   // a[myArray[1]] = myArray[0]
 })
