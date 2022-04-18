@@ -11,6 +11,8 @@ npm i is-what
 
 Or for deno available at: `"deno.land/x/is_what"`
 
+> Also check out [is-where 🙈](https://github.com/mesqueeb/is-where)
+
 ## Motivation
 
 I built is-what because the existing solutions were all too complex or too poorly built.
@@ -245,6 +247,7 @@ function isObjectLike<T extends object>(payload: any): payload is T {
 ## Meet the family
 
 - [is-what 🙉](https://github.com/mesqueeb/is-what)
+- [is-where 🙈](https://github.com/mesqueeb/is-where)
 - [merge-anything 🥡](https://github.com/mesqueeb/merge-anything)
 - [filter-anything ⚔️](https://github.com/mesqueeb/filter-anything)
 - [find-and-replace-anything 🎣](https://github.com/mesqueeb/find-and-replace-anything)
@@ -272,4 +275,4 @@ function isAnyObject(payload) {
 // etc...
 ```
 
-See the full source code [here](https://github.com/mesqueeb/is-what/blob/master/src/index.ts).
+See the full source code [here](https://github.com/mesqueeb/is-what/blob/production/src/index.ts).
