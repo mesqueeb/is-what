@@ -243,17 +243,20 @@ function isObjectLike<T extends object>(payload: any): payload is T {
   return isAnyObject(payload)
 }
 ```
-
-## Meet the family
+## Meet the family (more tiny utils with TS support)
 
 - [is-what 🙉](https://github.com/mesqueeb/is-what)
 - [is-where 🙈](https://github.com/mesqueeb/is-where)
 - [merge-anything 🥡](https://github.com/mesqueeb/merge-anything)
+- [check-anything 👁](https://github.com/mesqueeb/check-anything)
+- [remove-anything ✂️](https://github.com/mesqueeb/remove-anything)
+- [getorset-anything 🐊](https://github.com/mesqueeb/getorset-anything)
+- [map-anything 🗺](https://github.com/mesqueeb/map-anything)
 - [filter-anything ⚔️](https://github.com/mesqueeb/filter-anything)
-- [find-and-replace-anything 🎣](https://github.com/mesqueeb/find-and-replace-anything)
-- [compare-anything 🛰](https://github.com/mesqueeb/compare-anything)
 - [copy-anything 🎭](https://github.com/mesqueeb/copy-anything)
+- [case-anything 🐫](https://github.com/mesqueeb/case-anything)
 - [flatten-anything 🏏](https://github.com/mesqueeb/flatten-anything)
+- [nestify-anything 🧅](https://github.com/mesqueeb/nestify-anything)
 
 ## Source code
 
