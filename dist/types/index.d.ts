@@ -1,8 +1,8 @@
-export declare type AnyFunction = (...args: any[]) => any;
-export declare type AnyAsyncFunction = (...args: any[]) => Promise<any>;
-export declare type AnyClass = new (...args: any[]) => any;
-export declare type PlainObject = Record<string | number | symbol, any>;
-declare type TypeGuard<A, B extends A> = (payload: A) => payload is B;
+export type AnyFunction = (...args: any[]) => any;
+export type AnyAsyncFunction = (...args: any[]) => Promise<any>;
+export type AnyClass = new (...args: any[]) => any;
+export type PlainObject = Record<string | number | symbol, any>;
+type TypeGuard<A, B extends A> = (payload: A) => payload is B;
 /**
  * Returns the object type of the given payload
  *

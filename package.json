@@ -23,7 +23,7 @@
   "scripts": {
     "test": "vitest run",
     "lint": "tsc --noEmit && eslint ./src --ext .ts",
-    "build": "rollup -c ./scripts/build.js",
+    "build": "rollup --bundleConfigAsCjs -c ./scripts/build.js",
     "release": "npm run lint && del dist && npm run build && np"
   },
   "repository": {
@@ -59,18 +59,18 @@
   },
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
-    "del-cli": "^4.0.1",
-    "eslint": "^8.7.0",
-    "eslint-config-prettier": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-tree-shaking": "^1.10.0",
-    "np": "^7.6.0",
-    "prettier": "^2.5.1",
-    "rollup": "^2.66.1",
-    "rollup-plugin-typescript2": "^0.31.1",
-    "typescript": "^4.5.5",
-    "vitest": "^0.2.3"
+    "np": "^7.6.2",
+    "prettier": "^2.8.0",
+    "rollup": "^3.5.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^4.9.3",
+    "vitest": "^0.25.3"
   },
   "ava": {
     "extensions": {

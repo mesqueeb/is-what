@@ -34,7 +34,8 @@ function isNull(payload) {
 function isPlainObject(payload) {
     if (getType(payload) !== 'Object')
         return false;
-    return payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype;
+    const prototype = Object.getPrototypeOf(payload);
+    return prototype.constructor === Object && prototype === Object.prototype;
 }
 /**
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)
