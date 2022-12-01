@@ -43,7 +43,8 @@ export function isNull(payload: any): payload is null {
  */
 export function isPlainObject(payload: any): payload is PlainObject {
   if (getType(payload) !== 'Object') return false
-  return payload.constructor === Object && Object.getPrototypeOf(payload) === Object.prototype
+  const prototype = Object.getPrototypeOf(payload)
+  return prototype.constructor === Object && prototype === Object.prototype
 }
 
 /**
