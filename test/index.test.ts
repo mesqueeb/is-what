@@ -311,6 +311,7 @@ test('isObject vs isAnyObject', () => {
   expect(isPlainObject({})).toEqual(true)
   expect(isPlainObject(new Object())).toEqual(true)
   expect(isPlainObject({ constructor: '123' })).toEqual(true)
+  expect(isPlainObject(Object.create(null))).toEqual(true)
   // classes & prototypes
   expect(isObject(myClass)).toEqual(false)
   expect(isObject(myClass2)).toEqual(false)
