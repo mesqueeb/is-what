@@ -5,14 +5,34 @@ import typescript from 'rollup-plugin-typescript2'
 
 const pkg = require('../package.json')
 
-export default {
-  input: 'src/index.ts',
-  output: [
-    { file: 'dist/index.cjs', format: 'cjs' },
-    { file: 'dist/index.es.js', format: 'esm' },
-  ],
-  plugins: [
-    typescript({ useTsconfigDeclarationDir: true, tsconfigOverride: { exclude: ['test/**/*'] } }),
-  ],
-  external: Object.keys(pkg.dependencies || []),
+function emitCjsPackageScope() {
+  return {
+    name: 'emit-cjs-package-scope',
+    generateBundle() {
+      this.emitFile({
+        fileName: 'package.json',
+        source: JSON.stringify({ type: 'commonjs' }, null, 2) + '\n',
+        type: 'asset',
+      })
+    },
+  }
 }
+
+const createConfig = ({ output, plugins = [] }) => {
+  return {
+    input: 'src/index.ts',
+    output,
+    external: Object.keys(pkg.dependencies || []),
+    plugins: [typescript({ tsconfigOverride: { exclude: ['test/**/*'] } }), ...plugins],
+  }
+}
+
+export default [
+  createConfig({
+    output: { file: pkg.main, format: 'cjs' },
+    plugins: [emitCjsPackageScope()],
+  }),
+  createConfig({
+    output: { file: pkg.module, format: 'esm' },
+  }),
+]
