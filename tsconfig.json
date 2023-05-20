@@ -3,7 +3,6 @@
     "allowJs": false,
     "baseUrl": ".",
     "declaration": true,
-    "declarationDir": "./dist/types/",
     "downlevelIteration": true,
     "esModuleInterop": true,
     "isolatedModules": true,
