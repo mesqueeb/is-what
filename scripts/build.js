@@ -8,11 +8,9 @@ const pkg = require('../package.json')
 export default {
   input: 'src/index.ts',
   output: [
-    { file: 'dist/index.cjs', format: 'cjs' },
-    { file: 'dist/index.es.js', format: 'esm' },
+    { file: pkg.exports['.'].require.default, format: 'cjs' },
+    { file: pkg.exports['.'].import.default, format: 'esm' },
   ],
-  plugins: [
-    typescript({ useTsconfigDeclarationDir: true, tsconfigOverride: { exclude: ['test/**/*'] } }),
-  ],
+  plugins: [typescript({ tsconfigOverride: { exclude: ['test/**/*'] } })],
   external: Object.keys(pkg.dependencies || []),
 }
