@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Returns the object type of the given payload
  *
@@ -341,4 +343,39 @@ function isType(payload, type) {
     return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
 
-export { getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyArray, isEmptyObject, isEmptyString, isError, isFile, isFullArray, isFullObject, isFullString, isFunction, isMap, isNaNValue, isNegativeNumber, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isOneOf, isPlainObject, isPositiveNumber, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };
+exports.getType = getType;
+exports.isAnyObject = isAnyObject;
+exports.isArray = isArray;
+exports.isBlob = isBlob;
+exports.isBoolean = isBoolean;
+exports.isDate = isDate;
+exports.isEmptyArray = isEmptyArray;
+exports.isEmptyObject = isEmptyObject;
+exports.isEmptyString = isEmptyString;
+exports.isError = isError;
+exports.isFile = isFile;
+exports.isFullArray = isFullArray;
+exports.isFullObject = isFullObject;
+exports.isFullString = isFullString;
+exports.isFunction = isFunction;
+exports.isMap = isMap;
+exports.isNaNValue = isNaNValue;
+exports.isNegativeNumber = isNegativeNumber;
+exports.isNull = isNull;
+exports.isNullOrUndefined = isNullOrUndefined;
+exports.isNumber = isNumber;
+exports.isObject = isObject;
+exports.isObjectLike = isObjectLike;
+exports.isOneOf = isOneOf;
+exports.isPlainObject = isPlainObject;
+exports.isPositiveNumber = isPositiveNumber;
+exports.isPrimitive = isPrimitive;
+exports.isPromise = isPromise;
+exports.isRegExp = isRegExp;
+exports.isSet = isSet;
+exports.isString = isString;
+exports.isSymbol = isSymbol;
+exports.isType = isType;
+exports.isUndefined = isUndefined;
+exports.isWeakMap = isWeakMap;
+exports.isWeakSet = isWeakSet;
