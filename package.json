@@ -1,9 +1,9 @@
 {
   "name": "is-what",
-  "sideEffects": false,
-  "type": "module",
   "version": "4.1.10",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
+  "type": "module",
+  "sideEffects": false,
   "types": "./dist/index.d.ts",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
@@ -28,7 +28,7 @@
   "scripts": {
     "test": "vitest run",
     "lint": "tsc --noEmit && eslint ./src --ext .ts",
-    "build": "rollup -c ./scripts/rollup.config.js",
+    "build": "rollup -c ./rollup.config.js",
     "release": "npm run lint && del dist && npm run build && np"
   },
   "repository": {
@@ -73,7 +73,8 @@
     "np": "^7.7.0",
     "prettier": "^2.8.8",
     "rollup": "^3.22.0",
-    "rollup-plugin-typescript2": "^0.34.1",
+    "rollup-plugin-dts": "^5.3.0",
+    "rollup-plugin-esbuild": "^5.0.0",
     "typescript": "^5.0.4",
     "vitest": "^0.31.1"
   },
