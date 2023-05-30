@@ -415,35 +415,33 @@ export function isType<T extends AnyFunction | AnyClass>(payload: any, type: T):
   return getType(payload) === name || Boolean(payload && payload.constructor === type)
 }
 
-export function isInstanceOf<T extends AnyClass>(
+type GlobalClassName = {
+  [K in keyof typeof globalThis]: (typeof globalThis)[K] extends AnyClass ? K : never
+}[keyof typeof globalThis]
+
+export function isInstanceOf<T extends AnyClass>(value: unknown, class_: T): value is T
+export function isInstanceOf<K extends GlobalClassName>(
   value: unknown,
-  class_: T
-): T is AnyClass;
-export function isInstanceOf<K extends keyof typeof globalThis>(
-  value: unknown,
-  className: globalThis[K]
-): T is globalThis[K];
-export function isInstanceOf<N extends string>(
-  value: unknown,
-  className: N
-): value is object;
+  className: K
+): value is (typeof globalThis)[K]
+export function isInstanceOf(value: unknown, className: string): value is object
 export function isInstanceOf(
   value: unknown,
   classOrClassName: AnyClass | string
 ): boolean {
-  if (typeof classOrClassName === "function") {
+  if (typeof classOrClassName === 'function') {
     for (let p = value; p; p = Object.getPrototypeOf(p)) {
       if (isType(p, classOrClassName)) {
-        return true;
+        return true
       }
     }
-    return false;
+    return false
   } else {
     for (let p = value; p; p = Object.getPrototypeOf(p)) {
       if (getType(p) === classOrClassName) {
-        return true;
+        return true
       }
     }
-    return false;
+    return false
   }
 }
