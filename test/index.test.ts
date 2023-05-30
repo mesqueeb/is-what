@@ -38,6 +38,7 @@ import {
   isEmptyObject,
   isOneOf,
   isFullObject,
+  isInstanceOf,
 } from '../src/index'
 
 // TODO: test isBlob
@@ -385,4 +386,34 @@ test('type related tests', () => {
   // }
   // const a: Record<string, number> = {}
   // a[myArray[1]] = myArray[0]
+})
+
+test('isInstanceOf', () => {
+  expect(isInstanceOf(new Date(), Date)).toEqual(true)
+  expect(isInstanceOf(new Date(), 'Date')).toEqual(true)
+  expect(isInstanceOf(new Date(), Object)).toEqual(true)
+  expect(isInstanceOf(new Date(), 'Object')).toEqual(true)
+
+  expect(isInstanceOf(new String(), String)).toEqual(true)
+  expect(isInstanceOf(new String(), 'String')).toEqual(true)
+  expect(isInstanceOf(new String(), Object)).toEqual(true)
+  expect(isInstanceOf(new String(), 'Object')).toEqual(true)
+
+  expect(isInstanceOf(new Number(), Number)).toEqual(true)
+  expect(isInstanceOf(new Number(), 'Number')).toEqual(true)
+  expect(isInstanceOf(new Number(), Object)).toEqual(true)
+  expect(isInstanceOf(new Number(), 'Object')).toEqual(true)
+
+  expect(isInstanceOf(new Boolean(), Boolean)).toEqual(true)
+  expect(isInstanceOf(new Boolean(), 'Boolean')).toEqual(true)
+  expect(isInstanceOf(new Boolean(), Object)).toEqual(true)
+  expect(isInstanceOf(new Boolean(), 'Object')).toEqual(true)
+
+  expect(isInstanceOf([], Array)).toEqual(true)
+  expect(isInstanceOf([], 'Array')).toEqual(true)
+  expect(isInstanceOf([], Object)).toEqual(true)
+  expect(isInstanceOf([], 'Object')).toEqual(true)
+
+  expect(isInstanceOf({}, Object)).toEqual(true)
+  expect(isInstanceOf({}, 'Object')).toEqual(true)
 })
