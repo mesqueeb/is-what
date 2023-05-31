@@ -180,6 +180,18 @@ getType('') // returns 'String'
 isType('', String) // returns true
 ```
 
+If you just want to make sure your object _inherits_ from a particular class or
+`toStringTag` value, you can use `isInstanceOf()` like this:
+
+```js
+import { isInstanceOf } from 'is-what'
+
+console.log(isInstanceOf(new XMLHttpRequest(), "EventTarget"))
+//=> true
+console.log(isInstanceOf(globalThis, ReadableStream))
+//=> false
+```
+
 ## TypeScript
 
 is-what makes TypeScript know the type during if statements. This means that a check returns the type of the payload for TypeScript users.
