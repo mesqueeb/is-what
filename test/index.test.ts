@@ -285,7 +285,7 @@ test('Generic isType', () => {
   expect(isType(myClass, Object)).toEqual(true)
 })
 
-test('isObject vs isAnyObject', () => {
+test('isPlainObject vs isAnyObject', () => {
   // -----------------------------
   // This is correct old fashion syntax for classes, if this is missing
   function MyClass() {}
@@ -304,43 +304,34 @@ test('isObject vs isAnyObject', () => {
     },
   })
   // IS OBJECT
-  // plain object
-  expect(isObject({})).toEqual(true)
-  expect(isObject(new Object())).toEqual(true)
-  expect(isObject({ constructor: '123' })).toEqual(true)
-  expect(isPlainObject({})).toEqual(true)
-  expect(isPlainObject(new Object())).toEqual(true)
-  expect(isPlainObject({ constructor: '123' })).toEqual(true)
-  expect(isPlainObject(Object.create(null))).toEqual(true)
-  // classes & prototypes
-  expect(isObject(myClass)).toEqual(false)
-  expect(isObject(myClass2)).toEqual(false)
-  expect(isObject(mySpecialObject)).toEqual(false)
-  expect(isPlainObject(myClass)).toEqual(false)
-  expect(isPlainObject(myClass2)).toEqual(false)
-  expect(isPlainObject(mySpecialObject)).toEqual(false)
-  // arrays and dates
-  expect(isObject([])).toEqual(false)
-  expect(isObject(new Array())).toEqual(false)
-  expect(isObject(new Date('_'))).toEqual(false)
-  expect(isObject(new Date())).toEqual(false)
-  expect(isPlainObject([])).toEqual(false)
-  expect(isPlainObject(new Array())).toEqual(false)
-  expect(isPlainObject(new Date('_'))).toEqual(false)
-  expect(isPlainObject(new Date())).toEqual(false)
-  // IS ANY OBJECT
-  // plain object
+  // plain object `{}`
   expect(isAnyObject({})).toEqual(true)
+  expect(isPlainObject({})).toEqual(true)
+  // plain object `new Object()`
   expect(isAnyObject(new Object())).toEqual(true)
+  expect(isPlainObject(new Object())).toEqual(true)
+  // plain object `{ constructor: '123' }`
+  expect(isAnyObject({ constructor: '123' })).toEqual(true)
+  expect(isPlainObject({ constructor: '123' })).toEqual(true)
+  // plain object `Object.create(null)`
+  expect(isAnyObject(Object.create(null))).toEqual(true)
+  expect(isPlainObject(Object.create(null))).toEqual(false)
   // classes & prototypes
   expect(isAnyObject(myClass)).toEqual(true)
+  expect(isPlainObject(myClass)).toEqual(false)
   expect(isAnyObject(myClass2)).toEqual(true)
+  expect(isPlainObject(myClass2)).toEqual(false)
   expect(isAnyObject(mySpecialObject)).toEqual(true)
+  expect(isPlainObject(mySpecialObject)).toEqual(false)
   // arrays and dates
   expect(isAnyObject([])).toEqual(false)
+  expect(isPlainObject([])).toEqual(false)
   expect(isAnyObject(new Array())).toEqual(false)
+  expect(isPlainObject(new Array())).toEqual(false)
   expect(isAnyObject(new Date('_'))).toEqual(false)
+  expect(isPlainObject(new Date('_'))).toEqual(false)
   expect(isAnyObject(new Date())).toEqual(false)
+  expect(isPlainObject(new Date())).toEqual(false)
 })
 
 test('isOneOf', () => {
