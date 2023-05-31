@@ -186,10 +186,10 @@ If you just want to make sure your object _inherits_ from a particular class or
 ```js
 import { isInstanceOf } from 'is-what'
 
-console.log(isInstanceOf(new XMLHttpRequest(), "EventTarget"))
-//=> true
-console.log(isInstanceOf(globalThis, ReadableStream))
-//=> false
+isInstanceOf(new XMLHttpRequest(), "EventTarget")
+// returns true
+isInstanceOf(globalThis, ReadableStream)
+// returns false
 ```
 
 ## TypeScript
