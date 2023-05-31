@@ -1,7 +1,7 @@
 name: Test
 on:
   push:
-    branches: 'dev'
+    branches: 'production'
     paths:
       - src/**
       - test/**
@@ -10,7 +10,7 @@ on:
       - '*.json'
       - .github/workflows/test.yml
   pull_request:
-    branches: 'dev'
+    branches: 'production'
     paths:
       - src/**
       - test/**
