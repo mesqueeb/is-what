@@ -13,7 +13,7 @@ function isPlainObject(payload) {
   if (getType(payload) !== "Object")
     return false;
   const prototype = Object.getPrototypeOf(payload);
-  return prototype.constructor === Object && prototype === Object.prototype;
+  return !!prototype && prototype.constructor === Object && prototype === Object.prototype;
 }
 function isObject(payload) {
   return isPlainObject(payload);
@@ -116,6 +116,23 @@ function isType(payload, type) {
   const name = type.name;
   return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
+function isInstanceOf(value, classOrClassName) {
+  if (typeof classOrClassName === "function") {
+    for (let p = value; p; p = Object.getPrototypeOf(p)) {
+      if (isType(p, classOrClassName)) {
+        return true;
+      }
+    }
+    return false;
+  } else {
+    for (let p = value; p; p = Object.getPrototypeOf(p)) {
+      if (getType(p) === classOrClassName) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
 
 exports.getType = getType;
 exports.isAnyObject = isAnyObject;
@@ -132,6 +149,7 @@ exports.isFullArray = isFullArray;
 exports.isFullObject = isFullObject;
 exports.isFullString = isFullString;
 exports.isFunction = isFunction;
+exports.isInstanceOf = isInstanceOf;
 exports.isMap = isMap;
 exports.isNaNValue = isNaNValue;
 exports.isNegativeNumber = isNegativeNumber;

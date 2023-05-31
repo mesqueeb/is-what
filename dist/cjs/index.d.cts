@@ -248,9 +248,53 @@ declare function isPrimitive(payload: any): payload is boolean | null | undefine
  * @returns {(payload is null | undefined)}
  */
 declare const isNullOrUndefined: TypeGuard<any, null | undefined>;
+/**
+ * A factory function that creates a function to check if the payload is one of the given types.
+ * @example
+ * import { isOneOf, isNull, isUndefined } from 'is-what'
+ *
+ * const isNullOrUndefined = isOneOf(isNull, isUndefined)
+ *
+ * isNullOrUndefined(null) // true
+ * isNullOrUndefined(undefined) // true
+ * isNullOrUndefined(123) // false
+ */
 declare function isOneOf<A, B extends A, C extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>): TypeGuard<A, B | C>;
+/**
+ * A factory function that creates a function to check if the payload is one of the given types.
+ * @example
+ * import { isOneOf, isNull, isUndefined } from 'is-what'
+ *
+ * const isNullOrUndefined = isOneOf(isNull, isUndefined)
+ *
+ * isNullOrUndefined(null) // true
+ * isNullOrUndefined(undefined) // true
+ * isNullOrUndefined(123) // false
+ */
 declare function isOneOf<A, B extends A, C extends A, D extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>, c: TypeGuard<A, D>): TypeGuard<A, B | C | D>;
+/**
+ * A factory function that creates a function to check if the payload is one of the given types.
+ * @example
+ * import { isOneOf, isNull, isUndefined } from 'is-what'
+ *
+ * const isNullOrUndefined = isOneOf(isNull, isUndefined)
+ *
+ * isNullOrUndefined(null) // true
+ * isNullOrUndefined(undefined) // true
+ * isNullOrUndefined(123) // false
+ */
 declare function isOneOf<A, B extends A, C extends A, D extends A, E extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>, c: TypeGuard<A, D>, d: TypeGuard<A, E>): TypeGuard<A, B | C | D | E>;
+/**
+ * A factory function that creates a function to check if the payload is one of the given types.
+ * @example
+ * import { isOneOf, isNull, isUndefined } from 'is-what'
+ *
+ * const isNullOrUndefined = isOneOf(isNull, isUndefined)
+ *
+ * isNullOrUndefined(null) // true
+ * isNullOrUndefined(undefined) // true
+ * isNullOrUndefined(123) // false
+ */
 declare function isOneOf<A, B extends A, C extends A, D extends A, E extends A, F extends A>(a: TypeGuard<A, B>, b: TypeGuard<A, C>, c: TypeGuard<A, D>, d: TypeGuard<A, E>, e: TypeGuard<A, F>): TypeGuard<A, B | C | D | E | F>;
 /**
  * Does a generic check to check that the given payload is of a given type.
@@ -264,5 +308,27 @@ declare function isOneOf<A, B extends A, C extends A, D extends A, E extends A, 
  * @returns {payload is T}
  */
 declare function isType<T extends AnyFunction | AnyClass>(payload: any, type: T): payload is T;
+type GlobalClassName = {
+    [K in keyof typeof globalThis]: (typeof globalThis)[K] extends AnyClass ? K : never;
+}[keyof typeof globalThis];
+/**
+ * Checks if a value is an instance of a class or a class name. Useful when you
+ * want to check if a value is an instance of a class that may not be defined in
+ * the current scope. For example, if you want to check if a value is an
+ * `OffscreenCanvas` instance, you might not want to do the song and dance of
+ * using `typeof OffscreenCanvas !== 'undefined'` and then shimming
+ * `OffscreenCanvas` if the types aren't around.
+ *
+ * @example
+ * if (isInstanceOf(value, 'OffscreenCanvas')) {
+ *  // value is an OffscreenCanvas
+ * }
+ *
+ * @param value The value to recursively check
+ * @param class_ A string or class that the value should be an instance of
+ */
+declare function isInstanceOf<T extends AnyClass>(value: unknown, class_: T): value is T;
+declare function isInstanceOf<K extends GlobalClassName>(value: unknown, className: K): value is (typeof globalThis)[K];
+declare function isInstanceOf(value: unknown, className: string): value is object;
 
-export { AnyAsyncFunction, AnyClass, AnyFunction, PlainObject, getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyArray, isEmptyObject, isEmptyString, isError, isFile, isFullArray, isFullObject, isFullString, isFunction, isMap, isNaNValue, isNegativeNumber, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isOneOf, isPlainObject, isPositiveNumber, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };
+export { AnyAsyncFunction, AnyClass, AnyFunction, PlainObject, getType, isAnyObject, isArray, isBlob, isBoolean, isDate, isEmptyArray, isEmptyObject, isEmptyString, isError, isFile, isFullArray, isFullObject, isFullString, isFunction, isInstanceOf, isMap, isNaNValue, isNegativeNumber, isNull, isNullOrUndefined, isNumber, isObject, isObjectLike, isOneOf, isPlainObject, isPositiveNumber, isPrimitive, isPromise, isRegExp, isSet, isString, isSymbol, isType, isUndefined, isWeakMap, isWeakSet };
