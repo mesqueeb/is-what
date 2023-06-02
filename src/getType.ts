@@ -43,6 +43,8 @@ type CommonTypeName = GlobalClassName | 'Null' | 'Undefined'
  *   //=> 'Number'
  *   console.log(getType(() => {}))
  *   //=> 'Function'
+ *   console.log(getType(function* () {}))
+ *   //=> 'GeneratorFunction'
  *
  * @param x The raw value to get the type of. This can be anything.
  * @returns The type of the given value as a string. Usually the `Symbol.toStringTag` of the
