@@ -1,6 +1,6 @@
 export default function isPrimitive(
   x: unknown
-): x is string | number | boolean | symbol | null | undefined {
+): x is null | undefined | bigint | boolean | number | string | symbol {
   return (
     x == null ||
     typeof x === 'bigint' ||
