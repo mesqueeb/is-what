@@ -1,7 +1,7 @@
 import isPlainObject from './isPlainObject.js'
 
 /**
- * Returns true if the given payload is an empty object (`{}`). The object _must_ be a plain object
+ * Returns true if the given value is an empty object (`{}`). The object _must_ be a plain object
  * (as detected by `isPlainObject()`) and have _zero_ own keys. This includes non-enumarable keys
  * and symbols!
  *

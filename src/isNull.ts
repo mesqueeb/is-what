@@ -1,7 +1,7 @@
 /**
- * Returns whether the payload is **exactly** the `null` value. This is a strict check and will
+ * Returns whether the value is **exactly** the `null` value. This is a strict check and will
  * **return `false`** if given the `undefined` value. This is equivalent to manually checking if
- * `payload === null`.
+ * `x === null`.
  *
  * @example
  *   console.log(isNull(null))

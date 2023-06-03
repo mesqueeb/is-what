@@ -3,7 +3,7 @@ import type { GlobalClassName } from './isInstanceOf.js'
 type CommonTypeName = GlobalClassName | 'Null' | 'Undefined'
 
 /**
- * Returns the object type of the given payload. This uses the default `Object` `toString()` method
+ * Returns the object type of the given value. This uses the default `Object` `toString()` method
  * to get the "type" of an object. This will **respect** the `Symbol.toStringTag` property if it is
  * set on the object.
  *
