@@ -10,7 +10,7 @@ on:
       - '*.lock'
       - .github/workflows/preview-docs.yml
   pull_request:
-    branches: [main]
+    branches: production
     paths:
       - docs/**
       - '*rc'
