@@ -186,7 +186,7 @@ If you just want to make sure your object _inherits_ from a particular class or
 ```js
 import { isInstanceOf } from 'is-what'
 
-isInstanceOf(new XMLHttpRequest(), "EventTarget")
+isInstanceOf(new XMLHttpRequest(), 'EventTarget')
 // returns true
 isInstanceOf(globalThis, ReadableStream)
 // returns false
@@ -255,6 +255,7 @@ function isObjectLike<T extends object>(payload: any): payload is T {
   return isAnyObject(payload)
 }
 ```
+
 ## Meet the family (more tiny utils with TS support)
 
 - [is-what 🙉](https://github.com/mesqueeb/is-what)

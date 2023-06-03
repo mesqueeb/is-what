@@ -1,6 +1,6 @@
 {
   "name": "is-what",
-  "version": "4.1.12",
+  "version": "4.1.13",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "type": "module",
   "sideEffects": false,
@@ -118,5 +118,14 @@
       "tree-shaking/no-side-effects-in-initialization": "error",
       "@typescript-eslint/ban-ts-comment": "off"
     }
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "semi": false,
+    "bracketSpacing": true,
+    "quoteProps": "consistent"
   }
 }
