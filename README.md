@@ -102,9 +102,25 @@ I was looking for:
 
 And that's exactly what `is-what` is! 😄 You might also want to check out some
 other packages like the [Node.js `node:util/types` module], [is-plain-obj], and
-[type-fest] for more type checking utilities.
+[type-fest] for more type checking utilities. Also check out [@tinylibs] for
+other tiny TypeScript libraries!
 
-[😊 Check out my other TypeScript packages!](https://github.com/search?q=user%3Amesqueeb+language%3ATypeScript&type=repositories)
+<details><summary>😊 Check out my other TypeScript packages!</summary>
+
+- [is-what 🙉](https://github.com/mesqueeb/is-what)
+- [is-where 🙈](https://github.com/mesqueeb/is-where)
+- [merge-anything 🥡](https://github.com/mesqueeb/merge-anything)
+- [check-anything 👁](https://github.com/mesqueeb/check-anything)
+- [remove-anything ✂️](https://github.com/mesqueeb/remove-anything)
+- [getorset-anything 🐊](https://github.com/mesqueeb/getorset-anything)
+- [map-anything 🗺](https://github.com/mesqueeb/map-anything)
+- [filter-anything ⚔️](https://github.com/mesqueeb/filter-anything)
+- [copy-anything 🎭](https://github.com/mesqueeb/copy-anything)
+- [case-anything 🐫](https://github.com/mesqueeb/case-anything)
+- [flatten-anything 🏏](https://github.com/mesqueeb/flatten-anything)
+- [nestify-anything 🧅](https://github.com/mesqueeb/nestify-anything)
+
+</details>
 
 ## Development
 
@@ -148,4 +164,5 @@ npm run build:deno
 [Yarn]: https://yarnpkg.com/
 [pnpm]: https://pnpm.io/
 [jsDelivr]: https://www.jsdelivr.com/esm
+[@tinylibs]: https://github.com/tinylibs
 <!-- prettier-ignore-end -->
