@@ -29,3 +29,13 @@ test("true with objects", () => {
   assert.equal(isType(new EventTarget(), EventTarget), true);
   assert.equal(isType(new Map(), Map), true);
 });
+
+test("custom classes that don't set Symbol.toStringTag are Object", () => {
+  class C {}
+  assert.equal(isType(new C(), Object), true);
+});
+
+test("custom classes that don't set Symbol.toStringTag are that class", () => {
+  class C {}
+  assert.equal(isType(new C(), C), true);
+});

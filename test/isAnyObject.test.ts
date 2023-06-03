@@ -9,9 +9,9 @@ test("works regular objects", () => {
   assert.equal(isAnyObject(Object.create(null)), true);
 });
 
-test("works with arrays", () => {
-  assert.equal(isAnyObject([]), true);
-  assert.equal(isAnyObject(new Array()), true);
+test("false when array", () => {
+  assert.equal(isAnyObject([]), false);
+  assert.equal(isAnyObject(new Array()), false);
 });
 
 test("works with functions", () => {
@@ -109,6 +109,10 @@ test("compare with isPlainObject()", () => {
   assert.equal(isPlainObject(x), false);
 
   x = [];
-  assert.equal(isAnyObject(x), true);
+  assert.equal(isAnyObject(x), false);
   assert.equal(isPlainObject(x), false);
+});
+
+test("invalid date is not an object", () => {
+  assert.equal(isAnyObject(new Date("foo")), false);
 });
