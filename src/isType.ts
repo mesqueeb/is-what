@@ -1,6 +1,6 @@
 import type { AnyFunction } from './isFunction.js'
 
-type AnyClass<A extends unknown[] = unknown[], R extends object = object> = new (...args: A) => R
+type AnyClass<A extends any[] = any[], R extends object = object> = new (...args: A) => R
 
 /**
  * Checks that the given value is **exactly** the given type (with some exceptions across realms).
@@ -30,14 +30,15 @@ type AnyClass<A extends unknown[] = unknown[], R extends object = object> = new 
  *   console.log(isType({}, Object))
  *   //=> true
  *
- * @throws {TypeError} Will throw type error if type is an invalid type
+ * @throws {TypeError} Will throw a `TypeError` if `type` is not a class
  */
 function isType<T extends AnyFunction | AnyClass>(x: unknown, type: T): x is T {
   if (typeof type !== 'function' || !Object.hasOwn(type, 'prototype')) {
     throw new TypeError(`${type} is not a class`)
   }
   return (
-    x != null &&
+    !!x &&
+    (typeof x === 'object' || typeof x === 'function') &&
     (x instanceof Object
       ? x.constructor === type
       : Object.prototype.toString.call(x).slice(8, -1) === type.name)
