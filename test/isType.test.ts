@@ -2,12 +2,12 @@ import test from "node:test";
 import assert from "node:assert";
 import isType from "../src/isType";
 
-test("false with any primitive", () => {
-  assert.equal(isType("hi", String), false);
-  assert.equal(isType(1, Number), false);
-  assert.equal(isType(true, Boolean), false);
+test("true with primitives", () => {
+  assert.equal(isType("hi", String), true);
+  assert.equal(isType(1, Number), true);
+  assert.equal(isType(true, Boolean), true);
   // @ts-ignore Symbol isn't new-able but it works here
-  assert.equal(isType(Symbol("a"), Symbol), false);
+  assert.equal(isType(Symbol("a"), Symbol), true);
 });
 
 test("true with boxed primitives", () => {

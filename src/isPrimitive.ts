@@ -5,7 +5,7 @@ export default function isPrimitive(
     x == null ||
     typeof x === "bigint" ||
     typeof x === "boolean" ||
-    typeof x === "number" ||
+    (typeof x === "number" && !Number.isNaN(x)) ||
     typeof x === "string" ||
     typeof x === "symbol"
   );

@@ -13,6 +13,10 @@ test("true with primitives", () => {
   assert.equal(isPrimitive(undefined), true);
 });
 
+test("false when NaN", () => {
+  assert.equal(isPrimitive(NaN), false);
+});
+
 test("false with objects", () => {
   assert.equal(isPrimitive({}), false);
   assert.equal(isPrimitive(new EventTarget()), false);
