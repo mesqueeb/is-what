@@ -36,6 +36,7 @@
     "dist"
   ],
   "scripts": {
+    "build:deno": "denoify",
     "build:docs": "typedoc",
     "prepack": "tsc",
     "start": "tsx --test --watch **/*.test.ts",
@@ -91,5 +92,8 @@
     "prettier-plugin-packagejson": "^2.4.3",
     "typedoc": "^0.24.7",
     "typescript": "^5.0.4"
+  },
+  "denoify": {
+    "index": "src/index.ts"
   }
 }
