@@ -31,6 +31,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build:docs
-      - uses: actions/upload-pages-artifact@v1
+      - uses: actions/upload-artifact@v3
         with:
+          name: github-pages
           path: docs/dist
