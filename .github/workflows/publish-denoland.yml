@@ -1,0 +1,29 @@
+name: Publish deno.land
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+jobs:
+  publish-denoland:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm run build:deno
+      - id: get-package-version
+        run: echo "version=$(jq -r '.version' package.json)" >> $GITHUB_OUTPUT
+      - uses: denoland/publish-folder@829d59f70fa524e39a91eb379580208af1347c00
+        with:
+          folder: deno_dist
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: deno/${{ steps.get-package-version.outputs.version }}
+# WEBHOOK:
+# Payload URL: https://api.deno.land/webhook/gh/is_what?version_prefix=deno/
+# Select individual events: "Branch or tag creation"
