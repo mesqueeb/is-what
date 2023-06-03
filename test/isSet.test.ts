@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isSet from '../src/isSet.js'
+import isSet from '../src/isSet'
 
 test('true with Set objects', () => {
   assert.equal(isSet(new Set()), true)

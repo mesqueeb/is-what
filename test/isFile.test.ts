@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isFile from '../src/isFile.js'
+import isFile from '../src/isFile'
 
 test('works with files', () => {
   assert.equal(isFile(new File([], 'a')), true)

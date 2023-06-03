@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isPromise from '../src/isPromise.js'
+import isPromise from '../src/isPromise'
 
 test('true with promises', async () => {
   const rejecting = Promise.reject()

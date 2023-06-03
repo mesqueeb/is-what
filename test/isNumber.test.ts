@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isNumber from '../src/isNumber.js'
+import isNumber from '../src/isNumber'
 
 test('works with numbers', () => {
   assert.equal(isNumber(1), true)

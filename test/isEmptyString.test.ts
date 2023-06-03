@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isEmptyString from '../src/isEmptyString.js'
+import isEmptyString from '../src/isEmptyString'
 
 test('works with empty strings', () => {
   assert.equal(isEmptyString(''), true)

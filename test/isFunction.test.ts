@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isFunction from '../src/isFunction.js'
+import isFunction from '../src/isFunction'
 
 test('works with functions', () => {
   assert.equal(

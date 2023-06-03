@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isWeakSet from '../src/isWeakSet.js'
+import isWeakSet from '../src/isWeakSet'
 
 test('true with WeakSet', () => {
   assert.equal(isWeakSet(new WeakSet()), true)

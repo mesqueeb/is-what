@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isFullArray from '../src/isFullArray.js'
+import isFullArray from '../src/isFullArray'
 
 test('true when array length 1+', () => {
   assert.equal(isFullArray([1, 2, 3]), true)

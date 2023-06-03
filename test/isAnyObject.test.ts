@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isAnyObject from '../src/isAnyObject.js'
-import isPlainObject from '../src/isPlainObject.js'
+import isAnyObject from '../src/isAnyObject'
+import isPlainObject from '../src/isPlainObject'
 
 test('works regular objects', () => {
   assert.equal(isAnyObject({}), true)

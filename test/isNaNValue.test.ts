@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isNaNValue from '../src/isNaNValue.js'
+import isNaNValue from '../src/isNaNValue'
 
 test('works with NaN', () => {
   assert.equal(isNaNValue(NaN), true)

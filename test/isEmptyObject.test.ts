@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isEmptyObject from '../src/isEmptyObject.js'
+import isEmptyObject from '../src/isEmptyObject'
 
 test('works with empty objects', () => {
   assert.equal(isEmptyObject({}), true)

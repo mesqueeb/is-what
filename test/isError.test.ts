@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isError from '../src/isError.js'
+import isError from '../src/isError'
 
 test('works with errors', () => {
   assert.equal(isError(new Error()), true)

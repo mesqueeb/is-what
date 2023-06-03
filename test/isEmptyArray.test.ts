@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isEmptyArray from '../src/isEmptyArray.js'
+import isEmptyArray from '../src/isEmptyArray'
 
 test('works with empty arrays', () => {
   assert.equal(isEmptyArray([]), true)

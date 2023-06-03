@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import getType from '../src/getType.js'
+import getType from '../src/getType'
 
 test('works regular objects', () => {
   assert.equal(getType({}), 'Object')

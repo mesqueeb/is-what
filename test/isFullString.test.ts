@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isFullString from '../src/isFullString.js'
+import isFullString from '../src/isFullString'
 
 test('works with full strings', () => {
   assert.equal(isFullString('hi'), true)

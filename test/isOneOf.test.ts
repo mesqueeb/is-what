@@ -1,8 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isOneOf from '../src/isOneOf.js'
-import isString from '../src/isString.js'
-import isNumber from '../src/isNumber.js'
+import isOneOf from '../src/isOneOf'
+import isString from '../src/isString'
+import isNumber from '../src/isNumber'
 
 test('combines isString() and isNumber()', () => {
   assert.equal(isOneOf(isString, isNumber)('hi'), true)

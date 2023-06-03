@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isObject from '../src/isObject.js'
+import isObject from '../src/isObject'
 
 test('works with objects', () => {
   assert.equal(isObject({}), true)

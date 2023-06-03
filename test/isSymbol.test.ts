@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isSymbol from '../src/isSymbol.js'
+import isSymbol from '../src/isSymbol'
 
 test('true with symbols', () => {
   assert.equal(isSymbol(Symbol('a')), true)

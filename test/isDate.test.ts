@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isDate from '../src/isDate.js'
+import isDate from '../src/isDate'
 
 test('works with dates', () => {
   assert.equal(isDate(new Date()), true)

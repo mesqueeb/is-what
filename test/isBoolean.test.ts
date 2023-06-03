@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isBoolean from '../src/isBoolean.js'
+import isBoolean from '../src/isBoolean'
 
 test('works with booleans', () => {
   assert.equal(isBoolean(true), true)

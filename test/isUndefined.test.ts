@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isUndefined from '../src/isUndefined.js'
+import isUndefined from '../src/isUndefined'
 
 test('true with undefined', () => {
   assert.equal(isUndefined(undefined), true)

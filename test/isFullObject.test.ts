@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isFullObject from '../src/isFullObject.js'
+import isFullObject from '../src/isFullObject'
 
 test('works with full objects', () => {
   assert.equal(isFullObject({ a: 1 }), true)

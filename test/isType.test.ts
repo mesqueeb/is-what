@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isType from '../src/isType.js'
+import isType from '../src/isType'
 
 test('false with any primitive', () => {
   assert.equal(isType('hi', String), false)

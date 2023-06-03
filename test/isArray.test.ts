@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isArray from '../src/isArray.js'
+import isArray from '../src/isArray'
 
 test('works with arrays', () => {
   assert.equal(isArray([]), true)

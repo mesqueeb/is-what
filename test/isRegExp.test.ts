@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isRegExp from '../src/isRegExp.js'
+import isRegExp from '../src/isRegExp'
 
 test('true with RegExp objects', () => {
   assert.equal(isRegExp(/a/), true)

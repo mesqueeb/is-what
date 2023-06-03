@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isBlob from '../src/isBlob.js'
+import isBlob from '../src/isBlob'
 
 test('works with Blob', () => {
   assert.equal(isBlob(new Blob()), true)

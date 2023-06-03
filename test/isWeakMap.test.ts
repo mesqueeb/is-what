@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isWeakMap from '../src/isWeakMap.js'
+import isWeakMap from '../src/isWeakMap'
 
 test('true with WeakMap', () => {
   assert.equal(isWeakMap(new WeakMap()), true)

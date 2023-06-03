@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isMap from '../src/isMap.js'
+import isMap from '../src/isMap'
 
 test('works with maps', () => {
   assert.equal(isMap(new Map()), true)

@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert'
-import isNullOrUndefined from '../src/isNullOrUndefined.js'
+import isNullOrUndefined from '../src/isNullOrUndefined'
 
 test('works with null', () => {
   assert.equal(isNullOrUndefined(null), true)
