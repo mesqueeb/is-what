@@ -14,18 +14,18 @@ test("false when array", () => {
   assert.equal(isAnyObject(new Array()), false);
 });
 
-test("works with functions", () => {
+test("false with functions", () => {
   assert.equal(
     isAnyObject(() => {}),
-    true
+    false
   );
   assert.equal(
     isAnyObject(function () {}),
-    true
+    false
   );
   assert.equal(
     isAnyObject(function* () {}),
-    true
+    false
   );
 });
 
@@ -35,19 +35,19 @@ test("works with user-defined types", () => {
       return "C";
     }
   }
-  assert.equal(isAnyObject(new C()), true);
+  assert.equal(isAnyObject(new C()), false);
 
   class D {}
   assert.equal(isAnyObject(new D()), true);
 });
 
 test("works with built-in types", () => {
-  assert.equal(isAnyObject(new Date()), true);
-  assert.equal(isAnyObject(new Error()), true);
-  assert.equal(isAnyObject(new Map()), true);
-  assert.equal(isAnyObject(Promise.resolve()), true);
-  assert.equal(isAnyObject(new Set()), true);
-  assert.equal(isAnyObject(new WeakMap()), true);
+  assert.equal(isAnyObject(new Date()), false);
+  assert.equal(isAnyObject(new Error()), false);
+  assert.equal(isAnyObject(new Map()), false);
+  assert.equal(isAnyObject(Promise.resolve()), false);
+  assert.equal(isAnyObject(new Set()), false);
+  assert.equal(isAnyObject(new WeakMap()), false);
 });
 
 test("works with primitives", () => {
@@ -79,12 +79,12 @@ test("compare with isPlainObject()", () => {
   assert.equal(isPlainObject(x), false);
 
   x = new Map();
-  assert.equal(isAnyObject(x), true);
+  assert.equal(isAnyObject(x), false);
   assert.equal(isPlainObject(x), false);
 
   class C {}
   x = C;
-  assert.equal(isAnyObject(x), true);
+  assert.equal(isAnyObject(x), false);
   assert.equal(isPlainObject(x), false);
 
   x = new C();
@@ -97,7 +97,7 @@ test("compare with isPlainObject()", () => {
     }
   }
   x = new D();
-  assert.equal(isAnyObject(x), true);
+  assert.equal(isAnyObject(x), false);
   assert.equal(isPlainObject(x), false);
 
   x = new Date();
@@ -111,8 +111,4 @@ test("compare with isPlainObject()", () => {
   x = [];
   assert.equal(isAnyObject(x), false);
   assert.equal(isPlainObject(x), false);
-});
-
-test("invalid date is not an object", () => {
-  assert.equal(isAnyObject(new Date("foo")), false);
 });

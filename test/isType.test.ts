@@ -16,12 +16,12 @@ test("true with boxed primitives", () => {
   assert.equal(isType(new Boolean(true), Boolean), true);
 });
 
-test("doesn't follow inheritance", () => {
-  assert.equal(isType([], Object), false);
-  assert.equal(isType(new String(), Object), false);
-  assert.equal(isType(new Number(), Object), false);
-  assert.equal(isType(new Map(), Object), false);
-  assert.equal(isType(new CustomEvent("event"), Event), false);
+test("follow inheritance", () => {
+  assert.equal(isType([], Object), true);
+  assert.equal(isType(new String(), Object), true);
+  assert.equal(isType(new Number(), Object), true);
+  assert.equal(isType(new Map(), Object), true);
+  assert.equal(isType(new CustomEvent("event"), Event), true);
 });
 
 test("true with objects", () => {

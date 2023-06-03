@@ -28,19 +28,5 @@
  *   //=> false
  */
 export default function isAnyObject(x: unknown): x is object {
-  return (
-    !!x &&
-    ((typeof x === "object" &&
-      !Array.isArray(x) &&
-      (() => {
-        let y: number;
-        try {
-          y = Date.prototype.valueOf.call(x as Date);
-        } catch {
-          return true;
-        }
-        return !Number.isNaN(y);
-      })()) ||
-      typeof x === "function")
-  );
+  return Object.prototype.toString.call(x).slice(8, -1) === "Object";
 }
