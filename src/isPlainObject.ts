@@ -1,4 +1,4 @@
-import { getType } from './getType'
+import { getType } from './getType.js'
 
 export type PlainObject = Record<string | number | symbol, any>
 

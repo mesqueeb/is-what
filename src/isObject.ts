@@ -1,4 +1,4 @@
-import { PlainObject, isPlainObject } from './isPlainObject'
+import { PlainObject, isPlainObject } from './isPlainObject.js'
 
 /**
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects with other prototypes)

@@ -1,4 +1,4 @@
-import { isString } from './isString'
+import { isString } from './isString.js'
 
 /**
  * Returns whether the payload is a string, BUT returns false for ''

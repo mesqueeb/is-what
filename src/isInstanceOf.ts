@@ -1,5 +1,5 @@
-import { getType } from './getType'
-import { AnyClass, isType } from './isType'
+import { getType } from './getType.js'
+import { AnyClass, isType } from './isType.js'
 
 type GlobalClassName = {
   [K in keyof typeof globalThis]: (typeof globalThis)[K] extends AnyClass ? K : never

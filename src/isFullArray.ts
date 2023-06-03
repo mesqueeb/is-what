@@ -1,4 +1,4 @@
-import { isArray } from './isArray'
+import { isArray } from './isArray.js'
 
 /**
  * Returns whether the payload is a an array with at least 1 item

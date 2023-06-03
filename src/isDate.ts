@@ -1,4 +1,4 @@
-import { getType } from './getType'
+import { getType } from './getType.js'
 
 /**
  * Returns whether the payload is a Date, and that the date is valid

@@ -1,4 +1,4 @@
-import { isPlainObject } from './isPlainObject'
+import { isPlainObject } from './isPlainObject.js'
 
 /**
  * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)

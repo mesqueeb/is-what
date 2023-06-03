@@ -1,4 +1,4 @@
-import { getType } from './getType'
+import { getType } from './getType.js'
 
 /**
  * Returns whether the payload is undefined

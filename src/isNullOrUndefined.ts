@@ -1,6 +1,6 @@
-import { isNull } from './isNull'
-import { isOneOf } from './isOneOf'
-import { isUndefined } from './isUndefined'
+import { isNull } from './isNull.js'
+import { isOneOf } from './isOneOf.js'
+import { isUndefined } from './isUndefined.js'
 
 /**
  * Returns true whether the payload is null or undefined

@@ -1,9 +1,9 @@
-import { isBoolean } from './isBoolean'
-import { isNull } from './isNull'
-import { isNumber } from './isNumber'
-import { isString } from './isString'
-import { isSymbol } from './isSymbol'
-import { isUndefined } from './isUndefined'
+import { isBoolean } from './isBoolean.js'
+import { isNull } from './isNull.js'
+import { isNumber } from './isNumber.js'
+import { isString } from './isString.js'
+import { isSymbol } from './isSymbol.js'
+import { isUndefined } from './isUndefined.js'
 
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
