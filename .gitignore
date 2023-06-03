@@ -1,3 +1,7 @@
+# https://www.denoify.land/
+deno_dist
+
+#region https://docs.denoify.land/publishing-on-deno.land-x
 # Logs
 logs
 *.log
@@ -128,3 +132,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+#endregion
