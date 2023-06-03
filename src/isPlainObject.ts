@@ -29,18 +29,18 @@
  * @see https://github.com/sindresorhus/is-plain-obj/blob/main/index.js
  * @see https://github.com/jonschlinkert/is-plain-object/blob/master/is-plain-object.js
  */
-export default function isPlainObject<T extends object = Record<keyof any, unknown>>(
-  x: unknown
-): x is T {
-  if (!x || (typeof x !== 'object' && typeof x !== 'function')) {
-    return false
+export default function isPlainObject<
+  T extends object = Record<keyof any, unknown>
+>(x: unknown): x is T {
+  if (!x || (typeof x !== "object" && typeof x !== "function")) {
+    return false;
   }
 
-  const p = Object.getPrototypeOf(x)
+  const p = Object.getPrototypeOf(x);
   return (
     !!p &&
     (p === Object.prototype || Object.getPrototypeOf(p) == null) &&
     !(Symbol.toStringTag in x) &&
     !(Symbol.iterator in x)
-  )
+  );
 }

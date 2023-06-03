@@ -1,8 +1,10 @@
-export default function isWeakMap<K extends object, V>(x: unknown): x is WeakMap<K, V> {
+export default function isWeakMap<K extends object, V>(
+  x: unknown
+): x is WeakMap<K, V> {
   try {
-    WeakMap.prototype.has.call(x as WeakMap<K, V>, undefined!)
+    WeakMap.prototype.has.call(x as WeakMap<K, V>, undefined!);
   } catch {
-    return false
+    return false;
   }
-  return true
+  return true;
 }

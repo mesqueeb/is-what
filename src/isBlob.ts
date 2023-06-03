@@ -18,10 +18,12 @@
  */
 export default function isBlob(x: unknown): x is Blob {
   try {
-    Object.getOwnPropertyDescriptor(Blob.prototype, 'size')!.get!.call(x as Blob)
+    Object.getOwnPropertyDescriptor(Blob.prototype, "size")!.get!.call(
+      x as Blob
+    );
   } catch {
     // Assume that it was a TypeError. If it was something else... 🤷‍♂️
-    return false
+    return false;
   }
-  return true
+  return true;
 }

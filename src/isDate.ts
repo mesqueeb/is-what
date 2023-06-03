@@ -14,10 +14,10 @@
  */
 export default function isDate(x: unknown): x is Date {
   try {
-    Date.prototype.valueOf.call(x as Date)
+    Date.prototype.valueOf.call(x as Date);
   } catch {
     // Assume that it was a TypeError. If it was something else... 🤷‍♂️
-    return false
+    return false;
   }
-  return true
+  return true;
 }

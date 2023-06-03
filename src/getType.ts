@@ -1,6 +1,6 @@
-import type { GlobalClassName } from './isInstanceOf.js'
+import type { GlobalClassName } from "./isInstanceOf.js";
 
-type CommonTypeName = GlobalClassName | 'Null' | 'Undefined'
+type CommonTypeName = GlobalClassName | "Null" | "Undefined";
 
 /**
  * Returns the object type of the given value. This uses the default `Object` `toString()` method
@@ -51,8 +51,8 @@ type CommonTypeName = GlobalClassName | 'Null' | 'Undefined'
  *   `thing`.
  */
 function getType(x: unknown): CommonTypeName | string {
-  return Object.prototype.toString.call(x).slice(8, -1)
+  return Object.prototype.toString.call(x).slice(8, -1);
 }
 
-export default getType
-export type { CommonTypeName }
+export default getType;
+export type { CommonTypeName };

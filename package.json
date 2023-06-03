@@ -43,15 +43,6 @@
     "pretest": "prettier --ignore-path .gitignore -w . && eslint src",
     "test": "tsc --noEmit && tsx --test **/*.test.ts"
   },
-  "prettier": {
-    "bracketSpacing": true,
-    "printWidth": 100,
-    "quoteProps": "consistent",
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5"
-  },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
     "plugins": [

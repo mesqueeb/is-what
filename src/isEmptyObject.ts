@@ -1,4 +1,4 @@
-import isPlainObject from './isPlainObject.js'
+import isPlainObject from "./isPlainObject.js";
 
 /**
  * Returns true if the given value is an empty object (`{}`). The object _must_ be a plain object
@@ -19,6 +19,8 @@ import isPlainObject from './isPlainObject.js'
  *
  * @see {@link isPlainObject}
  */
-export default function isEmptyObject(x: unknown): x is Record<keyof any, never> {
-  return isPlainObject(x) && !Reflect.ownKeys(x).length
+export default function isEmptyObject(
+  x: unknown
+): x is Record<keyof any, never> {
+  return isPlainObject(x) && !Reflect.ownKeys(x).length;
 }

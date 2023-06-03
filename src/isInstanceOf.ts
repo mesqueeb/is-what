@@ -1,9 +1,11 @@
-import isPrimitive from './isPrimitive.js'
-import type { AnyClass } from './isType.js'
+import isPrimitive from "./isPrimitive.js";
+import type { AnyClass } from "./isType.js";
 
 type GlobalClassName = {
-  [K in keyof typeof globalThis]: (typeof globalThis)[K] extends AnyClass ? K : never
-}[keyof typeof globalThis]
+  [K in keyof typeof globalThis]: (typeof globalThis)[K] extends AnyClass
+    ? K
+    : never;
+}[keyof typeof globalThis];
 
 /**
  * Checks if a value is an instance of a class or a class name. Useful when you want to check if a
@@ -29,27 +31,33 @@ type GlobalClassName = {
  * @param value The value to recursively check
  * @param class_ A string or class that the value should be an instance of
  */
-function isInstanceOf<T extends AnyClass>(value: unknown, class_: T): value is T
+function isInstanceOf<T extends AnyClass>(
+  value: unknown,
+  class_: T
+): value is T;
 function isInstanceOf<K extends GlobalClassName>(
   value: unknown,
   className: K
-): value is (typeof globalThis)[K]
-function isInstanceOf(value: unknown, className: string): value is object
-function isInstanceOf(value: unknown, classOrClassName: AnyClass | string): boolean {
-  if (typeof classOrClassName === 'function') {
-    return value instanceof classOrClassName
+): value is (typeof globalThis)[K];
+function isInstanceOf(value: unknown, className: string): value is object;
+function isInstanceOf(
+  value: unknown,
+  classOrClassName: AnyClass | string
+): boolean {
+  if (typeof classOrClassName === "function") {
+    return value instanceof classOrClassName;
   } else {
     if (isPrimitive(value)) {
-      return false
+      return false;
     }
     for (let p = value; p; p = Object.getPrototypeOf(p)) {
       if (Object.prototype.toString.call(p).slice(8, -1) === classOrClassName) {
-        return true
+        return true;
       }
     }
-    return false
+    return false;
   }
 }
 
-export default isInstanceOf
-export type { GlobalClassName }
+export default isInstanceOf;
+export type { GlobalClassName };

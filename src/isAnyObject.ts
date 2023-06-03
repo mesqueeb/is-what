@@ -27,5 +27,5 @@
  *   //=> false
  */
 export default function isAnyObject(x: unknown): x is object {
-  return !!x && (typeof x === 'object' || typeof x === 'function')
+  return !!x && (typeof x === "object" || typeof x === "function");
 }

@@ -26,6 +26,8 @@
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
  */
-export default function isArray<T extends unknown[] = unknown[]>(x: unknown): x is T {
-  return Array.isArray(x)
+export default function isArray<T extends unknown[] = unknown[]>(
+  x: unknown
+): x is T {
+  return Array.isArray(x);
 }

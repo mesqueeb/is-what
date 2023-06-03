@@ -5,20 +5,20 @@ on:
     paths:
       - src/**
       - test/**
-      - '*rc'
-      - '*.config.*'
-      - '*.json'
-      - '*.lock'
+      - "*rc"
+      - "*.config.*"
+      - "*.json"
+      - "*.lock"
       - .github/workflows/test-js.yml
   pull_request:
     branches: [main]
     paths:
       - src/**
       - test/**
-      - '*rc'
-      - '*.config.*'
-      - '*.json'
-      - '*.lock'
+      - "*rc"
+      - "*.config.*"
+      - "*.json"
+      - "*.lock"
       - .github/workflows/test-js.yml
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
@@ -27,7 +27,7 @@ jobs:
   test-nodejs:
     strategy:
       matrix:
-        node-version: ['16', '18', '20']
+        node-version: ["16", "18", "20"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

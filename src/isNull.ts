@@ -12,5 +12,5 @@
  *   //=> false
  */
 export default function isNull(x: unknown): x is null {
-  return x === null
+  return x === null;
 }

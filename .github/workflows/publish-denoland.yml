@@ -24,7 +24,6 @@ jobs:
           folder: deno_dist
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: deno/${{ steps.get-package-version.outputs.version }}
-
 # WEBHOOK:
 # Payload URL: https://api.deno.land/webhook/gh/is_what?version_prefix=deno/
 # Select individual events: "Branch or tag creation"
