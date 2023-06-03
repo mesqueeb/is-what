@@ -1,294 +1,151 @@
-# is What? 🙉
+# Is what?
 
-<a href="https://www.npmjs.com/package/is-what"><img src="https://img.shields.io/npm/v/is-what.svg" alt="Total Downloads"></a>
-<a href="https://www.npmjs.com/package/is-what"><img src="https://img.shields.io/npm/dw/is-what.svg" alt="Latest Stable Version"></a>
+👩‍🔬 `isPlainObject()` and other tiny typechecking testers
 
-Very simple & small JS type check functions. It's fully TypeScript supported!
+[![](https://img.shields.io/npm/dw/is-what.svg)](https://www.npmjs.com/package/is-what)
 
+<div align="center">
+
+![](https://i.imgur.com/mRM7956.png)
+
+[Docs website](https://mesqueeb.github.io/is-what/) |
+[deno.land/x/is_what](https://deno.land/x/is_what) |
+[My other packages](https://github.com/search?q=user%3Amesqueeb+language%3ATypeScript&type=repositories)
+
+</div>
+
+🦐 Very small \
+🌳 Tree-shakeable \
+✅ Fully TypeScript! \
+🌐 Works in any environment \
+📦 **No dependencies**
+
+## Installation
+
+![npm](https://img.shields.io/static/v1?style=for-the-badge&message=npm&color=CB3837&logo=npm&logoColor=FFFFFF&label=)
+![Yarn](https://img.shields.io/static/v1?style=for-the-badge&message=Yarn&color=2C8EBB&logo=Yarn&logoColor=FFFFFF&label=)
+![pnpm](https://img.shields.io/static/v1?style=for-the-badge&message=pnpm&color=222222&logo=pnpm&logoColor=F69220&label=)
+![jsDelivr](https://img.shields.io/static/v1?style=for-the-badge&message=jsDelivr&color=E84D3D&logo=jsDelivr&logoColor=FFFFFF&label=)
+
+You can install this package locally using npm, [Yarn], or [pnpm].
+
+```sh
+npm install is-what
 ```
-npm i is-what
+
+If you're using Deno, you can import this package either from [deno.land/x] or
+[ESM>CDN]. You can also import it directly from npm using [Deno's new `npm:`
+prefix].
+
+```ts
+import {} from "https://deno.land/x/is_what/mod.ts";
+import {} from "https://esm.sh/is-what";
+import {} from "npm:is-what";
 ```
 
-Or for deno available at: `"deno.land/x/is_what"`
+If you're importing this package directly from a browser environment, you can
+use an npm CDN like [ESM>CDN] or [jsDelivr].
 
-> Also check out [is-where 🙈](https://github.com/mesqueeb/is-where)
+```js
+import {} from "https://esm.sh/is-what";
+import {} from "https://esm.run/is-what";
+```
 
-## Motivation
+## Usage
 
-I built is-what because the existing solutions were all too complex or too poorly built.
+🚀 Here's a basic demo of what this package can help you achieve! To get the
+full documentation and see how each function inspects the type of a value, check
+out our 📚 [documentation website]! You can also fire up [VS Code] or your
+favorite IDE and get some awesome auto-complete with JSDoc comments to read
+right in your editor! ❤️
+
+```ts
+import { isPlainObject } from "is-what";
+
+console.log(isPlainObject({ a: 1, b: "hello" }));
+//=> true
+
+class Person {
+  name: string;
+  age: number;
+  isAdult: boolean;
+  constructor(options: { name: string; age: number }) {
+    if (!isPlainObject(options)) {
+      throw new TypeError(`${options} is not a plain object`);
+    }
+    this.name = options.name;
+    this.age = options.age;
+    this.isAdult = options.age >= 18;
+  }
+  [Symbol.toStringTag] = "Person";
+}
+
+const person = new Person({ name: "John", age: 20 });
+console.log(person);
+//=> { name: 'John', age: 20, isAdult: true }
+
+console.log(new Person(person));
+//=> TypeError: [object Person] is not a plain object
+```
+
+## Why?
+
+I built is-what because the existing solutions were all too complex or too
+poorly built.
 
 I was looking for:
 
 - A simple way to check any kind of type (including non-primitives)
-- Be able to check if an object is a plain object `{}` or a special object (like a class instance) ‼️
+- Be able to check if an object is a plain object `{}` or a special object (like
+  a class instance)
 - Let TypeScript automatically know what type a value is when checking
 
-And that's exactly what `is-what` is! (what a great wordplay 😃)
+And that's exactly what `is-what` is! 😄 You might also want to check out some
+other packages like the [Node.js `node:util/types` module], [is-plain-obj], and
+[type-fest] for more type checking utilities.
 
-## Usage
+[😊 Check out my other TypeScript packages!](https://github.com/search?q=user%3Amesqueeb+language%3ATypeScript&type=repositories)
 
-is-what is really easy to use, and most functions work just like you'd expect.
+## Development
 
-```js
-// import functions you want to use like so:
-import { isString, isDate, isPlainObject } from 'is-what'
+![TypeScript](https://img.shields.io/static/v1?style=for-the-badge&message=TypeScript&color=3178C6&logo=TypeScript&logoColor=FFFFFF&label=)
+![Node.js](https://img.shields.io/static/v1?style=for-the-badge&message=Node.js&color=339933&logo=Node.js&logoColor=FFFFFF&label=)
+
+This package is written in TypeScript. We use npm to manage our dev
+dependencies. Instead of using a custom test runner like [Jest] or [Vitest], we
+are using the `node --test` and `node:test` builtin test runner! To get started,
+just open this repository in your favorite IDE and run `npm start`. If you don't
+want to leave your browser, you can use [GitHub Codespaces]!
+
+```sh
+npm start
 ```
 
-1. First I'll go over the simple functions available. Only `isNumber` and `isDate` have special treatment.
-2. After that I'll talk about working with Objects (plain objects vs class instances etc.).
-3. Lastly I'll talk about TypeScript implementation
+This will start the test watcher. Make and edits you want! 👩‍💻 After you're
+finished making your changes, you can run `npm test` to run the whole test
+suite, and `npm pack` to build the package. Make sure you also do
+`npm build:deno` every-so-often to make sure that our Deno-specific build of
+this package works!
 
-### Simple type check functions
-
-```js
-// basics
-isBoolean(true) // true
-isBoolean(false) // true
-isUndefined(undefined) // true
-isNull(null) // true
-
-// strings
-isString('') // true
-isEmptyString('') // true
-isFullString('') // false
-
-// numbers
-isNumber(0) // true
-isNumber('0') // false
-isNumber(NaN) // false *
-isPositiveNumber(1) // true
-isNegativeNumber(-1) // true
-// * see below for special NaN use cases!
-
-// arrays
-isArray([]) // true
-isEmptyArray([]) // true
-isFullArray([1]) // true
-
-// objects
-isPlainObject({}) // true *
-isEmptyObject({}) // true
-isFullObject({ a: 1 }) // true
-// * see below for special object (& class instance) use cases!
-
-// functions
-isFunction(function () {}) // true
-isFunction(() => {}) // true
-
-// dates
-isDate(new Date()) // true
-isDate(new Date('invalid date')) // false
-
-// maps & sets
-isMap(new Map()) // true
-isSet(new Set()) // true
-isWeakMap(new WeakMap()) // true
-isWeakSet(new WeakSet()) // true
-
-// others
-isRegExp(/\s/gi) // true
-isSymbol(Symbol()) // true
-isBlob(new Blob()) // true
-isFile(new File([''], '', { type: 'text/html' })) // true
-isError(new Error('')) // true
-isPromise(new Promise((resolve) => {})) // true
-
-// primitives
-isPrimitive('') // true
-// true for any of: boolean, null, undefined, number, string, symbol
+```sh
+npm test
+npm pack
+npm run build:deno
 ```
 
-### Let's talk about NaN
-
-`isNaN` is a built-in JS Function but it really makes no sense:
-
-```js
-// 1)
-typeof NaN === 'number' // true
-// 🤔 ("not a number" is a "number"...)
-
-// 2)
-isNaN('1') // false
-// 🤔 the string '1' is not-"not a number"... so it's a number??
-
-// 3)
-isNaN('one') // true
-// 🤔 'one' is NaN but `NaN === 'one'` is false...
-```
-
-With is-what the way we treat NaN makes a little bit more sense:
-
-```js
-import { isNumber, isNaNValue } from 'is-what'
-
-// 1)
-isNumber(NaN) // false!
-// let's not treat NaN as a number
-
-// 2)
-isNaNValue('1') // false
-// if it's not NaN, it's not NaN!!
-
-// 3)
-isNaNValue('one') // false
-// if it's not NaN, it's not NaN!!
-
-isNaNValue(NaN) // true
-```
-
-### isPlainObject vs isAnyObject
-
-Checking for a JavaScript object can be really difficult. In JavaScript you can create classes that will behave just like JavaScript objects but might have completely different prototypes. With is-what I went for this classification:
-
-- `isPlainObject` will only return `true` on plain JavaScript objects and not on classes or others
-- `isAnyObject` will be more loose and return `true` on regular objects, classes, etc.
-
-```js
-// define a plain object
-const plainObject = { hello: 'I am a good old object.' }
-
-// define a special object
-class SpecialObject {
-  constructor(somethingSpecial) {
-    this.speciality = somethingSpecial
-  }
-}
-const specialObject = new SpecialObject('I am a special object! I am a class instance!!!')
-
-// check the plain object
-isPlainObject(plainObject) // returns true
-isAnyObject(plainObject) // returns true
-getType(plainObject) // returns 'Object'
-
-// check the special object
-isPlainObject(specialObject) // returns false !!!!!!!!!
-isAnyObject(specialObject) // returns true
-getType(specialObject) // returns 'Object'
-```
-
-> Please note that `isPlainObject` will only return `true` for normal plain JavaScript objects.
-
-### Getting and checking for specific types
-
-You can check for specific types with `getType` and `isType`:
-
-```js
-import { getType, isType } from 'is-what'
-
-getType('') // returns 'String'
-// pass a Type as second param:
-isType('', String) // returns true
-```
-
-If you just want to make sure your object _inherits_ from a particular class or
-`toStringTag` value, you can use `isInstanceOf()` like this:
-
-```js
-import { isInstanceOf } from 'is-what'
-
-isInstanceOf(new XMLHttpRequest(), 'EventTarget')
-// returns true
-isInstanceOf(globalThis, ReadableStream)
-// returns false
-```
-
-## TypeScript
-
-is-what makes TypeScript know the type during if statements. This means that a check returns the type of the payload for TypeScript users.
-
-```ts
-function isNumber(payload: any): payload is number {
-  // return boolean
-}
-// As you can see above, all functions return a boolean for JavaScript, but pass the payload type to TypeScript.
-
-// usage example:
-function fn(payload: string | number): number {
-  if (isNumber(payload)) {
-    // ↑ TypeScript already knows payload is a number here!
-    return payload
-  }
-  return 0
-}
-```
-
-`isPlainObject` and `isAnyObject` with TypeScript will declare the payload to be an object type with any props:
-
-```ts
-function isPlainObject(payload: any): payload is { [key: string]: any }
-function isAnyObject(payload: any): payload is { [key: string]: any }
-// The reason to return `{[key: string]: any}` is to be able to do
-if (isPlainObject(payload) && payload.id) return payload.id
-// if isPlainObject() would return `payload is object` then it would give an error at `payload.id`
-```
-
-### isObjectLike
-
-If you want more control over what kind of interface/type is casted when checking for objects.
-
-To cast to a specific type while checking for `isAnyObject`, can use `isObjectLike<T>`:
-
-```ts
-import { isObjectLike } from 'is-what'
-
-const payload = { name: 'Mesqueeb' } // current type: `{ name: string }`
-
-// Without casting:
-if (isAnyObject(payload)) {
-  // in here `payload` is casted to: `Record<string | number | symbol, any>`
-  // WE LOOSE THE TYPE!
-}
-
-// With casting:
-// you can pass a specific type for TS that will be casted when the function returns
-if (isObjectLike<{ name: string }>(payload)) {
-  // in here `payload` is casted to: `{ name: string }`
-}
-```
-
-Please note: this library will not actually check the shape of the object, you need to do that yourself.
-
-`isObjectLike<T>` works like this under the hood:
-
-```ts
-function isObjectLike<T extends object>(payload: any): payload is T {
-  return isAnyObject(payload)
-}
-```
-
-## Meet the family (more tiny utils with TS support)
-
-- [is-what 🙉](https://github.com/mesqueeb/is-what)
-- [is-where 🙈](https://github.com/mesqueeb/is-where)
-- [merge-anything 🥡](https://github.com/mesqueeb/merge-anything)
-- [check-anything 👁](https://github.com/mesqueeb/check-anything)
-- [remove-anything ✂️](https://github.com/mesqueeb/remove-anything)
-- [getorset-anything 🐊](https://github.com/mesqueeb/getorset-anything)
-- [map-anything 🗺](https://github.com/mesqueeb/map-anything)
-- [filter-anything ⚔️](https://github.com/mesqueeb/filter-anything)
-- [copy-anything 🎭](https://github.com/mesqueeb/copy-anything)
-- [case-anything 🐫](https://github.com/mesqueeb/case-anything)
-- [flatten-anything 🏏](https://github.com/mesqueeb/flatten-anything)
-- [nestify-anything 🧅](https://github.com/mesqueeb/nestify-anything)
-
-## Source code
-
-It's litterally just these functions:
-
-```js
-function getType(payload) {
-  return Object.prototype.toString.call(payload).slice(8, -1)
-}
-function isUndefined(payload) {
-  return getType(payload) === 'Undefined'
-}
-function isString(payload) {
-  return getType(payload) === 'String'
-}
-function isAnyObject(payload) {
-  return getType(payload) === 'Object'
-}
-// etc...
-```
-
-See the full source code [here](https://github.com/mesqueeb/is-what/blob/production/src/index.ts).
+<!-- prettier-ignore-start -->
+[GitHub Codespaces]: https://github.com/features/codespaces
+[Jest]: https://jestjs.io/
+[Vitest]: https://vitest.dev/
+[Node.js `node:util/types` module]: https://nodejs.org/api/util.html#util_util_types
+[is-plain-obj]: https://www.npmjs.com/package/is-plain-obj
+[type-fest]: https://www.npmjs.com/package/type-fest
+[documentation website]: https://mesqueeb.github.io/is-what/
+[VS Code]: https://code.visualstudio.com/
+[deno.land/x]: https://deno.land/x/is_what
+[ESM>CDN]: https://esm.sh/is-what
+[Deno's new `npm:` prefix]: https://deno.com/manual@v1.34.1/node/npm_specifiers
+[Yarn]: https://yarnpkg.com/
+[pnpm]: https://pnpm.io/
+[jsDelivr]: https://www.jsdelivr.com/esm
+<!-- prettier-ignore-end -->
