@@ -1,28 +1,30 @@
 name: Test
 on:
   push:
-    branches: 'production'
+    branches: [main]
     paths:
       - src/**
       - test/**
-      - '*.js'
-      - '*.ts'
+      - '*rc'
+      - '*.config.*'
       - '*.json'
-      - .github/workflows/test.yml
+      - '*.lock'
+      - .github/workflows/test-js.yml
   pull_request:
-    branches: 'production'
+    branches: [main]
     paths:
       - src/**
       - test/**
-      - '*.js'
-      - '*.ts'
+      - '*rc'
+      - '*.config.*'
       - '*.json'
-      - .github/workflows/test.yml
+      - '*.lock'
+      - .github/workflows/test-js.yml
 concurrency:
-  group: test-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
 jobs:
-  test:
+  test-nodejs:
     strategy:
       matrix:
         node-version: ['16', '18', '20']
@@ -35,3 +37,5 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+  # test-deno:
+  # test-bun:
