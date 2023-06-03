@@ -1,3 +1,4 @@
+import { getType } from './getType'
 import { AnyFunction } from './isFunction'
 
 export type AnyClass = new (...args: any[]) => any
