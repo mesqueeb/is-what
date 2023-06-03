@@ -9,7 +9,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=12.13"
+    "node": ">=16"
   },
   "scripts": {
     "test": "vitest run",
