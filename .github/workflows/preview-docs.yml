@@ -33,5 +33,5 @@ jobs:
       - run: npm run build:docs
       - uses: actions/upload-artifact@v3
         with:
-          name: github-pages
+          name: preview-docs
           path: docs/dist
