@@ -9,14 +9,8 @@
   "main": "./dist/index.js",
   "exports": {
     ".": {
-      "require": {
-        "types": "./dist/cjs/index.d.cts",
-        "default": "./dist/cjs/index.cjs"
-      },
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/index.js"
     }
   },
   "files": [
@@ -28,7 +22,7 @@
   "scripts": {
     "test": "vitest run",
     "lint": "tsc --noEmit && eslint ./src --ext .ts",
-    "build": "rollup -c ./rollup.config.js",
+    "build": "tsc && tsc --module CommonJS --outDir dist/cjs && echo '{\"type\": \"commonjs\"}' >dist/cjs/package.json",
     "build:docs": "typedoc",
     "release": "npm run lint && del dist && npm run build && np"
   },
@@ -73,12 +67,11 @@
     "eslint-plugin-tree-shaking": "^1.10.0",
     "np": "^7.7.0",
     "prettier": "^2.8.8",
-    "rollup": "^3.22.0",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-esbuild": "^5.0.0",
+    "typedoc": "^0.24.7",
     "typescript": "^5.0.4",
-    "vitest": "^0.31.1",
-    "typedoc": "^0.24.7"
+    "vitest": "^0.31.1"
   },
   "ava": {
     "extensions": {
