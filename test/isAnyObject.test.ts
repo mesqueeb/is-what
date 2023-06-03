@@ -101,11 +101,11 @@ test("compare with isPlainObject()", () => {
   assert.equal(isPlainObject(x), false);
 
   x = new Date();
-  assert.equal(isAnyObject(x), true);
+  assert.equal(isAnyObject(x), false);
   assert.equal(isPlainObject(x), false);
 
   x = new Error();
-  assert.equal(isAnyObject(x), true);
+  assert.equal(isAnyObject(x), false);
   assert.equal(isPlainObject(x), false);
 
   x = [];
