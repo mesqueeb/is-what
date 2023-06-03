@@ -19,6 +19,6 @@ import isPlainObject from './isPlainObject.js'
  *
  * @see {@link isPlainObject}
  */
-export default function isEmptyObject(x: unknown): x is {} {
+export default function isEmptyObject(x: unknown): x is Record<keyof any, never> {
   return isPlainObject(x) && !Reflect.ownKeys(x).length
 }

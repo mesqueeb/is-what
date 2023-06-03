@@ -1,5 +1,6 @@
 type TypeGuard<A, B extends A> = (x: A) => x is B
 
+function isOneOf(): (x: unknown) => false
 function isOneOf<A, B extends A>(a: TypeGuard<A, B>): TypeGuard<A, B>
 function isOneOf<A, B extends A, C extends A>(
   a: TypeGuard<A, B>,
@@ -23,6 +24,7 @@ function isOneOf<A, B extends A, C extends A, D extends A, E extends A, F extend
   d: TypeGuard<A, E>,
   e: TypeGuard<A, F>
 ): TypeGuard<A, B | C | D | E | F>
+function isOneOf(...checks: ((x: unknown) => boolean)[]): (x: unknown) => boolean
 function isOneOf(...checks: ((x: unknown) => boolean)[]): (x: unknown) => boolean {
   return (x: unknown): boolean => checks.some((check) => check(x))
 }

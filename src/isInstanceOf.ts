@@ -1,3 +1,4 @@
+import isPrimitive from './isPrimitive.js'
 import type { AnyClass } from './isType.js'
 
 type GlobalClassName = {
@@ -38,8 +39,11 @@ function isInstanceOf(value: unknown, classOrClassName: AnyClass | string): bool
   if (typeof classOrClassName === 'function') {
     return value instanceof classOrClassName
   } else {
+    if (isPrimitive(value)) {
+      return false
+    }
     for (let p = value; p; p = Object.getPrototypeOf(p)) {
-      if (Object.prototype.toString.call(p) === classOrClassName) {
+      if (Object.prototype.toString.call(p).slice(8, -1) === classOrClassName) {
         return true
       }
     }
