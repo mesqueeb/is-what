@@ -13,11 +13,12 @@
  *   //=> false
  */
 export default function isDate(x: unknown): x is Date {
+  let y: number;
   try {
-    Date.prototype.valueOf.call(x as Date);
+    y = Date.prototype.valueOf.call(x as Date);
   } catch {
     // Assume that it was a TypeError. If it was something else... 🤷‍♂️
     return false;
   }
-  return true;
+  return !Number.isNaN(y);
 }

@@ -8,6 +8,10 @@ test("works with dates", () => {
   assert.equal(isDate(new Date("2020-01-01")), true);
 });
 
+test("returns false when invalid date", () => {
+  assert.equal(isDate(new Date("invalid")), false);
+});
+
 test("false with Object.create(Date.prototype)", () => {
   assert.equal(isDate(Object.create(Date.prototype)), false);
 });
