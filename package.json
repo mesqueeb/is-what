@@ -71,7 +71,7 @@
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-tree-shaking": "^1.10.0",
-    "np": "^7.7.0",
+    "np": "^8.0.2",
     "prettier": "^2.8.8",
     "rollup": "^3.22.0",
     "rollup-plugin-dts": "^5.3.0",
