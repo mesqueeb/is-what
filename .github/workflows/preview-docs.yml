@@ -5,7 +5,7 @@ on:
     paths:
       - docs/**
       - '*rc'
-      - '*.config.*'
+      - '*config*'
       - '*.json'
       - '*.lock'
       - .github/workflows/preview-docs.yml
@@ -14,7 +14,7 @@ on:
     paths:
       - docs/**
       - '*rc'
-      - '*.config.*'
+      - '*config*'
       - '*.json'
       - '*.lock'
       - .github/workflows/preview-docs.yml
