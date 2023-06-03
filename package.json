@@ -80,14 +80,6 @@
     "typedoc": "^0.24.7",
     "typescript": "^5.0.4"
   },
-  "ava": {
-    "extensions": {
-      "ts": "module"
-    },
-    "nodeArguments": [
-      "--loader=ts-node/esm"
-    ]
-  },
   "np": {
     "yarn": false,
     "branch": "production"
