@@ -1,4 +1,4 @@
-import { isArray } from "./isArray";
+import { isArray } from './isArray'
 
 /**
  * Returns whether the payload is a an empty array

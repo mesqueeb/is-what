@@ -1,4 +1,4 @@
-import { isOneOf } from "./isOneOf";
+import { isOneOf } from './isOneOf'
 
 /**
  * Returns true whether the payload is null or undefined
