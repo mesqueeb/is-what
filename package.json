@@ -78,8 +78,7 @@
     "rollup-plugin-esbuild": "^5.0.0",
     "tsx": "^3.12.7",
     "typedoc": "^0.24.7",
-    "typescript": "^5.0.4",
-    "vitest": "^0.31.1"
+    "typescript": "^5.0.4"
   },
   "ava": {
     "extensions": {
