@@ -50,7 +50,7 @@ type CommonTypeName = GlobalClassName | 'Null' | 'Undefined'
  * @returns The type of the given value as a string. Usually the `Symbol.toStringTag` of the
  *   `thing`.
  */
-function getType(x: any): CommonTypeName | string {
+function getType(x: unknown): CommonTypeName | string {
   return Object.prototype.toString.call(x).slice(8, -1)
 }
 
