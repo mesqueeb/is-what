@@ -42,15 +42,10 @@ function isType<T extends AnyFunction | AnyClass>(x: unknown, type: T): x is T {
   if (typeof type !== "function" || !Object.hasOwn(type, "prototype")) {
     throw new TypeError(`${type} is not a class`);
   }
-  return x &&
-    (x instanceof Object ||
-      typeof x === "bigint" ||
-      typeof x === "boolean" ||
-      typeof x === "number" ||
-      typeof x === "string" ||
-      typeof x === "symbol")
-    ? Object.getPrototypeOf(x) === type.prototype
-    : Object.prototype.toString.call(x).slice(8, -1) === type.name;
+  return (
+    x instanceof type ||
+    Object.prototype.toString.call(x).slice(8, -1) === type.name
+  );
 }
 
 export default isType;
