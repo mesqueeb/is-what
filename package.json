@@ -39,8 +39,8 @@
     "build:docs": "typedoc",
     "prepack": "tsc",
     "start": "tsx --test --watch **/*.test.ts",
-    "pretest": "eslint src --ext .ts",
-    "test": "tsx --test **/*.test.ts"
+    "pretest": "prettier --ignore-path .gitignore -w . && eslint src",
+    "test": "tsc --noEmit && tsx --test **/*.test.ts"
   },
   "prettier": {
     "bracketSpacing": true,
@@ -68,6 +68,7 @@
       "@typescript-eslint/ban-ts-ignore": "off",
       "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
       "tree-shaking/no-side-effects-in-initialization": "error"
     },
     "ignorePatterns": [
