@@ -4,21 +4,7 @@
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "type": "module",
   "sideEffects": false,
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.js",
-  "main": "./dist/index.js",
-  "exports": {
-    ".": {
-      "require": {
-        "types": "./dist/cjs/index.d.cts",
-        "default": "./dist/cjs/index.cjs"
-      },
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
-  },
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
