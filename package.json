@@ -28,7 +28,7 @@
   "scripts": {
     "test": "vitest run",
     "lint": "tsc --noEmit && eslint ./src --ext .ts",
-    "build": "rollup -c ./rollup.config.js",
+    "build": "tsc",
     "build:docs": "typedoc",
     "release": "npm run lint && del dist && npm run build && np"
   },
