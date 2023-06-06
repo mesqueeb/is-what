@@ -1,6 +1,6 @@
 {
   "name": "is-what",
-  "version": "4.1.15-3",
+  "version": "4.1.15",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "type": "module",
   "sideEffects": false,
