@@ -112,17 +112,5 @@
       "tree-shaking/no-side-effects-in-initialization": "error",
       "@typescript-eslint/ban-ts-comment": "off"
     }
-  },
-  "prettier": {
-    "printWidth": 100,
-    "tabWidth": 2,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "semi": false,
-    "bracketSpacing": true,
-    "quoteProps": "consistent",
-    "plugins": [
-      "prettier-plugin-jsdoc"
-    ]
   }
 }
