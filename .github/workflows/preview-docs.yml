@@ -1,14 +1,5 @@
 name: Preview docs
 on:
-  push:
-    branches: production
-    paths:
-      - docs/**
-      - '*rc'
-      - '*config*'
-      - '*.json'
-      - '*.lock'
-      - .github/workflows/preview-docs.yml
   pull_request:
     branches: production
     paths:
