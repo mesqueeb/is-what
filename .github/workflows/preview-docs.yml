@@ -1,0 +1,28 @@
+name: Preview docs
+on:
+  pull_request:
+    branches: production
+    paths:
+      - docs/**
+      - '*rc'
+      - '*config*'
+      - '*.json'
+      - '*.lock'
+      - .github/workflows/preview-docs.yml
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+jobs:
+  preview-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+      - run: npm ci
+      - run: npm run build:docs
+      - uses: actions/upload-artifact@v3
+        with:
+          name: preview-docs
+          path: docs/dist
