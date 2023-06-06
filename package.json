@@ -13,9 +13,6 @@
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": ">=16"
-  },
   "scripts": {
     "test": "tsc --noEmit && vitest run",
     "pretest": "prettier --ignore-path .gitignore -w . && eslint src",
