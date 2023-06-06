@@ -90,8 +90,9 @@
     ]
   },
   "np": {
-    "yarn": false,
-    "branch": "production"
+    "branch": "production",
+    "publish": false,
+    "yarn": false
   },
   "eslintConfig": {
     "ignorePatterns": [
