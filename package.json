@@ -81,14 +81,6 @@
     "typescript": "^5.0.4",
     "vitest": "^0.31.1"
   },
-  "ava": {
-    "extensions": {
-      "ts": "module"
-    },
-    "nodeArguments": [
-      "--loader=ts-node/esm"
-    ]
-  },
   "np": {
     "branch": "production",
     "publish": false,
