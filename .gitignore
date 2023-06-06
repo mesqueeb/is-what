@@ -1,7 +1,7 @@
 # https://www.denoify.land/
 deno_dist
 
-#region https://docs.denoify.land/publishing-on-deno.land-x
+#region https://github.com/github/gitignore/blob/main/Node.gitignore
 # Logs
 logs
 *.log
