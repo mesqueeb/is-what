@@ -1,6 +1,6 @@
 {
   "name": "is-what",
-  "version": "4.1.12",
+  "version": "4.1.15",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "type": "module",
   "sideEffects": false,
@@ -62,13 +62,15 @@
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "del-cli": "^5.0.0",
-    "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-tree-shaking": "^1.10.0",
-    "np": "^7.7.0",
+    "eslint": "^8.41.0",
+    "np": "^8.0.2",
+    "prettier-plugin-jsdoc": "^0.4.2",
     "prettier": "^2.8.8",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-esbuild": "^5.0.0",
+    "rollup": "^3.22.0",
     "typedoc": "^0.24.7",
     "typescript": "^5.0.4",
     "vitest": "^0.31.1"
@@ -82,8 +84,9 @@
     ]
   },
   "np": {
-    "yarn": false,
-    "branch": "production"
+    "branch": "production",
+    "publish": false,
+    "yarn": false
   },
   "eslintConfig": {
     "ignorePatterns": [
@@ -111,5 +114,17 @@
       "tree-shaking/no-side-effects-in-initialization": "error",
       "@typescript-eslint/ban-ts-comment": "off"
     }
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "semi": false,
+    "bracketSpacing": true,
+    "quoteProps": "consistent",
+    "plugins": [
+      "prettier-plugin-jsdoc"
+    ]
   }
 }
