@@ -1,7 +1,7 @@
 name: Publish npm
 on:
   release:
-    types: [published, prereleased]
+    types: published
   workflow_dispatch:
 concurrency: ${{ github.workflow }}
 jobs:
