@@ -5,8 +5,7 @@ on:
   workflow_dispatch:
 concurrency: ${{ github.workflow }}
 jobs:
-  publish-npm-release:
-    if: '!github.event.release.prerelease'
+  publish-npm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -16,23 +15,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm test
-      - run: |
-          npm publish
-          npm dist-tag add "$(npm view . name)@$(npm view . version)" next
+      - run: npm publish --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-  publish-npm-prerelease:
-    if: github.event.release.prerelease
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          cache: npm
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: |
-          npm publish --tag beta
-          npm dist-tag add "$(npm view . name)@$(npm view . version)" next
+      - if: '!github.event.release.prerelease'
+        run: npm dist-tag add "$(npm view . name)@$(npm view . version)" latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
