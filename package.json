@@ -124,5 +124,10 @@
     "plugins": [
       "prettier-plugin-jsdoc"
     ]
+  },
+  "typedocOptions": {
+    "entryPoints": ["src/index.ts"],
+    "out": "docs/dist",
+    "skipErrorChecking": true
   }
 }
