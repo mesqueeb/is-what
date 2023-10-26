@@ -6,8 +6,8 @@ import { PlainObject } from './isPlainObject.js'
  *
  * Usage: isObjectLike<{id: any}>(payload) // will make sure it's an object and has an `id` prop.
  *
- * @template T this must be passed in < >
- * @param {*} payload
+ * @template T This must be passed in < >
+ * @param {any} payload
  * @returns {payload is T}
  */
 export function isObjectLike<T extends PlainObject>(payload: any): payload is T {

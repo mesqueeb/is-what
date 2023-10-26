@@ -3,7 +3,7 @@ import { isNumber } from './isNumber.js'
 /**
  * Returns whether the payload is a negative number (but not 0)
  *
- * @param {*} payload
+ * @param {any} payload
  * @returns {payload is number}
  */
 export function isNegativeNumber(payload: any): payload is number {

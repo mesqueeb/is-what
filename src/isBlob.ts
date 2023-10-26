@@ -3,7 +3,7 @@ import { getType } from './getType.js'
 /**
  * Returns whether the payload is a Blob
  *
- * @param {*} payload
+ * @param {any} payload
  * @returns {payload is Blob}
  */
 export function isBlob(payload: any): payload is Blob {

@@ -1,7 +1,7 @@
 /**
  * Returns the object type of the given payload
  *
- * @param {*} payload
+ * @param {any} payload
  * @returns {string}
  */
 export function getType(payload: any): string {

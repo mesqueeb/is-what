@@ -1,7 +1,7 @@
 /**
  * Returns whether the payload is ''
  *
- * @param {*} payload
+ * @param {any} payload
  * @returns {payload is string}
  */
 export function isEmptyString(payload: any): payload is string {

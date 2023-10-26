@@ -3,7 +3,7 @@ import { getType } from './getType.js'
 /**
  * Returns whether the payload is a Symbol
  *
- * @param {*} payload
+ * @param {any} payload
  * @returns {payload is symbol}
  */
 export function isSymbol(payload: any): payload is symbol {

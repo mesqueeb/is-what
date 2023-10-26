@@ -3,7 +3,7 @@ import { getType } from './getType.js'
 /**
  * Returns whether the payload is a File
  *
- * @param {*} payload
+ * @param {any} payload
  * @returns {payload is File}
  */
 export function isFile(payload: any): payload is File {

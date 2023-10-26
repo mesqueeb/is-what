@@ -6,9 +6,10 @@ import { isSymbol } from './isSymbol.js'
 import { isUndefined } from './isUndefined.js'
 
 /**
- * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String | Symbol)
+ * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String
+ * | Symbol)
  *
- * @param {*} payload
+ * @param {any} payload
  * @returns {(payload is boolean | null | undefined | number | string | symbol)}
  */
 export function isPrimitive(

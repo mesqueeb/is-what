@@ -5,7 +5,7 @@ import { getType } from './getType.js'
  *
  * This will return `false` for `NaN`!!
  *
- * @param {*} payload
+ * @param {any} payload
  * @returns {payload is number}
  */
 export function isNumber(payload: any): payload is number {
