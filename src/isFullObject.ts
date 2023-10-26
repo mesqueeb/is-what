@@ -1,9 +1,10 @@
-import { isPlainObject } from './isPlainObject.js'
+import { PlainObject, isPlainObject } from './isPlainObject.js'
 
 /**
- * Returns whether the payload is a an empty object (excluding special classes or objects with other prototypes)
+ * Returns whether the payload is a an empty object (excluding special classes or objects with other
+ * prototypes)
  *
- * @param {*} payload
+ * @param {any} payload
  * @returns {payload is PlainObject}
  */
 export function isFullObject(payload: any): payload is PlainObject {
