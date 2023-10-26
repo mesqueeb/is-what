@@ -7,5 +7,5 @@ import { getType } from './getType.js'
  * @returns {payload is Error}
  */
 export function isError(payload: any): payload is Error {
-  return getType(payload) === 'Error'
+  return getType(payload) === 'Error' || payload instanceof Error
 }
