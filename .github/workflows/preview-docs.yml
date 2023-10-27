@@ -1,7 +1,7 @@
 name: Preview docs
 on:
   pull_request:
-    branches: production
+    branches: 'main'
     paths:
       - docs/**
       - '*rc'
@@ -10,7 +10,7 @@ on:
       - '*.lock'
       - .github/workflows/preview-docs.yml
 concurrency:
-  group: ${{ github.workflow }}
+  group: ${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
 jobs:
   preview-docs:

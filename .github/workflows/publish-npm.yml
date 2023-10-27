@@ -1,11 +1,9 @@
 name: Publish npm
 on:
   release:
-    types: [published, prereleased]
+    types: published
   workflow_dispatch:
-concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: true
+concurrency: ${{ github.workflow }}
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
@@ -17,12 +15,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm test
-      - name: Publish to npm
-        run: |
-          if [[ "${{ github.event.release.prerelease }}" == "true" ]]; then
-            npm publish --tag next --access public
-          else
-            npm publish --access public
-          fi
+      - run: npm publish --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      - if: '!github.event.release.prerelease'
+        run: npm dist-tag add "$(npm view . name)@$(npm view . version)" latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
