@@ -17,10 +17,5 @@
     "target": "es2019",
     "useDefineForClassFields": true
   },
-  "include": ["src/**/*", "test/**/*"],
-  "typedocOptions": {
-    "entryPoints": ["src/index.ts"],
-    "out": "docs/dist",
-    "skipErrorChecking": true
-  }
+  "include": ["src/**/*", "test/**/*"]
 }
