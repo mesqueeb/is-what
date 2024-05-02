@@ -1,23 +1,9 @@
 {
+  "extends": "@cycraft/tsconfig",
+  "include": ["src"],
   "compilerOptions": {
-    "allowJs": false,
-    "baseUrl": ".",
-    "declaration": true,
-    "downlevelIteration": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "lib": ["esnext", "DOM", "DOM.Iterable"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "es2019",
-    "useDefineForClassFields": true
+    "outDir": "dist"
   },
-  "include": ["src/**/*", "test/**/*"],
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
     "out": "docs/dist",
