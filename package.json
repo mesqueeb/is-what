@@ -4,7 +4,10 @@
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "type": "module",
   "sideEffects": false,
-  "exports": "./index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*"
+  },
   "files": [
     "dist"
   ],
