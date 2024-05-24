@@ -372,7 +372,7 @@ test('type related tests', () => {
   // }
   // const a: Record<string, number> = {}
   // a[myArray[1]] = myArray[0]
-  // const myArray: string | any[] = [1, 2, 'a', 'b']
+  // const myArray: string | unknown[] = [1, 2, 'a', 'b']
   // if (!isArray(myArray)) {
   //   myArray
   // }

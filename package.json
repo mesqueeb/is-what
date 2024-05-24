@@ -4,33 +4,22 @@
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "type": "module",
   "sideEffects": false,
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.js",
-  "main": "./dist/index.js",
   "exports": {
-    ".": {
-      "require": {
-        "types": "./dist/cjs/index.d.cts",
-        "default": "./dist/cjs/index.cjs"
-      },
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
+    ".": "./dist/index.js",
+    "./*": "./dist/*"
   },
   "files": [
     "dist"
   ],
   "engines": {
-    "node": ">=12.13"
+    "node": ">=18"
   },
   "scripts": {
     "test": "vitest run",
-    "lint": "tsc --noEmit && eslint ./src --ext .ts",
-    "build": "rollup -c ./rollup.config.js",
+    "lint": "tsc --noEmit && eslint ./src",
+    "build": "del-cli dist && tsc",
     "build:docs": "typedoc",
-    "release": "npm run lint && del dist && npm run build && np"
+    "release": "npm run lint && npm run build && np"
   },
   "repository": {
     "type": "git",
@@ -60,69 +49,18 @@
   "author": "Luca Ban - Mesqueeb",
   "funding": "https://github.com/sponsors/mesqueeb",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mesqueeb/is-what/issues"
-  },
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
+    "@cycraft/eslint": "^0.0.2",
+    "@cycraft/tsconfig": "^0.1.2",
     "del-cli": "^5.1.0",
-    "eslint-config-prettier": "^8.10.0",
-    "eslint-plugin-tree-shaking": "^1.10.1",
-    "eslint": "^8.52.0",
-    "np": "^8.0.4",
-    "prettier-plugin-jsdoc": "^0.4.2",
-    "prettier": "^2.8.8",
-    "rollup-plugin-dts": "^5.3.1",
-    "rollup-plugin-esbuild": "^5.0.0",
-    "rollup": "^3.29.4",
-    "typedoc": "^0.25.2",
-    "typescript": "^5.2.2",
-    "vitest": "^0.34.6"
+    "np": "^10.0.5",
+    "typedoc": "^0.25.13",
+    "vitest": "^1.6.0"
   },
   "np": {
     "branch": "production",
     "publish": false,
     "yarn": false
-  },
-  "eslintConfig": {
-    "ignorePatterns": [
-      "node_modules",
-      "dist",
-      "scripts",
-      "test"
-    ],
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint",
-      "tree-shaking"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended",
-      "prettier"
-    ],
-    "rules": {
-      "@typescript-eslint/no-empty-function": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/ban-ts-ignore": "off",
-      "tree-shaking/no-side-effects-in-initialization": "error",
-      "@typescript-eslint/ban-ts-comment": "off"
-    }
-  },
-  "prettier": {
-    "printWidth": 100,
-    "tabWidth": 2,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "semi": false,
-    "bracketSpacing": true,
-    "quoteProps": "consistent",
-    "plugins": [
-      "prettier-plugin-jsdoc"
-    ]
   }
 }
