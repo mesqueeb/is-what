@@ -1,20 +1,16 @@
 import { getType } from './getType.js'
 import { AnyFunction } from './isFunction.js'
 
-export type AnyClass = new (...args: any[]) => any
+export type AnyClass = new (...args: unknown[]) => unknown
 
 /**
  * Does a generic check to check that the given payload is of a given type. In cases like Number, it
  * will return true for NaN as NaN is a Number (thanks javascript!); It will, however, differentiate
  * between object and null
  *
- * @template T
- * @param {any} payload
- * @param {T} type
- * @returns {payload is T}
  * @throws {TypeError} Will throw type error if type is an invalid type
  */
-export function isType<T extends AnyFunction | AnyClass>(payload: any, type: T): payload is T {
+export function isType<T extends AnyFunction | AnyClass>(payload: unknown, type: T): payload is T {
   if (!(type instanceof Function)) {
     throw new TypeError('Type must be a function')
   }
@@ -22,6 +18,6 @@ export function isType<T extends AnyFunction | AnyClass>(payload: any, type: T):
     throw new TypeError('Type is not a class')
   }
   // Classes usually have names (as functions usually have names)
-  const name: string | undefined | null = (type as any).name
+  const name: string | undefined | null = type.name
   return getType(payload) === name || Boolean(payload && payload.constructor === type)
 }

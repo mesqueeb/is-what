@@ -197,7 +197,7 @@ isInstanceOf(globalThis, ReadableStream)
 is-what makes TypeScript know the type during if statements. This means that a check returns the type of the payload for TypeScript users.
 
 ```ts
-function isNumber(payload: any): payload is number {
+function isNumber(payload: unknown): payload is number {
   // return boolean
 }
 // As you can see above, all functions return a boolean for JavaScript, but pass the payload type to TypeScript.
@@ -215,9 +215,9 @@ function fn(payload: string | number): number {
 `isPlainObject` and `isAnyObject` with TypeScript will declare the payload to be an object type with any props:
 
 ```ts
-function isPlainObject(payload: any): payload is { [key: string]: any }
-function isAnyObject(payload: any): payload is { [key: string]: any }
-// The reason to return `{[key: string]: any}` is to be able to do
+function isPlainObject(payload: unknown): payload is { [key: string]: unknown }
+function isAnyObject(payload: unknown): payload is { [key: string]: unknown }
+// The reason to return `{[key: string]: unknown}` is to be able to do
 if (isPlainObject(payload) && payload.id) return payload.id
 // if isPlainObject() would return `payload is object` then it would give an error at `payload.id`
 ```
@@ -235,7 +235,7 @@ const payload = { name: 'Mesqueeb' } // current type: `{ name: string }`
 
 // Without casting:
 if (isAnyObject(payload)) {
-  // in here `payload` is casted to: `Record<string | number | symbol, any>`
+  // in here `payload` is casted to: `Record<string | number | symbol, unknown>`
   // WE LOOSE THE TYPE!
 }
 
@@ -251,7 +251,7 @@ Please note: this library will not actually check the shape of the object, you n
 `isObjectLike<T>` works like this under the hood:
 
 ```ts
-function isObjectLike<T extends object>(payload: any): payload is T {
+function isObjectLike<T extends object>(payload: unknown): payload is T {
   return isAnyObject(payload)
 }
 ```

@@ -7,13 +7,11 @@ import { isUndefined } from './isUndefined.js'
 
 /**
  * Returns whether the payload is a primitive type (eg. Boolean | Null | Undefined | Number | String
- * | Symbol)
  *
- * @param {any} payload
- * @returns {(payload is boolean | null | undefined | number | string | symbol)}
+ * | Symbol)
  */
 export function isPrimitive(
-  payload: any
+  payload: unknown,
 ): payload is boolean | null | undefined | number | string | symbol {
   return (
     isBoolean(payload) ||

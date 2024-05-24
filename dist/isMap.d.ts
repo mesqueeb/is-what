@@ -1,7 +1,2 @@
-/**
- * Returns whether the payload is a Map
- *
- * @param {any} payload
- * @returns {payload is Map<any, any>}
- */
-export declare function isMap(payload: any): payload is Map<any, any>;
+/** Returns whether the payload is a Map */
+export declare function isMap(payload: unknown): payload is Map<unknown, unknown>;

@@ -1,11 +1,6 @@
 import { getType } from './getType.js'
 
-/**
- * Returns whether the payload is a Promise
- *
- * @param {any} payload
- * @returns {payload is Promise<any>}
- */
-export function isPromise(payload: any): payload is Promise<any> {
+/** Returns whether the payload is a Promise */
+export function isPromise(payload: unknown): payload is Promise<unknown> {
   return getType(payload) === 'Promise'
 }

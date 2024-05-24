@@ -1,11 +1,6 @@
 import { getType } from './getType.js'
 
-/**
- * Returns whether the payload is an array
- *
- * @param {any} payload
- * @returns {payload is any[]}
- */
-export function isArray(payload: any): payload is any[] {
+/** Returns whether the payload is an array */
+export function isArray(payload: unknown): payload is unknown[] {
   return getType(payload) === 'Array'
 }

@@ -4,10 +4,6 @@ import { getType } from './getType.js';
  * will return true for NaN as NaN is a Number (thanks javascript!); It will, however, differentiate
  * between object and null
  *
- * @template T
- * @param {any} payload
- * @param {T} type
- * @returns {payload is T}
  * @throws {TypeError} Will throw type error if type is an invalid type
  */
 export function isType(payload, type) {

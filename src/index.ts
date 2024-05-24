@@ -1,4 +1,4 @@
-export type AnyAsyncFunction = (...args: any[]) => Promise<any>
+export type AnyAsyncFunction = (...args: unknown[]) => Promise<unknown>
 export { getType } from './getType.js'
 export { isAnyObject } from './isAnyObject.js'
 export { isArray } from './isArray.js'

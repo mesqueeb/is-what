@@ -1,5 +1,3 @@
-import { AnyFunction } from './isFunction.js'
-
 type TypeGuard<A, B extends A> = (payload: A) => payload is B
 
 /**
@@ -16,7 +14,7 @@ type TypeGuard<A, B extends A> = (payload: A) => payload is B
  */
 export function isOneOf<A, B extends A, C extends A>(
   a: TypeGuard<A, B>,
-  b: TypeGuard<A, C>
+  b: TypeGuard<A, C>,
 ): TypeGuard<A, B | C>
 /**
  * A factory function that creates a function to check if the payload is one of the given types.
@@ -33,7 +31,7 @@ export function isOneOf<A, B extends A, C extends A>(
 export function isOneOf<A, B extends A, C extends A, D extends A>(
   a: TypeGuard<A, B>,
   b: TypeGuard<A, C>,
-  c: TypeGuard<A, D>
+  c: TypeGuard<A, D>,
 ): TypeGuard<A, B | C | D>
 /**
  * A factory function that creates a function to check if the payload is one of the given types.
@@ -51,7 +49,7 @@ export function isOneOf<A, B extends A, C extends A, D extends A, E extends A>(
   a: TypeGuard<A, B>,
   b: TypeGuard<A, C>,
   c: TypeGuard<A, D>,
-  d: TypeGuard<A, E>
+  d: TypeGuard<A, E>,
 ): TypeGuard<A, B | C | D | E>
 /**
  * A factory function that creates a function to check if the payload is one of the given types.
@@ -70,7 +68,7 @@ export function isOneOf<A, B extends A, C extends A, D extends A, E extends A, F
   b: TypeGuard<A, C>,
   c: TypeGuard<A, D>,
   d: TypeGuard<A, E>,
-  e: TypeGuard<A, F>
+  e: TypeGuard<A, F>,
 ): TypeGuard<A, B | C | D | E | F>
 /**
  * A factory function that creates a function to check if the payload is one of the given types.
@@ -85,11 +83,11 @@ export function isOneOf<A, B extends A, C extends A, D extends A, E extends A, F
  *   isNullOrUndefined(123) // false
  */
 export function isOneOf(
-  a: AnyFunction,
-  b: AnyFunction,
-  c?: AnyFunction,
-  d?: AnyFunction,
-  e?: AnyFunction
+  a: (...args: unknown[]) => boolean,
+  b: (...args: unknown[]) => boolean,
+  c?: (...args: unknown[]) => boolean,
+  d?: (...args: unknown[]) => boolean,
+  e?: (...args: unknown[]) => boolean,
 ): (value: unknown) => boolean {
   return (value) =>
     a(value) || b(value) || (!!c && c(value)) || (!!d && d(value)) || (!!e && e(value))

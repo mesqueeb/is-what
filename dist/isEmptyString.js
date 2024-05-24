@@ -1,9 +1,4 @@
-/**
- * Returns whether the payload is ''
- *
- * @param {any} payload
- * @returns {payload is string}
- */
+/** Returns whether the payload is '' */
 export function isEmptyString(payload) {
     return payload === '';
 }

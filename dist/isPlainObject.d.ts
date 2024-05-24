@@ -1,9 +1,6 @@
-export type PlainObject = Record<string | number | symbol, any>;
+export type PlainObject = Record<string | number | symbol, unknown>;
 /**
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects
  * with other prototypes)
- *
- * @param {any} payload
- * @returns {payload is PlainObject}
  */
-export declare function isPlainObject(payload: any): payload is PlainObject;
+export declare function isPlainObject(payload: unknown): payload is PlainObject;

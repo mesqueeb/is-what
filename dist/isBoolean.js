@@ -1,10 +1,5 @@
 import { getType } from './getType.js';
-/**
- * Returns whether the payload is a boolean
- *
- * @param {any} payload
- * @returns {payload is boolean}
- */
+/** Returns whether the payload is a boolean */
 export function isBoolean(payload) {
     return getType(payload) === 'Boolean';
 }

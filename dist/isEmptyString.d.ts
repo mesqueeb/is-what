@@ -1,7 +1,2 @@
-/**
- * Returns whether the payload is ''
- *
- * @param {any} payload
- * @returns {payload is string}
- */
-export declare function isEmptyString(payload: any): payload is string;
+/** Returns whether the payload is '' */
+export declare function isEmptyString(payload: unknown): payload is string;
