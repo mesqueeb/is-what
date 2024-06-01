@@ -1,7 +1,7 @@
 name: Test
 on:
   push:
-    branches: 'production'
+    branches: 'main'
     paths:
       - src/**
       - test/**
@@ -10,7 +10,7 @@ on:
       - '*.json'
       - .github/workflows/test.yml
   pull_request:
-    branches: 'production'
+    branches: 'main'
     paths:
       - src/**
       - test/**
@@ -19,7 +19,7 @@ on:
       - '*.json'
       - .github/workflows/test.yml
 concurrency:
-  group: test-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
 jobs:
   test:
