@@ -8,9 +8,6 @@
     ".": "./dist/index.js",
     "./*": "./dist/*"
   },
-  "files": [
-    "dist"
-  ],
   "engines": {
     "node": ">=18"
   },
@@ -21,10 +18,17 @@
     "build:docs": "typedoc",
     "release": "npm run lint && npm run build && np"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mesqueeb/is-what.git"
+  "devDependencies": {
+    "@cycraft/eslint": "^0.3.0",
+    "@cycraft/tsconfig": "^0.1.2",
+    "del-cli": "^5.1.0",
+    "np": "^10.0.5",
+    "typedoc": "^0.25.13",
+    "vitest": "^1.6.0"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "javascript",
     "typescript",
@@ -46,21 +50,13 @@
     "is-plain-obj",
     "is-plain-object"
   ],
-  "author": "Luca Ban - Mesqueeb",
+  "author": "Luca Ban - Mesqueeb (https://cycraft.co)",
   "funding": "https://github.com/sponsors/mesqueeb",
   "license": "MIT",
-  "homepage": "https://github.com/mesqueeb/is-what#readme",
-  "devDependencies": {
-    "@cycraft/eslint": "^0.0.2",
-    "@cycraft/tsconfig": "^0.1.2",
-    "del-cli": "^5.1.0",
-    "np": "^10.0.5",
-    "typedoc": "^0.25.13",
-    "vitest": "^1.6.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mesqueeb/is-what.git"
   },
-  "np": {
-    "branch": "production",
-    "publish": false,
-    "yarn": false
-  }
+  "homepage": "https://github.com/mesqueeb/is-what#readme",
+  "bugs": "https://github.com/mesqueeb/is-what/issues"
 }

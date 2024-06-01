@@ -291,4 +291,4 @@ function isAnyObject(payload) {
 // etc...
 ```
 
-See the full source code [here](https://github.com/mesqueeb/is-what/blob/production/src/index.ts).
+See the full source code [here](https://github.com/mesqueeb/is-what/blob/main/src/index.ts).

@@ -1,7 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.tabSize": 2, // make sure this is the same as .prettierrc
+  "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
