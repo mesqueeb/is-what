@@ -39,6 +39,7 @@ import {
   isOneOf,
   isFullObject,
   isInstanceOf,
+  isMongoId,
 } from '../src/index'
 
 // TODO: test isBlob
@@ -84,6 +85,13 @@ test('Basic true tests', () => {
   expect(isWeakMap(new WeakMap())).toEqual(true)
   expect(isSet(new Set())).toEqual(true)
   expect(isWeakSet(new WeakSet())).toEqual(true)
+  expect(isMongoId("60adf084f0fbdcab42de841e")).toEqual(true);
+  expect(isMongoId("123456789012345678901234")).toEqual(true);
+  expect(isMongoId("invalid-mongo-id-string")).toEqual(false);
+  expect(isMongoId("60adf084f0fbdcab42de8")).toEqual(false);
+  expect(isMongoId("60adf084f0fbdcab42de84a3d")).toEqual(false);
+  expect(isMongoId("60adf084f0fbdcab42de841g")).toEqual(false);
+  expect(isMongoId("60adf084f0fbdcab42de841Z")).toEqual(false);
   // expect(isBlob(blob)).toEqual(true)
   // expect(isFile(new File([''], '', { type: 'text/html' }))).toEqual(true)
   expect(isPromise(new Promise((resolve, reject) => {}))).toEqual(true)
