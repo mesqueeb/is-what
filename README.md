@@ -97,7 +97,16 @@ isPromise(new Promise((resolve) => {})) // true
 
 // primitives
 isPrimitive('') // true
-// true for any of: boolean, null, undefined, number, string, symbol
+//     true for any of: boolean, null, undefined, number, string, symbol
+
+// iterables
+isIterable([1, 2, 3]) // true
+isIterable('hello') // true
+isIterable(new Map()) // true
+isIterable(new Set()) // true
+isIterable(function* generator() {
+  yield 1
+}) // true
 ```
 
 ### Let's talk about NaN
