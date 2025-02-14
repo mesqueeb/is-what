@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-useless-constructor */
 /* eslint-disable @typescript-eslint/no-extraneous-class */
-/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-array-constructor */
 import { expect, test } from 'vitest'
@@ -20,6 +20,7 @@ import {
   isFullObject,
   isFullString,
   isFunction,
+  isHexDecimal,
   isInstanceOf,
   isIterable,
   isMap,
@@ -91,7 +92,7 @@ test('Basic true tests', () => {
   expect(isWeakSet(new WeakSet())).toEqual(true)
   // expect(isBlob(blob)).toEqual(true)
   // expect(isFile(new File([''], '', { type: 'text/html' }))).toEqual(true)
-  expect(isPromise(new Promise((resolve, reject) => {}))).toEqual(true)
+  expect(isPromise(new Promise((_resolve, _reject) => {}))).toEqual(true)
 })
 
 test('Basic false tests', () => {
@@ -114,6 +115,23 @@ test('Basic false tests', () => {
   expect(isSet(new WeakSet())).toEqual(false)
   expect(isWeakSet(new Set())).toEqual(false)
   expect(isNullOrUndefined(NaN)).toEqual(false)
+})
+
+test('isHexDecimal', () => {
+  expect(isHexDecimal('60adf084f0fbdcab42de841e')).toEqual(true)
+  expect(isHexDecimal('123456789012345678901234')).toEqual(true)
+  expect(isHexDecimal('60adf084f0fbdcab42de8')).toEqual(true)
+  expect(isHexDecimal('60adf084f0fbdcab42de84a3d')).toEqual(true)
+
+  expect(isHexDecimal('60adf084f0fbdcab42de841e', 24)).toEqual(true)
+  expect(isHexDecimal('123456789012345678901234', 24)).toEqual(true)
+
+  expect(isHexDecimal('60adf084f0fbdcab42de841g')).toEqual(false) // not hexdecimal
+  expect(isHexDecimal('60adf084f0fbdcab42de841Z')).toEqual(false) // not hexdecimal
+  expect(isHexDecimal('invalid-hexdecimal-id-string')).toEqual(false) // not hexdecimal
+
+  expect(isHexDecimal('60adf084f0fbdcab42de8', 24)).toEqual(false) // not 24 characters
+  expect(isHexDecimal('60adf084f0fbdcab42de84a3d', 24)).toEqual(false) // not 24 characters
 })
 
 test('isFunction', () => {
@@ -221,7 +239,7 @@ test('NaN tests', () => {
   expect(isNaNValue(new WeakMap())).toEqual(false)
   expect(isNaNValue(new Set())).toEqual(false)
   expect(isNaNValue(new WeakSet())).toEqual(false)
-  expect(isNaNValue(new Promise((resolve, reject) => {}))).toEqual(false)
+  expect(isNaNValue(new Promise((_resolve, _reject) => {}))).toEqual(false)
 })
 
 test('Primitive tests', () => {

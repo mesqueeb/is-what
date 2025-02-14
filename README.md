@@ -51,6 +51,8 @@ isNull(null) // true
 isString('') // true
 isEmptyString('') // true
 isFullString('') // false
+isHexDecimal('60adf084f0fbdcab42de841e') // true
+isHexDecimal('60adf084f0fbdcab42de841e', 24) // check specific length of 24 (eg. MongoDB ObjectId)
 
 // numbers
 isNumber(0) // true
