@@ -20,9 +20,9 @@ import {
   isFullObject,
   isFullString,
   isFunction,
+  isHexDecimal,
   isInstanceOf,
   isMap,
-  isMongoId,
   isNaNValue,
   isNegativeNumber,
   isNull,
@@ -89,13 +89,6 @@ test('Basic true tests', () => {
   expect(isWeakMap(new WeakMap())).toEqual(true)
   expect(isSet(new Set())).toEqual(true)
   expect(isWeakSet(new WeakSet())).toEqual(true)
-  expect(isMongoId('60adf084f0fbdcab42de841e')).toEqual(true)
-  expect(isMongoId('123456789012345678901234')).toEqual(true)
-  expect(isMongoId('invalid-mongo-id-string')).toEqual(false)
-  expect(isMongoId('60adf084f0fbdcab42de8')).toEqual(false)
-  expect(isMongoId('60adf084f0fbdcab42de84a3d')).toEqual(false)
-  expect(isMongoId('60adf084f0fbdcab42de841g')).toEqual(false)
-  expect(isMongoId('60adf084f0fbdcab42de841Z')).toEqual(false)
   // expect(isBlob(blob)).toEqual(true)
   // expect(isFile(new File([''], '', { type: 'text/html' }))).toEqual(true)
   expect(isPromise(new Promise((_resolve, _reject) => {}))).toEqual(true)
@@ -121,6 +114,23 @@ test('Basic false tests', () => {
   expect(isSet(new WeakSet())).toEqual(false)
   expect(isWeakSet(new Set())).toEqual(false)
   expect(isNullOrUndefined(NaN)).toEqual(false)
+})
+
+test('isHexDecimal', () => {
+  expect(isHexDecimal('60adf084f0fbdcab42de841e')).toEqual(true)
+  expect(isHexDecimal('123456789012345678901234')).toEqual(true)
+  expect(isHexDecimal('60adf084f0fbdcab42de8')).toEqual(true)
+  expect(isHexDecimal('60adf084f0fbdcab42de84a3d')).toEqual(true)
+
+  expect(isHexDecimal('60adf084f0fbdcab42de841e', 24)).toEqual(true)
+  expect(isHexDecimal('123456789012345678901234', 24)).toEqual(true)
+
+  expect(isHexDecimal('60adf084f0fbdcab42de841g')).toEqual(false) // not hexdecimal
+  expect(isHexDecimal('60adf084f0fbdcab42de841Z')).toEqual(false) // not hexdecimal
+  expect(isHexDecimal('invalid-hexdecimal-id-string')).toEqual(false) // not hexdecimal
+
+  expect(isHexDecimal('60adf084f0fbdcab42de8', 24)).toEqual(false) // not 24 characters
+  expect(isHexDecimal('60adf084f0fbdcab42de84a3d', 24)).toEqual(false) // not 24 characters
 })
 
 test('isFunction', () => {
