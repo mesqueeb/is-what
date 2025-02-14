@@ -22,6 +22,7 @@ import {
   isFunction,
   isHexDecimal,
   isInstanceOf,
+  isIterable,
   isMap,
   isNaNValue,
   isNegativeNumber,
@@ -430,4 +431,67 @@ test('isInstanceOf', () => {
 
   expect(isInstanceOf({}, Object)).toEqual(true)
   expect(isInstanceOf({}, 'Object')).toEqual(true)
+})
+
+test('isIterable - valid iterables', () => {
+  // Arrays are iterable.
+  expect(isIterable([1, 2, 3])).toEqual(true)
+
+  // Strings are iterable.
+  expect(isIterable('hello')).toEqual(true)
+
+  // Maps and Sets are iterable.
+  expect(isIterable(new Map())).toEqual(true)
+  expect(isIterable(new Set())).toEqual(true)
+
+  // Generator objects are iterable.
+  function* generator() {
+    yield 1
+    yield 2
+  }
+  expect(isIterable(generator())).toEqual(true)
+
+  // Custom iterable object.
+  const customIterable = {
+    [Symbol.iterator]() {
+      let i = 0
+      return {
+        next() {
+          return { done: i >= 3, value: i++ }
+        },
+      }
+    },
+  }
+  expect(isIterable(customIterable)).toEqual(true)
+})
+
+test('isIterable - non-iterables', () => {
+  // Plain object is not iterable.
+  expect(isIterable({})).toEqual(false)
+
+  // null and undefined are not iterable.
+  expect(isIterable(null)).toEqual(false)
+  expect(isIterable(undefined)).toEqual(false)
+
+  // Numbers and booleans are not iterable.
+  expect(isIterable(42)).toEqual(false)
+  expect(isIterable(true)).toEqual(false)
+
+  // Promise is not iterable.
+  expect(isIterable(new Promise(() => {}))).toEqual(false)
+
+  // Object with Symbol.iterator property that is not a function.
+  const invalidIterable = { [Symbol.iterator]: 123 }
+  expect(isIterable(invalidIterable)).toEqual(false)
+})
+
+test('isIterable - async iterable objects', () => {
+  // An object with only Symbol.asyncIterator is an async iterable,
+  // but our isIterable function only checks for Symbol.iterator.
+  const asyncIterable = {
+    async *[Symbol.asyncIterator]() {
+      yield 1
+    },
+  }
+  expect(isIterable(asyncIterable)).toEqual(false)
 })

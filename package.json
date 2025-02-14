@@ -1,6 +1,6 @@
 {
   "name": "is-what",
-  "version": "5.0.2",
+  "version": "5.1.1",
   "description": "JS type check (TypeScript supported) functions like `isPlainObject() isArray()` etc. A simple & small integration.",
   "type": "module",
   "sideEffects": false,
@@ -16,15 +16,15 @@
     "lint": "tsc --noEmit && eslint ./src",
     "build": "del-cli dist && tsc",
     "build:docs": "typedoc",
-    "release": "npm run lint && npm run build && np"
+    "release": "npm run lint && npm run build && np --no-publish"
   },
   "devDependencies": {
-    "@cycraft/eslint": "^0.3.0",
+    "@cycraft/eslint": "^0.4.3",
     "@cycraft/tsconfig": "^0.1.2",
-    "del-cli": "^5.1.0",
-    "np": "^10.0.5",
-    "typedoc": "^0.25.13",
-    "vitest": "^1.6.0"
+    "del-cli": "^6.0.0",
+    "np": "^10.2.0",
+    "typedoc": "^0.27.7",
+    "vitest": "^3.0.5"
   },
   "files": [
     "dist"
