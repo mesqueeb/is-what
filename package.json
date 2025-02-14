@@ -16,7 +16,7 @@
     "lint": "tsc --noEmit && eslint ./src",
     "build": "del-cli dist && tsc",
     "build:docs": "typedoc",
-    "release": "npm run lint && npm run build && np"
+    "release": "npm run lint && npm run build && np --no-publish"
   },
   "devDependencies": {
     "@cycraft/eslint": "^0.4.1",
