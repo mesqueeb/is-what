@@ -15,6 +15,7 @@ export { isFullObject } from './isFullObject.js';
 export { isFullString } from './isFullString.js';
 export { isFunction } from './isFunction.js';
 export type { AnyFunction } from './isFunction.js';
+export { isHexDecimal } from './isHexDecimal.js';
 export { isInstanceOf } from './isInstanceOf.js';
 export { isIterable } from './isIterable.js';
 export { isMap } from './isMap.js';
