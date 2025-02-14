@@ -1,45 +1,49 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-useless-constructor */
+/* eslint-disable @typescript-eslint/no-extraneous-class */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable tree-shaking/no-side-effects-in-initialization */
 /* eslint-disable @typescript-eslint/no-array-constructor */
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
 
 import {
-  isError,
-  isEmptyArray,
-  isObject,
-  isPlainObject,
   isAnyObject,
-  isUndefined,
+  isArray,
+  isBoolean,
+  isDate,
+  isEmptyArray,
+  isEmptyObject,
+  isEmptyString,
+  isError,
+  isFullArray,
+  isFullObject,
+  isFullString,
+  isFunction,
+  isInstanceOf,
+  isMap,
+  isMongoId,
+  isNaNValue,
+  isNegativeNumber,
   isNull,
   isNullOrUndefined,
-  isFunction,
-  isArray,
-  isString,
-  isEmptyString,
-  isFullString,
-  isBoolean,
-  isRegExp,
   isNumber,
+  isObject,
+  isOneOf,
+  isPlainObject,
   isPositiveNumber,
-  isNegativeNumber,
-  isDate,
-  isSymbol,
   isPrimitive,
-  isType,
-  isMap,
-  isWeakMap,
-  isSet,
-  isWeakSet,
-  isFullArray,
   // isBlob,
   // isFile,
   isPromise,
-  isNaNValue,
-  isEmptyObject,
-  isOneOf,
-  isFullObject,
-  isInstanceOf,
-  isMongoId,
+  isRegExp,
+  isSet,
+  isString,
+  isSymbol,
+  isType,
+  isUndefined,
+  isWeakMap,
+  isWeakSet,
 } from '../src/index'
 
 // TODO: test isBlob
@@ -85,16 +89,16 @@ test('Basic true tests', () => {
   expect(isWeakMap(new WeakMap())).toEqual(true)
   expect(isSet(new Set())).toEqual(true)
   expect(isWeakSet(new WeakSet())).toEqual(true)
-  expect(isMongoId("60adf084f0fbdcab42de841e")).toEqual(true);
-  expect(isMongoId("123456789012345678901234")).toEqual(true);
-  expect(isMongoId("invalid-mongo-id-string")).toEqual(false);
-  expect(isMongoId("60adf084f0fbdcab42de8")).toEqual(false);
-  expect(isMongoId("60adf084f0fbdcab42de84a3d")).toEqual(false);
-  expect(isMongoId("60adf084f0fbdcab42de841g")).toEqual(false);
-  expect(isMongoId("60adf084f0fbdcab42de841Z")).toEqual(false);
+  expect(isMongoId('60adf084f0fbdcab42de841e')).toEqual(true)
+  expect(isMongoId('123456789012345678901234')).toEqual(true)
+  expect(isMongoId('invalid-mongo-id-string')).toEqual(false)
+  expect(isMongoId('60adf084f0fbdcab42de8')).toEqual(false)
+  expect(isMongoId('60adf084f0fbdcab42de84a3d')).toEqual(false)
+  expect(isMongoId('60adf084f0fbdcab42de841g')).toEqual(false)
+  expect(isMongoId('60adf084f0fbdcab42de841Z')).toEqual(false)
   // expect(isBlob(blob)).toEqual(true)
   // expect(isFile(new File([''], '', { type: 'text/html' }))).toEqual(true)
-  expect(isPromise(new Promise((resolve, reject) => {}))).toEqual(true)
+  expect(isPromise(new Promise((_resolve, _reject) => {}))).toEqual(true)
 })
 
 test('Basic false tests', () => {
@@ -224,7 +228,7 @@ test('NaN tests', () => {
   expect(isNaNValue(new WeakMap())).toEqual(false)
   expect(isNaNValue(new Set())).toEqual(false)
   expect(isNaNValue(new WeakSet())).toEqual(false)
-  expect(isNaNValue(new Promise((resolve, reject) => {}))).toEqual(false)
+  expect(isNaNValue(new Promise((_resolve, _reject) => {}))).toEqual(false)
 })
 
 test('Primitive tests', () => {
