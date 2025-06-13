@@ -1,5 +1,5 @@
 import { isAnyObject } from './isAnyObject.js'
-import { PlainObject } from './isPlainObject.js'
+import type { PlainObject } from './isPlainObject.js'
 
 /**
  * Returns whether the payload is an object like a type passed in < >

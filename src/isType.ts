@@ -1,5 +1,5 @@
 import { getType } from './getType.js'
-import { AnyFunction, isFunction } from './isFunction.js'
+import { type AnyFunction, isFunction } from './isFunction.js'
 
 export type AnyClass = new (...args: unknown[]) => unknown
 
@@ -14,7 +14,7 @@ export function isType<T extends AnyFunction | AnyClass>(payload: unknown, type:
   if (!isFunction(type)) {
     throw new TypeError('Type must be a function')
   }
-  if (!Object.prototype.hasOwnProperty.call(type, 'prototype')) {
+  if (!Object.hasOwn(type, 'prototype')) {
     throw new TypeError('Type is not a class')
   }
   // Classes usually have names (as functions usually have names)

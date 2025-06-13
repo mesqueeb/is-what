@@ -1,5 +1,5 @@
 import { getType } from './getType.js'
-import { AnyClass, isType } from './isType.js'
+import { type AnyClass, isType } from './isType.js'
 
 type GlobalClassName = {
   [K in keyof typeof globalThis]: (typeof globalThis)[K] extends AnyClass ? K : never
@@ -23,7 +23,7 @@ type GlobalClassName = {
 export function isInstanceOf<T extends AnyClass>(value: unknown, class_: T): value is T
 export function isInstanceOf<K extends GlobalClassName>(
   value: unknown,
-  className: K
+  className: K,
 ): value is (typeof globalThis)[K]
 export function isInstanceOf(value: unknown, className: string): value is object
 export function isInstanceOf(value: unknown, classOrClassName: AnyClass | string): boolean {

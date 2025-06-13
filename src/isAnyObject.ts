@@ -1,5 +1,5 @@
 import { getType } from './getType.js'
-import { PlainObject } from './isPlainObject.js'
+import type { PlainObject } from './isPlainObject.js'
 
 /**
  * Returns whether the payload is an any kind of object (including special classes or objects with
