@@ -33,13 +33,12 @@ export function isInstanceOf(value: unknown, classOrClassName: AnyClass | string
         return true
       }
     }
-    return false
   } else {
     for (let p = value; p; p = Object.getPrototypeOf(p)) {
       if (getType(p) === classOrClassName) {
         return true
       }
     }
-    return false
   }
+  return false
 }
