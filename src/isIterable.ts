@@ -1,5 +1,6 @@
 /** Returns whether the payload is an iterable (regular or async) */
 export function isIterable(payload: unknown): payload is Iterable<unknown> {
+  // oxlint-disable-next-line no-typeof-undefined
   if (typeof Symbol === 'undefined' || typeof Symbol.iterator === 'undefined') {
     return false
   }
