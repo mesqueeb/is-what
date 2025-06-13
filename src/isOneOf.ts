@@ -1,3 +1,4 @@
+// oxlint-disable max-params
 type TypeGuard<A, B extends A> = (payload: A) => payload is B
 
 /**

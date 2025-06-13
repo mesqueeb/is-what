@@ -1,5 +1,5 @@
 import { getType } from './getType.js'
-import { AnyFunction } from './isFunction.js'
+import { AnyFunction, isFunction } from './isFunction.js'
 
 export type AnyClass = new (...args: unknown[]) => unknown
 
@@ -11,7 +11,7 @@ export type AnyClass = new (...args: unknown[]) => unknown
  * @throws {TypeError} Will throw type error if type is an invalid type
  */
 export function isType<T extends AnyFunction | AnyClass>(payload: unknown, type: T): payload is T {
-  if (!(type instanceof Function)) {
+  if (!isFunction(type)) {
     throw new TypeError('Type must be a function')
   }
   if (!Object.prototype.hasOwnProperty.call(type, 'prototype')) {

@@ -3,6 +3,7 @@ export function isIterable(payload: unknown): payload is Iterable<unknown> {
   if (typeof Symbol === 'undefined' || typeof Symbol.iterator === 'undefined') {
     return false
   }
+  // oxlint-disable-next-line no-null
   if (payload == null) return false
   // Strings are iterable, even though they're primitives.
   if (typeof payload === 'string') return true
