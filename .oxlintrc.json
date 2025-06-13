@@ -1,0 +1,25 @@
+{
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "pedantic": "warn",
+    "perf": "error",
+    "style": "error",
+    "restriction": "error",
+    "nursery": "error"
+  },
+  "rules": {
+    // From "style"
+    "unicorn/filename-case": ["error", { "cases": { "camelCase": true, "pascalCase": true } }],
+    "func-style": ["error", "declaration"],
+    "no-magic-numbers": "off",
+    "yoda": "error",
+    "sort-imports": "off",
+    "curly": "off",
+    // From "restriction"
+    "no-undefined": "off",
+    // From "pedantic"
+    "max-lines-per-function": "off",
+    "max-depth": "off"
+  }
+}

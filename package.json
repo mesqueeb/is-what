@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "vitest run",
-    "lint": "tsc --noEmit && eslint ./src",
+    "lint": "tsc --noEmit && oxlint ./src",
     "build": "del-cli dist && tsc",
     "build:docs": "typedoc",
     "release": "npm run lint && npm run build && np --no-publish"
@@ -23,6 +23,7 @@
     "@cycraft/tsconfig": "^0.1.2",
     "del-cli": "^6.0.0",
     "np": "^10.2.0",
+    "oxlint": "^1.1.0",
     "typedoc": "^0.28.1",
     "vitest": "^3.0.9"
   },
