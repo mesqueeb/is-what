@@ -7,7 +7,6 @@ export function isInstanceOf(value, classOrClassName) {
                 return true;
             }
         }
-        return false;
     }
     else {
         for (let p = value; p; p = Object.getPrototypeOf(p)) {
@@ -15,6 +14,6 @@ export function isInstanceOf(value, classOrClassName) {
                 return true;
             }
         }
-        return false;
     }
+    return false;
 }

@@ -6,5 +6,5 @@ import { getType } from './getType.js'
  * This will return `false` for `NaN`!!
  */
 export function isNumber(payload: unknown): payload is number {
-  return getType(payload) === 'Number' && !isNaN(payload as unknown as number)
+  return getType(payload) === 'Number' && !Number.isNaN(payload as number)
 }

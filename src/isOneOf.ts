@@ -1,3 +1,4 @@
+// oxlint-disable max-params
 type TypeGuard<A, B extends A> = (payload: A) => payload is B
 
 /**
@@ -89,6 +90,6 @@ export function isOneOf(
   d?: (...args: unknown[]) => boolean,
   e?: (...args: unknown[]) => boolean,
 ): (value: unknown) => boolean {
-  return (value) =>
+  return (value): boolean =>
     a(value) || b(value) || (!!c && c(value)) || (!!d && d(value)) || (!!e && e(value))
 }

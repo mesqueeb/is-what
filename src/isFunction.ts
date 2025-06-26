@@ -1,3 +1,4 @@
+// oxlint-disable-next-line no-explicit-any
 export type AnyFunction = (...args: any[]) => any
 
 /** Returns whether the payload is a function (regular or async) */

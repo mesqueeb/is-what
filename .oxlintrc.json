@@ -1,0 +1,62 @@
+{
+  "ignorePatterns": ["dist", "test", "**/*.test.ts"],
+  "env": {
+    "shared-node-browser": true
+  },
+  "plugins": ["typescript", "unicorn", "oxc", "import", "jsdoc", "promise", "node", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "pedantic": "error",
+    "perf": "error",
+    "style": "error",
+    "restriction": "error",
+    "nursery": "error"
+  },
+  "rules": {
+    // From "suspicious"
+    "jsdoc/require-returns": "off",
+    "jsdoc/require-param": "off",
+    // From "pedantic"
+    "eslint/max-lines": "off",
+    "eslint/max-lines-per-function": "off",
+    "eslint/max-depth": "off",
+    "eslint/max-nested-callbacks": "off",
+    "eslint/sort-vars": "off",
+    "import/max-dependencies": "off",
+    "unicorn/explicit-length-check": "off",
+    "unicorn/no-useless-undefined": "off",
+    "jsdoc/require-returns-type": "off",
+    "jsdoc/require-param-type": "off",
+    // From "style"
+    "unicorn/filename-case": ["error", { "cases": { "camelCase": true, "pascalCase": true } }],
+    "unicorn/no-null": "warn",
+    "eslint/func-style": ["error", "declaration"],
+    "eslint/no-magic-numbers": "off",
+    "eslint/yoda": "error",
+    "eslint/sort-imports": "off",
+    "eslint/curly": "off",
+    "eslint/no-ternary": "off",
+    "eslint/sort-keys": "off",
+    "eslint/vars-on-top": "off",
+    "eslint/no-continue": "off",
+    "eslint/no-nested-ternary": "off",
+    "typescript/consistent-type-definitions": ["error", "type"],
+    "promise/avoid-new": "off",
+    "import/group-exports": "off",
+    "import/exports-last": "off",
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+    "eslint/no-duplicate-imports": "off", // taken care of by prettier-plugin-organize-imports and would conflict with: "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+    // From "restriction"
+    "import/extensions": ["error", "always"],
+    "typescript/no-import-type-side-effects": "error",
+    "unicorn/no-nested-ternary": "off",
+    "eslint/no-undefined": "off",
+    "oxc/no-rest-spread-properties": "off",
+    "unicorn/no-array-reduce": "off",
+    "oxc/no-async-await": "off",
+    "oxc/no-optional-chaining": "off",
+    "eslint/no-empty-function": "off",
+    "eslint/no-void": "off" // want to allow: void somethingAsync()
+  }
+}
