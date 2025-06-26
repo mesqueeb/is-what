@@ -1,4 +1,5 @@
 {
+  "ignorePatterns": ["dist", "test", "**/*.test.ts"],
   "env": {
     "shared-node-browser": true
   },
