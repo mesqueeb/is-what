@@ -1,5 +1,6 @@
 import { getType } from './getType.js'
-import { type AnyFunction, isFunction } from './isFunction.js'
+import type { AnyFunction } from './isFunction.js'
+import { isFunction } from './isFunction.js'
 
 export type AnyClass = new (...args: unknown[]) => unknown
 

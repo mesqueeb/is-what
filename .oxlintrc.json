@@ -24,7 +24,9 @@
     "eslint/sort-vars": "off",
     "import/max-dependencies": "off",
     "unicorn/explicit-length-check": "off",
+    "unicorn/no-useless-undefined": "off",
     "jsdoc/require-returns-type": "off",
+    "jsdoc/require-param-type": "off",
     // From "style"
     "unicorn/filename-case": ["error", { "cases": { "camelCase": true, "pascalCase": true } }],
     "unicorn/no-null": "warn",
@@ -36,17 +38,24 @@
     "eslint/no-ternary": "off",
     "eslint/sort-keys": "off",
     "eslint/vars-on-top": "off",
+    "eslint/no-continue": "off",
+    "eslint/no-nested-ternary": "off",
     "typescript/consistent-type-definitions": ["error", "type"],
-    "import/consistent-type-specifier-style": ["error", "prefer-inline"],
+    "promise/avoid-new": "off",
     "import/group-exports": "off",
     "import/exports-last": "off",
-    "promise/avoid-new": "off",
-    "eslint/no-nested-ternary": "off",
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+    "eslint/no-duplicate-imports": "off", // taken care of by prettier-plugin-organize-imports and would conflict with: "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
     // From "restriction"
+    "import/extensions": ["error", "always"],
+    "typescript/no-import-type-side-effects": "error",
     "unicorn/no-nested-ternary": "off",
     "eslint/no-undefined": "off",
-    "typescript/no-import-type-side-effects": "off",
     "oxc/no-rest-spread-properties": "off",
-    "unicorn/no-array-reduce": "off"
+    "unicorn/no-array-reduce": "off",
+    "oxc/no-async-await": "off",
+    "oxc/no-optional-chaining": "off",
+    "eslint/no-empty-function": "off",
+    "eslint/no-void": "off" // want to allow: void somethingAsync()
   }
 }

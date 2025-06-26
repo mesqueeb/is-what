@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "vitest run",
-    "lint": "tsc --noEmit && oxlint ./src",
+    "lint": "tsc --noEmit && oxlint ./src --fix",
     "build": "del-cli dist && tsc",
     "build:docs": "typedoc",
     "release": "npm run lint && npm run build && np --no-publish"
