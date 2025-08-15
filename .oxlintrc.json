@@ -14,6 +14,8 @@
     "nursery": "error"
   },
   "rules": {
+    // From "correctness"
+    "typescript/no-this-alias": ["error", { "allowDestructuring": true }],
     // From "suspicious"
     "jsdoc/require-returns": "off",
     "jsdoc/require-param": "off",
@@ -29,6 +31,11 @@
     "jsdoc/require-returns-type": "off",
     "jsdoc/require-param-type": "off",
     // From "style"
+    "eslint/new-cap": ["error", { "capIsNewExceptionPattern": "^YYYY\\w*|Intl" }],
+    "eslint/prefer-destructuring": [
+      "error",
+      { "object": true, "array": false, "VariableDeclarator": { "object": true, "array": true } }
+    ],
     "unicorn/filename-case": ["error", { "cases": { "camelCase": true, "pascalCase": true } }],
     "unicorn/no-null": "warn",
     "eslint/func-style": ["error", "declaration"],
@@ -54,8 +61,9 @@
     "import/no-duplicates": "off", // taken care of by prettier-plugin-organize-imports and would conflict with: "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
     // From "restriction"
     "import/extensions": ["error", "always"],
-    "typescript/explicit-function-return-type": ["error", { "allowExpressions": true }],
     "typescript/no-import-type-side-effects": "error",
+    "typescript/explicit-module-boundary-types": "off",
+    "typescript/explicit-function-return-type": ["error", { "allowExpressions": true }],
     "eslint/no-undefined": "off",
     "oxc/no-rest-spread-properties": "off",
     "unicorn/no-array-reduce": "off",
