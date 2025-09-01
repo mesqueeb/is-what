@@ -10,6 +10,7 @@ import { expect, test } from 'vitest'
 import {
   isAnyObject,
   isArray,
+  isBigInt,
   isBoolean,
   isDate,
   isEmptyArray,
@@ -84,6 +85,7 @@ test('Basic true tests', () => {
   expect(isRegExp(/./gi)).toEqual(true)
   expect(isNumber(0)).toEqual(true)
   expect(isNumber(1)).toEqual(true)
+  expect(isBigInt(0n)).toEqual(true)
   expect(isDate(new Date())).toEqual(true)
   expect(isSymbol(Symbol())).toEqual(true)
   expect(isMap(new Map())).toEqual(true)
@@ -110,6 +112,7 @@ test('Basic false tests', () => {
   expect(isBoolean(NaN)).toEqual(false)
   expect(isRegExp(NaN)).toEqual(false)
   expect(isSymbol(NaN)).toEqual(false)
+  expect(isBigInt(0)).toEqual(false)
   expect(isMap(new WeakMap())).toEqual(false)
   expect(isWeakMap(new Map())).toEqual(false)
   expect(isSet(new WeakSet())).toEqual(false)
@@ -252,6 +255,7 @@ test('Primitive tests', () => {
   expect(isPrimitive(false)).toEqual(true)
   expect(isPrimitive(null)).toEqual(true)
   expect(isPrimitive(undefined)).toEqual(true)
+  expect(isPrimitive(0n)).toEqual(true)
   // false
   expect(isPrimitive(NaN)).toEqual(false)
   expect(isPrimitive([])).toEqual(false)

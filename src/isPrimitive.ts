@@ -1,3 +1,4 @@
+import { isBigInt } from './isBigInt.js'
 import { isBoolean } from './isBoolean.js'
 import { isNull } from './isNull.js'
 import { isNumber } from './isNumber.js'
@@ -12,13 +13,14 @@ import { isUndefined } from './isUndefined.js'
  */
 export function isPrimitive(
   payload: unknown,
-): payload is boolean | null | undefined | number | string | symbol {
+): payload is boolean | null | undefined | number | string | symbol | bigint {
   return (
     isBoolean(payload) ||
     isNull(payload) ||
     isUndefined(payload) ||
     isNumber(payload) ||
     isString(payload) ||
-    isSymbol(payload)
+    isSymbol(payload) ||
+    isBigInt(payload)
   )
 }
