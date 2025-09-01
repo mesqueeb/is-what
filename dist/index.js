@@ -1,6 +1,7 @@
 export { getType } from './getType.js';
 export { isAnyObject } from './isAnyObject.js';
 export { isArray } from './isArray.js';
+export { isBigInt } from './isBigInt.js';
 export { isBlob } from './isBlob.js';
 export { isBoolean } from './isBoolean.js';
 export { isDate } from './isDate.js';

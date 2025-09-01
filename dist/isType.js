@@ -15,6 +15,6 @@ export function isType(payload, type) {
         throw new TypeError('Type is not a class');
     }
     // Classes usually have names (as functions usually have names)
-    const name = type.name;
+    const { name } = type;
     return getType(payload) === name || Boolean(payload && payload.constructor === type);
 }
