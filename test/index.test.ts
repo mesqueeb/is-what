@@ -23,6 +23,7 @@ import {
   isFunction,
   isHexDecimal,
   isInstanceOf,
+  isInteger,
   isIterable,
   isMap,
   isNaNValue,
@@ -85,6 +86,9 @@ test('Basic true tests', () => {
   expect(isRegExp(/./gi)).toEqual(true)
   expect(isNumber(0)).toEqual(true)
   expect(isNumber(1)).toEqual(true)
+  expect(isInteger(1)).toEqual(true)
+  expect(isInteger(-1)).toEqual(true)
+  expect(isInteger(0)).toEqual(true)
   expect(isBigInt(0n)).toEqual(true)
   expect(isDate(new Date())).toEqual(true)
   expect(isSymbol(Symbol())).toEqual(true)
@@ -113,6 +117,9 @@ test('Basic false tests', () => {
   expect(isRegExp(NaN)).toEqual(false)
   expect(isSymbol(NaN)).toEqual(false)
   expect(isBigInt(0)).toEqual(false)
+  expect(isInteger(1.1)).toEqual(false)
+  expect(isInteger(NaN)).toEqual(false)
+  expect(isInteger(Infinity)).toEqual(false)
   expect(isMap(new WeakMap())).toEqual(false)
   expect(isWeakMap(new Map())).toEqual(false)
   expect(isSet(new WeakSet())).toEqual(false)
