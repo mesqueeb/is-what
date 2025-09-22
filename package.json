@@ -21,10 +21,10 @@
   "devDependencies": {
     "@cycraft/eslint": "^0.4.4",
     "@cycraft/tsconfig": "^0.1.2",
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "np": "^10.2.0",
-    "oxlint": "^1.11.2",
-    "typedoc": "^0.28.10",
+    "oxlint": "^1.16.0",
+    "typedoc": "^0.28.13",
     "vitest": "^3.2.4"
   },
   "files": [
