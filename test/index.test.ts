@@ -27,6 +27,7 @@ import {
   isIterable,
   isMap,
   isNaNValue,
+  isNegativeInteger,
   isNegativeNumber,
   isNull,
   isNullOrUndefined,
@@ -34,6 +35,7 @@ import {
   isObject,
   isOneOf,
   isPlainObject,
+  isPositiveInteger,
   isPositiveNumber,
   isPrimitive,
   // isBlob,
@@ -220,6 +222,15 @@ test('isPositiveNumber / isNegativeNumber', () => {
   expect(isNegativeNumber(-1)).toEqual(true)
   expect(isNegativeNumber(0)).toEqual(false)
   expect(isNegativeNumber(1)).toEqual(false)
+})
+
+test('isPositiveInteger / isNegativeInteger', () => {
+  expect(isPositiveInteger(-1)).toEqual(false)
+  expect(isPositiveInteger(0)).toEqual(false)
+  expect(isPositiveInteger(1)).toEqual(true)
+  expect(isNegativeInteger(-1)).toEqual(true)
+  expect(isNegativeInteger(0)).toEqual(false)
+  expect(isNegativeInteger(1)).toEqual(false)
 })
 
 test('NaN tests', () => {
