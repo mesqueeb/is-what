@@ -1,9 +1,9 @@
 # is What? 🙉
 
-<a href="https://www.npmjs.com/package/is-what"><img src="https://img.shields.io/npm/v/is-what.svg" alt="Total Downloads"></a>
-<a href="https://www.npmjs.com/package/is-what"><img src="https://img.shields.io/npm/dw/is-what.svg" alt="Latest Stable Version"></a>
+<a href="https://www.npmjs.com/package/is-what"><img src="https://img.shields.io/npm/v/is-what.svg" alt="npm version"></a>
+<a href="https://www.npmjs.com/package/is-what"><img src="https://img.shields.io/npm/dw/is-what.svg" alt="npm downloads/week"></a>
 
-Very simple & small JS type check functions. It's fully TypeScript supported!
+Tiny, zero-dependency JavaScript type guards with first-class TypeScript support. Tree-shakable ESM by default.
 
 ```
 npm i is-what
@@ -34,9 +34,9 @@ is-what is really easy to use, and most functions work just like you'd expect.
 import { isString, isDate, isPlainObject } from 'is-what'
 ```
 
-1. First I'll go over the simple functions available. Only `isNumber` and `isDate` have special treatment.
-2. After that I'll talk about working with Objects (plain objects vs class instances etc.).
-3. Lastly I'll talk about TypeScript implementation
+1. Below are the most common functions (with a special note on `isNumber` and `isDate`).
+2. Then we cover Objects (plain objects vs class instances).
+3. Finally we show TypeScript narrowing and `isObjectLike<T>`.
 
 ### Simple type check functions
 
@@ -177,7 +177,7 @@ isAnyObject(specialObject) // returns true
 getType(specialObject) // returns 'Object'
 ```
 
-> Please note that `isPlainObject` will only return `true` for normal plain JavaScript objects.
+> Please note that `isPlainObject` returns `true` only for plain JavaScript objects.
 
 ### Getting and checking for specific types
 
@@ -191,8 +191,7 @@ getType('') // returns 'String'
 isType('', String) // returns true
 ```
 
-If you just want to make sure your object _inherits_ from a particular class or
-`toStringTag` value, you can use `isInstanceOf()` like this:
+If you want to make sure your object inherits from a particular class or matches a `toStringTag` value, use `isInstanceOf()`:
 
 ```js
 import { isInstanceOf } from 'is-what'
@@ -211,7 +210,7 @@ is-what makes TypeScript know the type during if statements. This means that a c
 function isNumber(payload: unknown): payload is number {
   // return boolean
 }
-// As you can see above, all functions return a boolean for JavaScript, but pass the payload type to TypeScript.
+// All functions return a boolean for JavaScript, but act as type guards for TypeScript.
 
 // usage example:
 function fn(payload: string | number): number {
@@ -235,7 +234,7 @@ if (isPlainObject(payload) && payload.id) return payload.id
 
 ### isObjectLike
 
-If you want more control over what kind of interface/type is casted when checking for objects.
+If you want more control over what kind of interface/type is cast when checking for objects:
 
 To cast to a specific type while checking for `isAnyObject`, can use `isObjectLike<T>`:
 

@@ -23,7 +23,7 @@
     "@cycraft/tsconfig": "^0.1.2",
     "del-cli": "^7.0.0",
     "np": "^10.2.0",
-    "oxlint": "^1.16.0",
+    "oxlint": "^1.22.0",
     "typedoc": "^0.28.13",
     "vitest": "^3.2.4"
   },

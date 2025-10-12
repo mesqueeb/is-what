@@ -60,6 +60,8 @@
     "eslint/no-duplicate-imports": "off", // taken care of by prettier-plugin-organize-imports and would conflict with: "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
     "import/no-duplicates": "off", // taken care of by prettier-plugin-organize-imports and would conflict with: "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
     // From "restriction"
+    "import/no-default-export": "error",
+    "import/no-named-export": "off",
     "import/extensions": ["error", "always"],
     "typescript/no-import-type-side-effects": "error",
     "typescript/explicit-module-boundary-types": "off",
