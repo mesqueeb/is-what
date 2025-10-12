@@ -19,6 +19,7 @@
     // From "suspicious"
     "jsdoc/require-returns": "off",
     "jsdoc/require-param": "off",
+    "promise/always-return": ["error", { "ignoreLastCallback": true }],
     // From "pedantic"
     "eslint/max-lines": "off",
     "eslint/max-lines-per-function": "off",
