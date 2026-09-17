@@ -19,13 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          cache: npm
-      - run: npm ci
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
       - id: configure-pages
         uses: actions/configure-pages@v4
-      - run: npm run build:docs
+      - run: pnpm run build:docs
         env:
           BASE_URL: ${{ steps.configure-pages.base_url }}/
       - uses: actions/upload-pages-artifact@v3

@@ -35,7 +35,10 @@
     "eslint/new-cap": ["error", { "capIsNewExceptionPattern": "^YYYY\\w*|Intl" }],
     "eslint/prefer-destructuring": [
       "error",
-      { "object": true, "array": false, "VariableDeclarator": { "object": true, "array": true } }
+      {
+        "VariableDeclarator": { "object": true, "array": true },
+        "AssignmentExpression": { "object": true, "array": false }
+      }
     ],
     "unicorn/filename-case": ["error", { "cases": { "camelCase": true, "pascalCase": true } }],
     "unicorn/no-null": "warn",
