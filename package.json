@@ -16,13 +16,13 @@
     "lint": "tsc --noEmit && oxlint",
     "build": "del-cli dist && tsc",
     "build:docs": "typedoc",
-    "release": "pnpm run lint && pnpm run build && np --no-publish"
+    "release": "pnpm run lint && pnpm run build && pnpm test && bumpp --no-push && git push --follow-tags && gh release create $(git describe --tags --abbrev=0) --generate-notes"
   },
   "devDependencies": {
     "@cycraft/eslint": "^0.4.7",
     "@cycraft/tsconfig": "^0.1.2",
+    "bumpp": "^12.3.0",
     "del-cli": "^7.0.0",
-    "np": "^12.1.1",
     "oxlint": "^1.83.0",
     "typedoc": "^0.28.20",
     "vitest": "^5.0.1"
