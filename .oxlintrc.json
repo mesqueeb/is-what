@@ -76,6 +76,9 @@
     "oxc/no-async-await": "off",
     "oxc/no-optional-chaining": "off",
     "eslint/no-empty-function": "off",
-    "eslint/no-void": "off" // want to allow: void somethingAsync()
+    "eslint/no-void": "off", // want to allow: void somethingAsync()
+    "eslint/capitalized-comments": "off", // Too opiniated to be on: If we want to use lowercase, it's fine to use lowercase.
+    "eslint/no-inline-comments": "off", // Too opiniated to be on: If we have an inline comment, there's probably a good reason to do so.
+    "eslint/no-implicit-coercion": "off" // I use !! all the time and see nothing wrong with it
   }
 }

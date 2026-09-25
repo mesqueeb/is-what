@@ -6,6 +6,6 @@ import { isString } from './isString.js'
  */
 export function isHexDecimal(payload: unknown, length?: number): payload is string {
   if (!isString(payload)) return false
-  if (!/^[0-9a-fA-F]+$/.test(payload)) return false
+  if (!/^[0-9a-fA-F]+$/u.test(payload)) return false
   return length === undefined || payload.length === length
 }
