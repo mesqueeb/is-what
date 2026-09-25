@@ -1,8 +1,24 @@
 {
-  "extends": "@cycraft/tsconfig",
   "include": ["src"],
   "compilerOptions": {
-    "outDir": "dist"
+    "module": "nodenext",
+    "moduleDetection": "force",
+    "target": "es2022",
+    "lib": ["DOM", "DOM.Iterable", "esnext"],
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "noEmitOnError": true,
+    "newLine": "lf",
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true
   },
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
