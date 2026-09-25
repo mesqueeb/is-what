@@ -19,13 +19,13 @@
     "release": "pnpm run lint && pnpm run build && pnpm test && bumpp --no-push && git push --follow-tags && gh release create $(git describe --tags --abbrev=0) --generate-notes --notes \"$(git log --pretty='- %s  %h' $(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || git rev-list --max-parents=0 HEAD)..HEAD~1)\""
   },
   "devDependencies": {
-    "@cycraft/eslint": "^0.4.7",
+    "@cycraft/eslint": "^0.4.11",
     "@cycraft/tsconfig": "^0.1.2",
     "bumpp": "^12.3.0",
     "del-cli": "^7.0.0",
-    "oxlint": "^1.83.0",
+    "oxlint": "^1.85.0",
     "typedoc": "^0.28.20",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.2"
   },
   "files": [
     "dist"
@@ -60,5 +60,5 @@
   },
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "bugs": "https://github.com/mesqueeb/is-what/issues",
-  "packageManager": "pnpm@11.27.0"
+  "packageManager": "pnpm@11.28.0"
 }
