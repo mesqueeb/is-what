@@ -3,11 +3,11 @@
  * builds with 7.
  */
 function readPackage(pkg) {
-  if (pkg.name === "typedoc" && pkg.peerDependencies?.typescript) {
-    delete pkg.peerDependencies.typescript;
-    pkg.dependencies = { ...pkg.dependencies, typescript: "^6.0.3" };
+  if (pkg.name === 'typedoc' && pkg.peerDependencies?.typescript) {
+    delete pkg.peerDependencies.typescript
+    pkg.dependencies = { ...pkg.dependencies, typescript: '^6.0.3' }
   }
-  return pkg;
+  return pkg
 }
 
-export const hooks = { readPackage };
+export const hooks = { readPackage }

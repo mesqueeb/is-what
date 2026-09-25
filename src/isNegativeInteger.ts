@@ -1,6 +1,6 @@
-import { isInteger } from "./isInteger.js";
+import { isInteger } from './isInteger.js'
 
 /** Returns whether the payload is a negative Integer (but not 0) */
 export function isNegativeInteger(payload: unknown): payload is number {
-  return isInteger(payload) && payload < 0;
+  return isInteger(payload) && payload < 0
 }

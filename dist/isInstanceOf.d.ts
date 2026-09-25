@@ -1,8 +1,6 @@
-import type { AnyClass } from "./isType.js";
+import type { AnyClass } from './isType.js';
 type GlobalClassName = {
-  [K in keyof typeof globalThis]: (typeof globalThis)[K] extends AnyClass
-    ? K
-    : never;
+    [K in keyof typeof globalThis]: (typeof globalThis)[K] extends AnyClass ? K : never;
 }[keyof typeof globalThis];
 /**
  * Checks if a value is an instance of a class or a class name. Useful when you want to check if a
@@ -19,16 +17,7 @@ type GlobalClassName = {
  * @param value The value to recursively check
  * @param class_ A string or class that the value should be an instance of
  */
-export declare function isInstanceOf<T extends AnyClass>(
-  value: unknown,
-  class_: T,
-): value is T;
-export declare function isInstanceOf<K extends GlobalClassName>(
-  value: unknown,
-  className: K,
-): value is (typeof globalThis)[K];
-export declare function isInstanceOf(
-  value: unknown,
-  className: string,
-): value is object;
+export declare function isInstanceOf<T extends AnyClass>(value: unknown, class_: T): value is T;
+export declare function isInstanceOf<K extends GlobalClassName>(value: unknown, className: K): value is (typeof globalThis)[K];
+export declare function isInstanceOf(value: unknown, className: string): value is object;
 export {};

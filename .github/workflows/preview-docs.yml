@@ -4,10 +4,10 @@ on:
     branches: main
     paths:
       - docs/**
-      - "*rc"
-      - "*config*"
-      - "*.json"
-      - "*.lock"
+      - '*rc'
+      - '*config*'
+      - '*.json'
+      - '*.lock'
       - .github/workflows/preview-docs.yml
 concurrency:
   group: ${{ github.workflow }}

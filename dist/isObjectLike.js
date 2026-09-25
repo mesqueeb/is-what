@@ -1,4 +1,4 @@
-import { isAnyObject } from "./isAnyObject.js";
+import { isAnyObject } from './isAnyObject.js';
 /**
  * Returns whether the payload is an object like a type passed in < >
  *
@@ -7,5 +7,5 @@ import { isAnyObject } from "./isAnyObject.js";
  * @template T This must be passed in < >
  */
 export function isObjectLike(payload) {
-  return isAnyObject(payload);
+    return isAnyObject(payload);
 }
