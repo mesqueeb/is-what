@@ -16,7 +16,7 @@
     "lint": "tsc --noEmit && oxlint && oxfmt --check",
     "build": "del-cli dist && tsc",
     "build:docs": "typedoc",
-    "release": "pnpm run lint && pnpm run build && pnpm test && bumpp --no-push && git push --follow-tags && gh release create $(git describe --tags --abbrev=0) --generate-notes --notes \"$(git log --pretty='- %s  %h' $(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || git rev-list --max-parents=0 HEAD)..HEAD~1)\"",
+    "release": "pnpm run lint && pnpm run build && pnpm test && bumpp --no-push && npx jsr publish && git push --follow-tags && gh release create $(git describe --tags --abbrev=0) --generate-notes --notes \"$(git log --pretty='- %s  %h' $(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || git rev-list --max-parents=0 HEAD)..HEAD~1)\"",
     "format": "oxfmt"
   },
   "devDependencies": {
@@ -25,7 +25,7 @@
     "oxfmt": "^0.70.0",
     "oxlint": "^1.85.0",
     "typedoc": "^0.28.20",
-    "typescript": "^7.0.2",
+    "typescript": "^5.9.3",
     "vitest": "^5.0.2"
   },
   "files": [

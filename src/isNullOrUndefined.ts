@@ -3,4 +3,4 @@ import { /* tree-shaking no-side-effects-when-called */ isOneOf } from './isOneO
 import { isUndefined } from './isUndefined.js'
 
 /** Returns true whether the payload is null or undefined */
-export const isNullOrUndefined = isOneOf(isNull, isUndefined)
+export const isNullOrUndefined: (payload: unknown) => payload is null | undefined = isOneOf(isNull, isUndefined)
