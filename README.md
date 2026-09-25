@@ -31,7 +31,7 @@ is-what is really easy to use, and most functions work just like you'd expect.
 
 ```js
 // import functions you want to use like so:
-import { isString, isDate, isPlainObject } from 'is-what'
+import { isString, isDate, isPlainObject } from "is-what";
 ```
 
 1. Below are the most common functions (with a special note on `isNumber` and `isDate`).
@@ -42,71 +42,71 @@ import { isString, isDate, isPlainObject } from 'is-what'
 
 ```js
 // basics
-isBoolean(true) // true
-isBoolean(false) // true
-isUndefined(undefined) // true
-isNull(null) // true
+isBoolean(true); // true
+isBoolean(false); // true
+isUndefined(undefined); // true
+isNull(null); // true
 
 // strings
-isString('') // true
-isEmptyString('') // true
-isFullString('') // false
-isHexDecimal('60adf084f0fbdcab42de841e') // true
-isHexDecimal('60adf084f0fbdcab42de841e', 24) // check specific length of 24 (eg. MongoDB ObjectId)
+isString(""); // true
+isEmptyString(""); // true
+isFullString(""); // false
+isHexDecimal("60adf084f0fbdcab42de841e"); // true
+isHexDecimal("60adf084f0fbdcab42de841e", 24); // check specific length of 24 (eg. MongoDB ObjectId)
 
 // numbers
-isNumber(0) // true
-isNumber('0') // false
-isNumber(NaN) // false *
-isPositiveNumber(1) // true
-isNegativeNumber(-1) // true
+isNumber(0); // true
+isNumber("0"); // false
+isNumber(NaN); // false *
+isPositiveNumber(1); // true
+isNegativeNumber(-1); // true
 // * see below for special NaN use cases!
 
 // arrays
-isArray([]) // true
-isEmptyArray([]) // true
-isFullArray([1]) // true
+isArray([]); // true
+isEmptyArray([]); // true
+isFullArray([1]); // true
 
 // objects
-isPlainObject({}) // true *
-isEmptyObject({}) // true
-isFullObject({ a: 1 }) // true
+isPlainObject({}); // true *
+isEmptyObject({}); // true
+isFullObject({ a: 1 }); // true
 // * see below for special object (& class instance) use cases!
 
 // functions
-isFunction(function () {}) // true
-isFunction(() => {}) // true
+isFunction(function () {}); // true
+isFunction(() => {}); // true
 
 // dates
-isDate(new Date()) // true
-isDate(new Date('invalid date')) // false
+isDate(new Date()); // true
+isDate(new Date("invalid date")); // false
 
 // maps & sets
-isMap(new Map()) // true
-isSet(new Set()) // true
-isWeakMap(new WeakMap()) // true
-isWeakSet(new WeakSet()) // true
+isMap(new Map()); // true
+isSet(new Set()); // true
+isWeakMap(new WeakMap()); // true
+isWeakSet(new WeakSet()); // true
 
 // others
-isRegExp(/\s/gi) // true
-isSymbol(Symbol()) // true
-isBlob(new Blob()) // true
-isFile(new File([''], '', { type: 'text/html' })) // true
-isError(new Error('')) // true
-isPromise(new Promise((resolve) => {})) // true
+isRegExp(/\s/gi); // true
+isSymbol(Symbol()); // true
+isBlob(new Blob()); // true
+isFile(new File([""], "", { type: "text/html" })); // true
+isError(new Error("")); // true
+isPromise(new Promise((resolve) => {})); // true
 
 // primitives
-isPrimitive('') // true
+isPrimitive(""); // true
 //     true for any of: boolean, null, undefined, number, string, symbol
 
 // iterables
-isIterable([1, 2, 3]) // true
-isIterable('hello') // true
-isIterable(new Map()) // true
-isIterable(new Set()) // true
+isIterable([1, 2, 3]); // true
+isIterable("hello"); // true
+isIterable(new Map()); // true
+isIterable(new Set()); // true
 isIterable(function* generator() {
-  yield 1
-}) // true
+  yield 1;
+}); // true
 ```
 
 ### Let's talk about NaN
@@ -115,36 +115,36 @@ isIterable(function* generator() {
 
 ```js
 // 1)
-typeof NaN === 'number' // true
+typeof NaN === "number"; // true
 // 🤔 ("not a number" is a "number"...)
 
 // 2)
-isNaN('1') // false
+isNaN("1"); // false
 // 🤔 the string '1' is not-"not a number"... so it's a number??
 
 // 3)
-isNaN('one') // true
+isNaN("one"); // true
 // 🤔 'one' is NaN but `NaN === 'one'` is false...
 ```
 
 With is-what the way we treat NaN makes a little bit more sense:
 
 ```js
-import { isNumber, isNaNValue } from 'is-what'
+import { isNumber, isNaNValue } from "is-what";
 
 // 1)
-isNumber(NaN) // false!
+isNumber(NaN); // false!
 // let's not treat NaN as a number
 
 // 2)
-isNaNValue('1') // false
+isNaNValue("1"); // false
 // if it's not NaN, it's not NaN!!
 
 // 3)
-isNaNValue('one') // false
+isNaNValue("one"); // false
 // if it's not NaN, it's not NaN!!
 
-isNaNValue(NaN) // true
+isNaNValue(NaN); // true
 ```
 
 ### isPlainObject vs isAnyObject
@@ -156,25 +156,27 @@ Checking for a JavaScript object can be really difficult. In JavaScript you can 
 
 ```js
 // define a plain object
-const plainObject = { hello: 'I am a good old object.' }
+const plainObject = { hello: "I am a good old object." };
 
 // define a special object
 class SpecialObject {
   constructor(somethingSpecial) {
-    this.speciality = somethingSpecial
+    this.speciality = somethingSpecial;
   }
 }
-const specialObject = new SpecialObject('I am a special object! I am a class instance!!!')
+const specialObject = new SpecialObject(
+  "I am a special object! I am a class instance!!!",
+);
 
 // check the plain object
-isPlainObject(plainObject) // returns true
-isAnyObject(plainObject) // returns true
-getType(plainObject) // returns 'Object'
+isPlainObject(plainObject); // returns true
+isAnyObject(plainObject); // returns true
+getType(plainObject); // returns 'Object'
 
 // check the special object
-isPlainObject(specialObject) // returns false !!!!!!!!!
-isAnyObject(specialObject) // returns true
-getType(specialObject) // returns 'Object'
+isPlainObject(specialObject); // returns false !!!!!!!!!
+isAnyObject(specialObject); // returns true
+getType(specialObject); // returns 'Object'
 ```
 
 > Please note that `isPlainObject` returns `true` only for plain JavaScript objects.
@@ -184,21 +186,21 @@ getType(specialObject) // returns 'Object'
 You can check for specific types with `getType` and `isType`:
 
 ```js
-import { getType, isType } from 'is-what'
+import { getType, isType } from "is-what";
 
-getType('') // returns 'String'
+getType(""); // returns 'String'
 // pass a Type as second param:
-isType('', String) // returns true
+isType("", String); // returns true
 ```
 
 If you want to make sure your object inherits from a particular class or matches a `toStringTag` value, use `isInstanceOf()`:
 
 ```js
-import { isInstanceOf } from 'is-what'
+import { isInstanceOf } from "is-what";
 
-isInstanceOf(new XMLHttpRequest(), 'EventTarget')
+isInstanceOf(new XMLHttpRequest(), "EventTarget");
 // returns true
-isInstanceOf(globalThis, ReadableStream)
+isInstanceOf(globalThis, ReadableStream);
 // returns false
 ```
 
@@ -216,19 +218,19 @@ function isNumber(payload: unknown): payload is number {
 function fn(payload: string | number): number {
   if (isNumber(payload)) {
     // ↑ TypeScript already knows payload is a number here!
-    return payload
+    return payload;
   }
-  return 0
+  return 0;
 }
 ```
 
 `isPlainObject` and `isAnyObject` with TypeScript will declare the payload to be an object type with any props:
 
 ```ts
-function isPlainObject(payload: unknown): payload is { [key: string]: unknown }
-function isAnyObject(payload: unknown): payload is { [key: string]: unknown }
+function isPlainObject(payload: unknown): payload is { [key: string]: unknown };
+function isAnyObject(payload: unknown): payload is { [key: string]: unknown };
 // The reason to return `{[key: string]: unknown}` is to be able to do
-if (isPlainObject(payload) && payload.id) return payload.id
+if (isPlainObject(payload) && payload.id) return payload.id;
 // if isPlainObject() would return `payload is object` then it would give an error at `payload.id`
 ```
 
@@ -239,9 +241,9 @@ If you want more control over what kind of interface/type is cast when checking 
 To cast to a specific type while checking for `isAnyObject`, can use `isObjectLike<T>`:
 
 ```ts
-import { isObjectLike } from 'is-what'
+import { isObjectLike } from "is-what";
 
-const payload = { name: 'Mesqueeb' } // current type: `{ name: string }`
+const payload = { name: "Mesqueeb" }; // current type: `{ name: string }`
 
 // Without casting:
 if (isAnyObject(payload)) {
@@ -262,7 +264,7 @@ Please note: this library will not actually check the shape of the object, you n
 
 ```ts
 function isObjectLike<T extends object>(payload: unknown): payload is T {
-  return isAnyObject(payload)
+  return isAnyObject(payload);
 }
 ```
 
@@ -287,16 +289,16 @@ It's litterally just these functions:
 
 ```js
 function getType(payload) {
-  return Object.prototype.toString.call(payload).slice(8, -1)
+  return Object.prototype.toString.call(payload).slice(8, -1);
 }
 function isUndefined(payload) {
-  return getType(payload) === 'Undefined'
+  return getType(payload) === "Undefined";
 }
 function isString(payload) {
-  return getType(payload) === 'String'
+  return getType(payload) === "String";
 }
 function isAnyObject(payload) {
-  return getType(payload) === 'Object'
+  return getType(payload) === "Object";
 }
 // etc...
 ```

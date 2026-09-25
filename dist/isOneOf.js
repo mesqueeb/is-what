@@ -11,5 +11,10 @@
  *   isNullOrUndefined(123) // false
  */
 export function isOneOf(a, b, c, d, e) {
-    return (value) => a(value) || b(value) || (!!c && c(value)) || (!!d && d(value)) || (!!e && e(value));
+  return (value) =>
+    a(value) ||
+    b(value) ||
+    (!!c && c(value)) ||
+    (!!d && d(value)) ||
+    (!!e && e(value));
 }

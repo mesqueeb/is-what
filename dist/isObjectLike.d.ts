@@ -1,4 +1,4 @@
-import type { PlainObject } from './isPlainObject.js';
+import type { PlainObject } from "./isPlainObject.js";
 /**
  * Returns whether the payload is an object like a type passed in < >
  *
@@ -6,4 +6,6 @@ import type { PlainObject } from './isPlainObject.js';
  *
  * @template T This must be passed in < >
  */
-export declare function isObjectLike<T extends PlainObject>(payload: unknown): payload is T;
+export declare function isObjectLike<T extends PlainObject>(
+  payload: unknown,
+): payload is T;

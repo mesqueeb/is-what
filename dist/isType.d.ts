@@ -1,4 +1,4 @@
-import type { AnyFunction } from './isFunction.js';
+import type { AnyFunction } from "./isFunction.js";
 export type AnyClass = new (...args: unknown[]) => unknown;
 /**
  * Does a generic check to check that the given payload is of a given type. In cases like Number, it
@@ -7,4 +7,7 @@ export type AnyClass = new (...args: unknown[]) => unknown;
  *
  * @throws {TypeError} Will throw type error if type is an invalid type
  */
-export declare function isType<T extends AnyFunction | AnyClass>(payload: unknown, type: T): payload is T;
+export declare function isType<T extends AnyFunction | AnyClass>(
+  payload: unknown,
+  type: T,
+): payload is T;

@@ -3,7 +3,16 @@
   "env": {
     "shared-node-browser": true
   },
-  "plugins": ["typescript", "unicorn", "oxc", "import", "jsdoc", "promise", "node", "vitest"],
+  "plugins": [
+    "typescript",
+    "unicorn",
+    "oxc",
+    "import",
+    "jsdoc",
+    "promise",
+    "node",
+    "vitest"
+  ],
   "categories": {
     "correctness": "error",
     "suspicious": "error",
@@ -32,7 +41,10 @@
     "jsdoc/require-returns-type": "off",
     "jsdoc/require-param-type": "off",
     // From "style"
-    "eslint/new-cap": ["error", { "capIsNewExceptionPattern": "^YYYY\\w*|Intl" }],
+    "eslint/new-cap": [
+      "error",
+      { "capIsNewExceptionPattern": "^YYYY\\w*|Intl" }
+    ],
     "eslint/prefer-destructuring": [
       "error",
       {
@@ -40,7 +52,10 @@
         "AssignmentExpression": { "object": true, "array": false }
       }
     ],
-    "unicorn/filename-case": ["error", { "cases": { "camelCase": true, "pascalCase": true } }],
+    "unicorn/filename-case": [
+      "error",
+      { "cases": { "camelCase": true, "pascalCase": true } }
+    ],
     "unicorn/no-null": "warn",
     "eslint/func-style": ["error", "declaration"],
     "eslint/no-magic-numbers": "off",
@@ -68,7 +83,10 @@
     "import/extensions": ["error", "always"],
     "typescript/no-import-type-side-effects": "error",
     "typescript/explicit-module-boundary-types": "off",
-    "typescript/explicit-function-return-type": ["error", { "allowExpressions": true }],
+    "typescript/explicit-function-return-type": [
+      "error",
+      { "allowExpressions": true }
+    ],
     "eslint/no-undefined": "off",
     "oxc/no-rest-spread-properties": "off",
     "unicorn/no-array-reduce": "off",

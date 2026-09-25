@@ -1,5 +1,5 @@
 export type PlainObject = {
-    [key in string | number | symbol]: unknown;
+  [key in string | number | symbol]: unknown;
 };
 /**
  * Returns whether the payload is a plain JavaScript object (excluding special classes or objects

@@ -3,5 +3,5 @@
  * prototypes)
  */
 export declare function isEmptyObject(payload: unknown): payload is {
-    [K in string | symbol | number]: never;
+  [K in string | symbol | number]: never;
 };

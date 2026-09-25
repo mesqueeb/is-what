@@ -5,18 +5,18 @@ on:
     paths:
       - src/**
       - test/**
-      - '*.js'
-      - '*.ts'
-      - '*.json'
+      - "*.js"
+      - "*.ts"
+      - "*.json"
       - .github/workflows/test.yml
   pull_request:
     branches: main
     paths:
       - src/**
       - test/**
-      - '*.js'
-      - '*.ts'
-      - '*.json'
+      - "*.js"
+      - "*.ts"
+      - "*.json"
       - .github/workflows/test.yml
 concurrency:
   group: test-${{ github.ref }}
@@ -25,7 +25,7 @@ jobs:
   test:
     strategy:
       matrix:
-        node-version: ['22']
+        node-version: ["22"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
