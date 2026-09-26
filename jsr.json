@@ -1,6 +1,6 @@
 {
   "name": "@mesqueeb/is-what",
-  "version": "5.5.3",
+  "version": "5.5.4",
   "license": "MIT",
   "exports": "./src/index.ts",
   "publish": {
