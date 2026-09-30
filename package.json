@@ -24,10 +24,10 @@
     "del-cli": "^7.0.0",
     "jsr": "^0.14.3",
     "oxfmt": "^0.70.0",
-    "oxlint": "^1.85.0",
+    "oxlint": "^1.86.0",
     "typedoc": "^0.28.20",
     "typescript": "^5.9.3",
-    "vitest": "^5.0.2"
+    "vitest": "^5.0.3"
   },
   "files": [
     "dist"
@@ -62,5 +62,5 @@
   },
   "homepage": "https://github.com/mesqueeb/is-what#readme",
   "bugs": "https://github.com/mesqueeb/is-what/issues",
-  "packageManager": "pnpm@11.28.0"
+  "packageManager": "pnpm@11.28.3"
 }
